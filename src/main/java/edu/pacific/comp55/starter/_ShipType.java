@@ -1,7 +1,7 @@
 package edu.pacific.comp55.starter;
 public enum _ShipType {
 	MYCAR, TRUCK, AUTO;
-	
+//yo	
 	public String toString() {
 		switch(this) {
 			case MYCAR: return "car";
