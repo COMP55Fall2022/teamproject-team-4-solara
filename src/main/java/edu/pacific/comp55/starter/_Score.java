@@ -4,9 +4,9 @@ import acm.graphics.*;
 public class _Score {
 
 	public static void enemyKilled() {
-		//todo
+		//In here, the enemyKilled will be updated based on the Graphics Class
 	}
 	public static void updateScoreOnScreen() {
-		//todo
+		//In here, the enemyKilled will be updated based on the Graphics Class
 	}
 }
