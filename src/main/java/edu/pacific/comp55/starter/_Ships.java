@@ -3,9 +3,9 @@ package edu.pacific.comp55.starter;
 public class _Ships {
 	
 	
-	int damage; 
-	int health; 
-	boolean isSpeed; 
+	private int damage; 
+	private int health; 
+	private boolean isSpeed; 
 	// ask professor how to go about implementing speed. Should it be a boolean or an  int?
 	// constructor to use for ships 
 	public _Ships(_ShipType type, int health, int damage, boolean isSpeed) {
