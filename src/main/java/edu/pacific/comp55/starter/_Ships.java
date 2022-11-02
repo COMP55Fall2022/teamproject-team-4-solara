@@ -9,7 +9,7 @@ public class _Ships {
 	// ask professor how to go about implementing speed. Should it be a boolean or an  int?
 	// constructor to use for ships 
 	public _Ships(_ShipType type, int health, int damage, boolean isSpeed) {
-		
+		this.health = health; 
 		this.type = type; 
 		this.damage = damage; 
 		this.isSpeed = isSpeed; 
@@ -41,4 +41,23 @@ public class _Ships {
 		this.isSpeed = isSpeed;
 	}
 
+	public String toString() { 
+		return ("Vehicle info" + "\n -----------" + "\nType of ship: " + this.type + "\nhealth of vehicle: " + this.health + "\ndamage of vehicle: " + this.damage
+				+ "\nis it speedy? " + this.isSpeed  );
+	}
+		
+	public static void main(String[] args) {
+		
+		_Ships balancedShip = new _Ships(_ShipType.SHIP_BALANCED, 3, 3, false );
+		_Ships tankShip = new _Ships(_ShipType.SHIP_TANK, 5, 2, false);
+		_Ships speedShip = new _Ships(_ShipType.SHIP_SPEED, 2, 5, true);
+		
+		System.out.println("this is a test to print out balanced ship stats");
+		System.out.println(balancedShip);
+		System.out.println("This is a test to print out tankShip stats");
+		System.out.print(tankShip);
+		System.out.println("This is a test to print out speedShip stats");
+		System.out.println(speedShip);
+		
+	}
 }
