@@ -2,7 +2,7 @@ package edu.pacific.comp55.starter;
 
 public class _Ships {
 	
-	//uihkh
+	
 	private int damage; 
 	private int health; 
 	private boolean isSpeed; 
