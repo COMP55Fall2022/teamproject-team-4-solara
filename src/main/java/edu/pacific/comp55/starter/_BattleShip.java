@@ -12,7 +12,7 @@ public class _BattleShip extends _Ships{
 	private void addPlayers() {}
 	private void removePlayers() {}
 	private void moveShip() {}
-	private void setSpeed() {}
+	private void setSpeed() {} //In the future, add an input value in order to change the speed value when necessary
 	
 	
 }
