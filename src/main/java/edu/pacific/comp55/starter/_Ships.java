@@ -15,7 +15,6 @@ public class _Ships {
 	}
 	
 	
-	
 	_ShipType type; 
 	public _ShipType getType() {
 		return type;
@@ -35,7 +34,7 @@ public class _Ships {
 	public void setHealth(int health) {
 		this.health = health;
 	}
-	public int isSpeed() {
+	public int getSpeed() {
 		return isSpeed;
 	}
 	public void setSpeed(int isSpeed) {
@@ -60,7 +59,7 @@ public class _Ships {
 		_Ships tankShip = new _Ships(_ShipType.SHIP_TANK, 5, 2, 1);
 		_Ships speedShip = new _Ships(_ShipType.SHIP_SPEED, 2, 4,5 );
 		
-		System.out.println("this is a test to print out balanced ship stats");
+		System.out.println("this is a test to print out balanced ship stats\n");
 		System.out.println(balancedShip);
 		System.out.println("This is a test to print out tankShip stats");
 		System.out.print(tankShip);
