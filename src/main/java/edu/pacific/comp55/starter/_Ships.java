@@ -1,13 +1,12 @@
 package edu.pacific.comp55.starter;
 import acm.graphics.*;
 public class _Ships {
+
+	private int healthScore; 
+	private int damage; 
+	private int health; 
+	private int isSpeed; 
 	
-	int healthScore; 
-	int damage; 
-	int health; 
-	int isSpeed; 
-	// ask professor how to go about implementing speed. Should it be a boolean or an  int?
-	// constructor to use for ships 
 	public _Ships(_ShipType type, int health, int damage, int isSpeed) {
 		this.health = health; 
 		this.type = type; 
