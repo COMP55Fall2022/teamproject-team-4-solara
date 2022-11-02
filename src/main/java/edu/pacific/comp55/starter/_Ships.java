@@ -1,8 +1,8 @@
 package edu.pacific.comp55.starter;
-
+import acm.graphics.*;
 public class _Ships {
 	
-	
+	int healthScore; 
 	int damage; 
 	int health; 
 	boolean isSpeed; 
@@ -45,6 +45,13 @@ public class _Ships {
 		return ("Vehicle info" + "\n -----------" + "\nType of ship: " + this.type + "\nhealth of vehicle: " + this.health + "\ndamage of vehicle: " + this.damage
 				+ "\nis it speedy? " + this.isSpeed  );
 	}
+	
+	public static void healthScore () {
+		
+		
+	}
+	
+	
 		
 	public static void main(String[] args) {
 		
