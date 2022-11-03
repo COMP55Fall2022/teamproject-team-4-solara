@@ -11,7 +11,7 @@ public class _EnemyShip extends _Ships {
 
 	private int enemyShipNum = 0;
 	private Timer movementTimer;
-	private ArrayList<_Ships> shipList = new ArrayList<_Ships>();;
+	private ArrayList<_EnemyShip> shipList = new ArrayList<_EnemyShip>();;
 
 	private void incrementShips() {
 		enemyShipNum++;
@@ -26,8 +26,10 @@ public class _EnemyShip extends _Ships {
 		return enemyShipNum;
 	}
 
-	public void addEnemyShip(_Ships s) { s = new _Ships(s.type, s.health,
-			s.damage, s.isSpeed); shipList.add(s); incrementShips();
+	public void addEnemyShip(_EnemyShip s) { s = new _EnemyShip(s.type, s.health,
+	s.damage, s.isSpeed);
+	shipList.add(s);
+	incrementShips();
 	}
 	private void removeEnemyShip(_Ships s) {
 		s = new _Ships(s.type, s.health, s.damage, s.isSpeed);
@@ -43,7 +45,7 @@ public class _EnemyShip extends _Ships {
 	}
 	
 
-	public static void main() {
+	public static void main(String[] args) {
 		_EnemyShip grunt1 = new _EnemyShip(_ShipType.GRUNT, 3, 3, 3);
 		grunt1.addEnemyShip(grunt1);
 		System.out.println("There is 1 grunt with:");
