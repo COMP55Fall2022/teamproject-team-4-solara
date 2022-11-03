@@ -26,10 +26,10 @@ public class _EnemyShip extends _Ships {
 		return enemyShipNum;
 	}
 
-	public void addEnemyShip(_EnemyShip s) { s = new _EnemyShip(s.type, s.health,
-	s.damage, s.isSpeed);
-	shipList.add(s);
-	incrementShips();
+	public void addEnemyShip(_EnemyShip s) { 
+		s = new _EnemyShip(s.type, s.health,s.damage, s.isSpeed);
+		shipList.add(s);
+		incrementShips();
 	}
 	private void removeEnemyShip(_Ships s) {
 		s = new _Ships(s.type, s.health, s.damage, s.isSpeed);
