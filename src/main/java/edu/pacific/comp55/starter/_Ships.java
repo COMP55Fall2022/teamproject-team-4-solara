@@ -2,10 +2,10 @@ package edu.pacific.comp55.starter;
 import acm.graphics.*;
 public class _Ships {
 
-	private int healthScore; 
-	private int damage; 
-	private int health; 
-	private int isSpeed; 
+	protected int healthScore; 
+	protected int damage; 
+	protected int health; 
+	protected int isSpeed; 
 	
 	public _Ships(_ShipType type, int health, int damage, int isSpeed) {
 		this.health = health; 
