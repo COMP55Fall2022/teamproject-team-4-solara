@@ -18,13 +18,13 @@ public class _Ships {
 	protected int isSpeed;
 	protected _ShipType type;
 
-	public _Ships(_ShipType type, int health, int damage, int isSpeed, double x, double y) {
+	public _Ships(_ShipType type, int health, int damage, int isSpeed) {
 		this.health = health;
 		this.type = type;
 		this.damage = damage;
 		this.isSpeed = isSpeed;
 		
-		spawnLocation = new SimplePoint(x, y);
+		//spawnLocation = new SimplePoint(x, y);
 	}
 
 	public _ShipType getShipType() {

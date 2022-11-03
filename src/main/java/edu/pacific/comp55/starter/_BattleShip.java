@@ -10,6 +10,7 @@ public class _BattleShip extends _Ships {
 		// TODO Auto-generated constructor stub
 	}
 	
+	
 	// Testing things out - Miguel
 	@Override
 	public String toString() {
