@@ -5,6 +5,11 @@ import acm.graphics.*;
 public class _Ships {
 
 	// Protected because we need to use them for the child classes - Miguel
+	
+	/*
+	 * We can implement a SPAWN CLASS and declare it here!
+	 */
+	
 	protected int healthScore;
 	protected int damage;
 	protected int health;
