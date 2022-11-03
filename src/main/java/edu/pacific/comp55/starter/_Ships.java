@@ -4,10 +4,12 @@ import acm.graphics.*;
 
 public class _Ships {
 
+	// Protected because we need to use them for the child classes - Miguel
 	protected int healthScore;
 	protected int damage;
 	protected int health;
 	protected int isSpeed;
+	protected _ShipType type;
 
 	public _Ships(_ShipType type, int health, int damage, int isSpeed) {
 		this.health = health;
@@ -16,13 +18,11 @@ public class _Ships {
 		this.isSpeed = isSpeed;
 	}
 
-	_ShipType type;
-
-	public _ShipType getType() {
+	public _ShipType getShipType() {
 		return type;
 	}
 
-	public void setType(_ShipType type) {
+	public void setShipType(_ShipType type) {
 		this.type = type;
 	}
 
