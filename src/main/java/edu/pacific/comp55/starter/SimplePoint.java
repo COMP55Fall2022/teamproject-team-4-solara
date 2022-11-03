@@ -4,8 +4,8 @@ public class SimplePoint {
 	  private double x, y;
 
 	  public SimplePoint(double x, double y) {
-	    x = x;
-	    y = y;
+	    this.x = x;
+	    this.y = y;
 	  }
 
 	  public double getX() { return x; };
