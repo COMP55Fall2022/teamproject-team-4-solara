@@ -3,8 +3,6 @@ package edu.pacific.comp55.starter;
 // PLAYER ship class inherited from Ship class
 public class _BattleShip extends _Ships {
 	
-	
-	
 	public _BattleShip(_ShipType type, int health, int damage, int isSpeed) {
 		super(type, health, damage, isSpeed);
 		// TODO Auto-generated constructor stub
