@@ -68,5 +68,3 @@ public class _BattleShip extends _Ships {
 	}
 }
 
-
-
