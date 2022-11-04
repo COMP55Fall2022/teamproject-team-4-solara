@@ -40,6 +40,7 @@ public class _BattleShip extends _Ships {
 	//In the future, add an input value in order to change the speed value when necessary
 	
 	
+	
 	// Testing things out - Miguel
 	@Override
 	public String toString() { 
