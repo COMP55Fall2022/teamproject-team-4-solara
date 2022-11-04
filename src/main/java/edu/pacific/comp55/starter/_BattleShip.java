@@ -8,6 +8,7 @@ public class _BattleShip extends _Ships {
 	private Timer t;
 	private int playerNum = 0;
 	private ArrayList<_BattleShip> playerList = new ArrayList<_BattleShip>();
+	
 	public _BattleShip(_ShipType type, int health, int damage, int isSpeed) {
 		super(type, health, damage, isSpeed);
 		// TODO Auto-generated constructor stub
@@ -35,10 +36,6 @@ public class _BattleShip extends _Ships {
 		//if powerup type = speed update or maybe on contact with a speed update object - Divine
 		this.isSpeed += update;
 	}
-
-	//In the future, add an input value in order to change the speed value when necessary
-
-	// Testing things out - Miguel
 
 	@Override
 	public String toString() { 
