@@ -20,7 +20,7 @@ public class _BattleShip extends _Ships {
 	
 	
 	private void addPlayers(_BattleShip balanced, _BattleShip tank, _BattleShip speedster) {
-	
+	 toString();
 	 balanced = new _BattleShip(_ShipType.SHIP_BALANCED, 3, 3, 3); 
 	 tank = new _BattleShip(_ShipType.SHIP_TANK, 5, 2, 1);
 	 speedster = new _BattleShip(_ShipType.SHIP_SPEED, 1, 4, 5);
@@ -38,14 +38,14 @@ public class _BattleShip extends _Ships {
 	private void setSpeed() {} 
 	//In the future, add an input value in order to change the speed value when necessary
 	
-	public String toString() {
-		return ("Vehicle info" + "\n -----------" + "\nType of ship: " + this.type + "\nhealth of vehicle: "
-				+ this.health + "\ndamage of vehicle: " + this.damage + "\nspeed level: " + this.isSpeed);
-	}
+
+	
+	
 	public static void main(String[] args) {
 		
-		}
 		
 	}
+}
+
 
 
