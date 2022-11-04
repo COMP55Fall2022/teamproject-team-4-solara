@@ -8,6 +8,7 @@ public class _BattleShip extends _Ships {
 	private Timer t;
 	private int playerNum = 0;
 	private ArrayList<_BattleShip> playerList = new ArrayList<_BattleShip>();
+	
 	public _BattleShip(_ShipType type, int health, int damage, int isSpeed) {
 		super(type, health, damage, isSpeed);
 		// TODO Auto-generated constructor stub
