@@ -10,15 +10,14 @@ public class _Ships {
 	 * We can implement a SPAWN CLASS and declare it here!
 	 */
 	
-	
-	protected SimplePoint spawnLocation;
+	//protected SimplePoint spawnLocation;
 	protected int healthScore;
 	protected int damage;
 	protected int health;
 	protected int isSpeed;
 	protected _ShipType type;
 
-	public _Ships(_ShipType type, int health, int damage, int isSpeed) {
+	public _Ships(_ShipType type, int health, int damage, int isSpeed/*, double x, double y*/) {
 		this.health = health;
 		this.type = type;
 		this.damage = damage;
@@ -26,6 +25,12 @@ public class _Ships {
 		
 		//spawnLocation = new SimplePoint(x, y);
 	}
+	
+	/*
+	public SimplePoint getShipCoordinates() {
+		return spawnLocation;
+	}
+	*/
 
 	public _ShipType getShipType() {
 		return type;
@@ -69,14 +74,14 @@ public class _Ships {
 	}
 
 	public static void main(String[] args) { 
-//		 _Ships balancedShip = new _Ships(_ShipType.SHIP_BALANCED, 3, 3, 3); _Ships
-//		 tankShip = new _Ships(_ShipType.SHIP_TANK, 5, 2, 1); _Ships speedShip = new
-//		 _Ships(_ShipType.SHIP_SPEED, 2, 4,5 );
-//		 System.out.println("this is a test to print out balanced ship stats\n");
-//		 System.out.println(balancedShip);
-//		 System.out.println("This is a test to print out tankShip stats");
-//		 System.out.println(tankShip);
-//		 System.out.println("This is a test to print out speedShip stats");
-//		 System.out.println(speedShip);
+		 _Ships balancedShip = new _Ships(_ShipType.SHIP_BALANCED, 3, 3, 3); _Ships
+		 tankShip = new _Ships(_ShipType.SHIP_TANK, 5, 2, 1); _Ships speedShip = new
+		 _Ships(_ShipType.SHIP_SPEED, 2, 4,5 );
+		 System.out.println("this is a test to print out balanced ship stats\n");
+		 System.out.println(balancedShip);
+		 System.out.println("This is a test to print out tankShip stats");
+		 System.out.println(tankShip);
+		 System.out.println("This is a test to print out speedShip stats");
+		 System.out.println(speedShip);
 	}
 }

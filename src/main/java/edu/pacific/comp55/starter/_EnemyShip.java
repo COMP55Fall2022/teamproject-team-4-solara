@@ -10,10 +10,9 @@ public class _EnemyShip extends _Ships {
 		// TODO Auto-generated constructor stub
 	}
 
-
 	private int enemyShipNum = 0;
 	private Timer movementTimer;
-	private ArrayList<_EnemyShip> shipList = new ArrayList<_EnemyShip>();;
+	private ArrayList<_EnemyShip> shipList = new ArrayList<_EnemyShip>();
 
 	private void incrementShips() {
 		enemyShipNum++;
@@ -24,19 +23,20 @@ public class _EnemyShip extends _Ships {
 	}
 
 
-	public int getShipNum() { 
+	public int getShipNum() {
 		return enemyShipNum;
 	}
 
-	public void addEnemyShip(_EnemyShip s) { 
+	public void addEnemyShip(_EnemyShip s) {
 		s = new _EnemyShip(s.type, s.health,s.damage, s.isSpeed);
 		shipList.add(s);
 		incrementShips();
 	}
+	
 	private void removeEnemyShip(_Ships s) {
 		s = new _Ships(s.type, s.health, s.damage, s.isSpeed);
 		decrementShips(); 
-	} 
+	}
 	private void bulletsShooting() {}
 
 
