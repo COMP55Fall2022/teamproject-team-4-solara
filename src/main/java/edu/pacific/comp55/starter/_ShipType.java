@@ -1,7 +1,10 @@
 package edu.pacific.comp55.starter;
+
 public enum _ShipType {
+	
 	SHIP_BALANCED, SHIP_TANK, SHIP_SPEED, GRUNT, BOSS;
-//yo	
+	
+	
 	public String toString() {
 		switch(this) {
 			case SHIP_BALANCED: return "balanced";
