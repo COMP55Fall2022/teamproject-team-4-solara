@@ -14,7 +14,6 @@ public class _BattleShip extends _Ships {
 	}
 	private void addPlayers(_BattleShip player) {
 		//just adds players to the ArrayList for now - Divine
-		player = new _BattleShip(player.type, player.health, player.damage, player.isSpeed);
 		playerList.add(player);
 		playerNum++;
 	}
