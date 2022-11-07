@@ -30,29 +30,53 @@ public class _Bullet extends GraphicsProgram {
 	
 	public void actionPerformed(ActionEvent e){
 		
+		
+		bullet.move(0,-5);
+		// change to bound checking to restart movement of bullet 
+		if (numTimes == -5 ) {
+		t.restart();
+		}
 	}
 	
 	public void makeBullet() {
-		
-		bullet = new GRect (100,100,20, 20);
+		bullets = new ArrayList<GRect>();
+		bullets.add(bullet);
+		bullet = new GRect (500,500,5, 20);
 		bullet.setColor(Color.BLACK);
-		bullet.setFillColor(Color.BLACK);
+		bullet.setFillColor(Color.MAGENTA);
+		bullet.setFilled(true);
 		add(bullet);
+		
 	}
 	
-	public void moveBullet(){}
-	
-	public void pauseBullet() {}
-	
-	public void resumeBullet() {}
+	public void moveBullet(){
+		Timer t = new Timer(30,this);
+		t.setInitialDelay(20);
+		t.start();
+	}
+
+	public void pauseBullet() {
+		t.stop();
+	}
+
+	public void resumeBullet() {
+		t.start();
+	}
 	
 	public void bulletSound() {}
+	
+	public void boundsChecking() {}
 
 	@Override
 	public void run() {
 		
 		makeBullet();
+		moveBullet();
 		
+	}
+	
+	public static void main(String[] args) {
+		new _Bullet().start();
 	}
 	
 }
