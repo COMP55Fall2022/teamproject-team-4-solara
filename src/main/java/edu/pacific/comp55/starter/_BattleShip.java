@@ -37,10 +37,6 @@ public class _BattleShip extends _Ships {
 		this.isSpeed += update;
 	}
 
-	//In the future, add an input value in order to change the speed value when necessary
-
-	// Testing things out - Miguel
-
 	@Override
 	public String toString() { 
 		return ("Vehicle info" + "\n -----------" + "\nType of ship: " + this.type + "\nhealth of vehicle: " + this.health + "\ndamage of vehicle: " + this.damage
