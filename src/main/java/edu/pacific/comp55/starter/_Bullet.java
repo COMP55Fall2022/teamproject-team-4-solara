@@ -29,12 +29,10 @@ public class _Bullet extends GraphicsProgram {
 	}
 	
 	public void actionPerformed(ActionEvent e){
-		
-		
 		bullet.move(0,-5);
 		// change to bound checking to restart movement of bullet 
 		if (numTimes == -5 ) {
-		t.restart();
+			t.restart();
 		}
 	}
 	
@@ -46,7 +44,10 @@ public class _Bullet extends GraphicsProgram {
 		bullet.setFillColor(Color.MAGENTA);
 		bullet.setFilled(true);
 		add(bullet);
-		
+	}
+	
+	public void removeBullet() {
+
 	}
 	
 	public void moveBullet(){
@@ -65,14 +66,16 @@ public class _Bullet extends GraphicsProgram {
 	
 	public void bulletSound() {}
 	
-	public void boundsChecking() {}
+	public void boundsChecking() {
+		if (bullet.getY() == 10){
+			remove(bullet);
+		}
+	}
 
 	@Override
 	public void run() {
-		
 		makeBullet();
 		moveBullet();
-		
 	}
 	
 	public static void main(String[] args) {
