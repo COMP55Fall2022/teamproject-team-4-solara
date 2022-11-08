@@ -10,13 +10,13 @@ import java.awt.*;
 
 public class _Bullet extends GraphicsProgram {
 	
-	private ArrayList<GRect> bullets;
 	public static final int WINDOW_WIDTH = 800;
 	public static final int WINDOW_HEIGHT = 600;
 	public static final int RECT_SIZE = 100;
 	public static final int BREAK_MS = 30;
 	public static final int INIT_X_VELOCITY = 5;
 	public static final int NUM_BULLETS = 2; 
+	private ArrayList<GRect> bullets;
 	private GRect bullet;
 	private int xVelocity;
 	private int numTimes; 
@@ -39,15 +39,17 @@ public class _Bullet extends GraphicsProgram {
 	public void makeBullet() {
 		bullets = new ArrayList<GRect>();
 		bullets.add(bullet);
-		bullet = new GRect (500,500,5, 20);
+		bullet = new GRect (500,500,1, 20);
 		bullet.setColor(Color.BLACK);
 		bullet.setFillColor(Color.MAGENTA);
 		bullet.setFilled(true);
 		add(bullet);
 	}
 	
+	//added this but I'm not sure what's wrong - Divine
 	public void removeBullet() {
-
+		bullets.remove(bullet);
+		remove(bullet);
 	}
 	
 	public void moveBullet(){
@@ -68,7 +70,7 @@ public class _Bullet extends GraphicsProgram {
 	
 	public void boundsChecking() {
 		if (bullet.getY() == 10){
-			remove(bullet);
+			removeBullet();
 		}
 	}
 
@@ -76,10 +78,19 @@ public class _Bullet extends GraphicsProgram {
 	public void run() {
 		makeBullet();
 		moveBullet();
+		boundsChecking();
 	}
 	
+	
+	//added this so I can test and see the elements of the array but I can't make a non-static 
+	//call to the array so rip
+	@Override
+	public String toString() {
+		return "_Bullet [bullets=" + bullets + "]";
+	}
+
 	public static void main(String[] args) {
-		new _Bullet().start();
+		
 	}
 	
 }
