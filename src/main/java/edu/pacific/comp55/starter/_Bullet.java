@@ -16,7 +16,7 @@ public class _Bullet extends GraphicsProgram {
 	public static final int BREAK_MS = 30;
 	public static final int INIT_X_VELOCITY = 5;
 	public static final int NUM_BULLETS = 2; 
-	private ArrayList<GRect> bullets;
+	private ArrayList<GRect> bulletArray;
 	private GRect bullet;
 	private int xVelocity;
 	private int numTimes; 
@@ -37,8 +37,7 @@ public class _Bullet extends GraphicsProgram {
 	}
 	
 	public void makeBullet() {
-		bullets = new ArrayList<GRect>();
-		bullets.add(bullet);
+		bulletArray = new ArrayList<GRect>();
 		bullet = new GRect (500,500,1, 20);
 		bullet.setColor(Color.BLACK);
 		bullet.setFillColor(Color.MAGENTA);
@@ -46,9 +45,24 @@ public class _Bullet extends GraphicsProgram {
 		add(bullet);
 	}
 	
+	/*
+	public void makeBullet() {
+		bulletArray = new ArrayList<GRect>();
+		double x, y, width, height;
+		x = 500;
+		y = x;
+		
+		width = 1;
+		height = 20;
+		
+		bulletArray.add(new GRect(x, y, width, height));
+		
+	}
+	*/
+	
 	//added this but I'm not sure what's wrong - Divine
 	public void removeBullet() {
-		bullets.remove(bullet);
+		bulletArray.remove(bullet);
 		remove(bullet);
 	}
 	
@@ -86,7 +100,7 @@ public class _Bullet extends GraphicsProgram {
 	//call to the array so rip
 	@Override
 	public String toString() {
-		return "_Bullet [bullets=" + bullets + "]";
+		return "_Bullet [bullets=" + bulletArray + "]";
 	}
 
 	public static void main(String[] args) {
