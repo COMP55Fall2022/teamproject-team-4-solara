@@ -38,9 +38,9 @@ public class _BattleShip extends _Ships {
 	}
 
 	@Override
-	public String toString() { 
+	public String toString() {
 		return ("Vehicle info" + "\n -----------" + "\nType of ship: " + this.type + "\nhealth of vehicle: " + this.health + "\ndamage of vehicle: " + this.damage
-				+ "\nspeed level: " + this.isSpeed  );
+				+ "\nspeed level: " + this.isSpeed);
 	}
 
 	private void addPlayers(_BattleShip balanced, _BattleShip tank, _BattleShip speedster) {
