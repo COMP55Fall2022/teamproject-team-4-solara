@@ -39,7 +39,7 @@ public class _Bullet extends GraphicsProgram {
 		
 	public GRect makeBullet() {
 		bulletArray = new ArrayList<GRect>();
-		bullet = new GRect (500,500,5, 20);
+		bullet = new GRect (500,500,3, 20);
 		bullet.setColor(Color.BLACK);
 		bullet.setFillColor(Color.MAGENTA);
 		bullet.setFilled(true);
@@ -72,6 +72,8 @@ public class _Bullet extends GraphicsProgram {
 	}
 	
 	public void restartBullet() {
+		makeBullet();
+		moveBullet(); 
 		t.restart(); 
 	}
 	
@@ -83,6 +85,7 @@ public class _Bullet extends GraphicsProgram {
 		// will change this to instance of enemy (GImage) 
 		if (bullet.getY() <= 300.0){
 			removeBullet();
+			restartBullet();
 			 
 		}
 	}
