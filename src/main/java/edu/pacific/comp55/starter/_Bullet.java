@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import javax.swing.*;
 import acm.graphics.*;
 import acm.program.*;
-import acm.util.*;
 import java.awt.*;
 
 
@@ -27,15 +26,7 @@ public class _Bullet extends GraphicsProgram {
 		setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
 		requestFocus();
 	}
-	
-	public void actionPerformed(ActionEvent e){
-		bullet.move(0,-5);
-		// change to bound checking to restart movement of bullet 
-		if (numTimes == -5 ) {
-			t.restart();
-		}
-	}
-	
+		
 	public void makeBullet() {
 		bulletArray = new ArrayList<GRect>();
 		bullet = new GRect (500,500,1, 20);
@@ -46,22 +37,6 @@ public class _Bullet extends GraphicsProgram {
 		bulletArray.add(bullet);
 	}
 	
-	/*
-	public void makeBullet() {
-		bulletArray = new ArrayList<GRect>();
-		double x, y, width, height;
-		x = 500;
-		y = x;
-		
-		width = 1;
-		height = 20;
-		
-		bulletArray.add(new GRect(x, y, width, height));
-		
-	}
-	*/
-	
-	//added this but I'm not sure what's wrong - Divine
 	public void removeBullet() {
 		bulletArray.remove(bullet);
 		remove(bullet);
@@ -81,35 +56,38 @@ public class _Bullet extends GraphicsProgram {
 		t.start();
 	}
 	
-	public void bulletSound() {}
+	public void bulletSound() {
+		
+	}
 	
 	public void boundsChecking() {
-		if (bullet.getY() == 10){
+		if (bullet.getY() <= 300.0){
 			removeBullet();
 		}
 	}
 
-	//@Override
 	public void run() {
+		ArrayList<GRect> bulletArray = new ArrayList<GRect>();
 		makeBullet();
+		bulletArray.add(bullet);
 		moveBullet();
 		boundsChecking();
 	}
 	
-	
-	//added this so I can test and see the elements of the array but I can't make a non-static 
-	//call to the array so rip
-
+	public void actionPerformed(ActionEvent e){
+		bullet.move(0,-5);
+		boundsChecking();
+		if (numTimes == -5 ) {
+			t.restart();
+		}
+	}
+		
 	@Override
 	public String toString() {
 		return "_Bullet [bullets=" + bulletArray + "]";
 	}
- 
-
-	
+ 	
 	public static void main(String[] args) {
 		new _Bullet().start();
 	} 
-	
-	
 }
