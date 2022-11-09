@@ -37,16 +37,19 @@ public class _Bullet extends GraphicsProgram {
 	*/
 	
 		
-	public void makeBullet() {
+	public GRect makeBullet() {
 		bulletArray = new ArrayList<GRect>();
-		bullet = new GRect (500,500,1, 20);
+		bullet = new GRect (500,500,5, 20);
 		bullet.setColor(Color.BLACK);
 		bullet.setFillColor(Color.MAGENTA);
 		bullet.setFilled(true);
 		add(bullet);
 		bulletArray.add(bullet);
+		return bullet; 
 	}
-	
+	public void addBullets() {
+		// somehow use arraylist to add multiple bullets 
+	}
 	//added this but I'm not sure what's wrong - Divine
 	public void removeBullet() {
 		bulletArray.remove(bullet);
