@@ -104,7 +104,7 @@ public class _Bullet extends GraphicsProgram {
 	public String toString() {
 		return "_Bullet [bullets=" + bulletArray + "]";
 	}
-
+ 
 
 	
 	public static void main(String[] args) {
