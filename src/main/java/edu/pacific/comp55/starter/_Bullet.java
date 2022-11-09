@@ -29,7 +29,7 @@ public class _Bullet extends GraphicsProgram {
 	}
 	
 	public void actionPerformed(ActionEvent e){
-		bullet.move(0,-5);
+		bullet.move(0, -5);
 		// change to bound checking to restart movement of bullet 
 		if (numTimes == -5 ) {
 			t.restart();
@@ -45,21 +45,6 @@ public class _Bullet extends GraphicsProgram {
 		add(bullet);
 		bulletArray.add(bullet);
 	}
-	
-	/*
-	public void makeBullet() {
-		bulletArray = new ArrayList<GRect>();
-		double x, y, width, height;
-		x = 500;
-		y = x;
-		
-		width = 1;
-		height = 20;
-		
-		bulletArray.add(new GRect(x, y, width, height));
-		
-	}
-	*/
 	
 	//added this but I'm not sure what's wrong - Divine
 	public void removeBullet() {
@@ -92,7 +77,7 @@ public class _Bullet extends GraphicsProgram {
 	//@Override
 	public void run() {
 		makeBullet();
-		moveBullet();
+		//moveBullet();
 		boundsChecking();
 	}
 	
