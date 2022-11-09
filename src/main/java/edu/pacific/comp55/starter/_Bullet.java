@@ -99,7 +99,7 @@ public class _Bullet extends GraphicsProgram {
 	
 	//added this so I can test and see the elements of the array but I can't make a non-static 
 	//call to the array so rip
-	
+
 
 	@Override
 	public String toString() {
