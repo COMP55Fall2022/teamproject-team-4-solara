@@ -60,6 +60,7 @@ public class _Bullet extends GraphicsProgram {
 		Timer t = new Timer(30,this);
 		t.setInitialDelay(20);
 		t.start();
+	
 	}
 
 	public void pauseBullet() {
@@ -70,23 +71,33 @@ public class _Bullet extends GraphicsProgram {
 		t.start();
 	}
 	
+	public void restartBullet() {
+		t.restart(); 
+	}
+	
 	public void bulletSound() {
 		
 	}
 	
 	public void boundsChecking() {
+		// will change this to instance of enemy (GImage) 
 		if (bullet.getY() <= 300.0){
 			removeBullet();
+			 
 		}
 	}
 
 	public void run() {
 		ArrayList<GRect> bulletArray = new ArrayList<GRect>();
-		makeBullet();
-		//moveBullet();
 		bulletArray.add(bullet);
+		
+		makeBullet();
 		moveBullet();
-		boundsChecking();
+	
+		
+		if (bullet.getY() <= 300) {
+			restartBullet();
+		}
 	}
 	
 	public void actionPerformed(ActionEvent e){
