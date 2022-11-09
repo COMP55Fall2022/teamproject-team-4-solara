@@ -24,8 +24,8 @@ public class _Bullet extends GraphicsProgram {
 	private Timer t; 
 	
 	public void init() {
-		
 		setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
+		requestFocus();
 	}
 	
 	public void actionPerformed(ActionEvent e){
@@ -43,6 +43,7 @@ public class _Bullet extends GraphicsProgram {
 		bullet.setFillColor(Color.MAGENTA);
 		bullet.setFilled(true);
 		add(bullet);
+		bulletArray.add(bullet);
 	}
 	
 	/*
@@ -88,7 +89,7 @@ public class _Bullet extends GraphicsProgram {
 		}
 	}
 
-	@Override
+	//@Override
 	public void run() {
 		makeBullet();
 		moveBullet();
@@ -98,13 +99,18 @@ public class _Bullet extends GraphicsProgram {
 	
 	//added this so I can test and see the elements of the array but I can't make a non-static 
 	//call to the array so rip
+	
+
 	@Override
 	public String toString() {
 		return "_Bullet [bullets=" + bulletArray + "]";
 	}
 
+
+	
 	public static void main(String[] args) {
-		
-	}
+		new _Bullet().start();
+	} 
+	
 	
 }
