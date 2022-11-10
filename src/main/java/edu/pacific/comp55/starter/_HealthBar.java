@@ -5,9 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
-
 import javax.swing.Timer;
-
 import acm.graphics.*;
 import acm.program.GraphicsProgram;
 import acm.util.RandomGenerator;
@@ -25,9 +23,7 @@ public class _HealthBar extends GraphicsProgram implements ActionListener {
 	private final double HEALTHBAR_WIDTH = 4 * HEALTHBAR_HEIGHT;
 	private final double HEALTHBAR_X = (WINDOW_WIDTH - HEALTHBAR_WIDTH) - (WINDOW_WIDTH * .05);
 	private final double HEALTHBAR_Y = 50;
-	
 	private final int HITPOINTS = 8;
-	
 	
 	public void init() {
 		setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
@@ -36,12 +32,9 @@ public class _HealthBar extends GraphicsProgram implements ActionListener {
 	
 	public void run() {
 		healthBarOutline = new GRect(HEALTHBAR_X, HEALTHBAR_Y, HEALTHBAR_WIDTH, HEALTHBAR_HEIGHT);
-		add(healthBarOutline);
-		
-		
+		add(healthBarOutline);		
 		for (int i = 0; i < HITPOINTS; ++i) {
-			GRect healthBar;
-			
+			GRect healthBar;			
 			add(new GLine(HEALTHBAR_X + (i * (HEALTHBAR_WIDTH / HITPOINTS)) , HEALTHBAR_Y, HEALTHBAR_X + (i * (HEALTHBAR_WIDTH / HITPOINTS)), HEALTHBAR_Y + HEALTHBAR_HEIGHT));
 			healthBar = new GRect(HEALTHBAR_X + (i * (HEALTHBAR_WIDTH / HITPOINTS)), HEALTHBAR_Y, HEALTHBAR_WIDTH / HITPOINTS, HEALTHBAR_HEIGHT - 1);
 			healthBar.setFillColor(Color.green);
