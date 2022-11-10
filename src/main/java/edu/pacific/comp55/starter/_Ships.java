@@ -11,6 +11,8 @@ public class _Ships {
 	 */
 	
 	//protected SimplePoint spawnLocation;
+	protected double spawnX;
+	protected double spawnY;
 	protected int healthScore;
 	protected int damage;
 	protected int health;
@@ -62,6 +64,22 @@ public class _Ships {
 
 	public void setSpeed(int isSpeed) {
 		this.isSpeed = isSpeed;
+	}
+	
+	public double getSpawnX() {
+		return spawnX;
+	}
+
+	public void setSpawnX(int spawnX) {
+		this.spawnX = spawnX;
+	}
+
+	public double getSpawnY() {
+		return spawnY;
+	}
+
+	public void setSpawnY(int spawnY) {
+		this.spawnY = spawnY;
 	}
 
 	public String toString() {
