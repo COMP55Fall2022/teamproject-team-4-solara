@@ -15,8 +15,8 @@ import acm.util.RandomGenerator;
 public class _HealthBar extends GraphicsProgram implements ActionListener {
 	private int healthScore = 2;
 	private GRect healthBarOutline;
-	private GRect healthBar_1, healthBar_2;
 	private Timer timerObj;
+	private GLine line;
 	
 	private final int WINDOW_WIDTH = 1000;
 	private final int WINDOW_HEIGHT = 1000;
@@ -25,6 +25,8 @@ public class _HealthBar extends GraphicsProgram implements ActionListener {
 	private final double HEALTHBAR_WIDTH = 4 * HEALTHBAR_HEIGHT;
 	private final double HEALTHBAR_X = (WINDOW_WIDTH - HEALTHBAR_WIDTH) - (WINDOW_WIDTH * .05);
 	private final double HEALTHBAR_Y = 50;
+	
+	private final int HITPOINTS = 8;
 	
 	
 	public void init() {
@@ -36,6 +38,20 @@ public class _HealthBar extends GraphicsProgram implements ActionListener {
 		healthBarOutline = new GRect(HEALTHBAR_X, HEALTHBAR_Y, HEALTHBAR_WIDTH, HEALTHBAR_HEIGHT);
 		add(healthBarOutline);
 		
+		
+		for (int i = 0; i < HITPOINTS; ++i) {
+			GRect healthBar;
+			
+			add(new GLine(HEALTHBAR_X + (i * (HEALTHBAR_WIDTH / HITPOINTS)) , HEALTHBAR_Y, HEALTHBAR_X + (i * (HEALTHBAR_WIDTH / HITPOINTS)), HEALTHBAR_Y + HEALTHBAR_HEIGHT));
+			healthBar = new GRect(HEALTHBAR_X + (i * (HEALTHBAR_WIDTH / HITPOINTS)), HEALTHBAR_Y, HEALTHBAR_WIDTH / HITPOINTS, HEALTHBAR_HEIGHT - 1);
+			healthBar.setFillColor(Color.green);
+			healthBar.setFilled(true);
+			add(healthBar);
+		}
+		
+		
+		
+		/*
 		timerObj = new Timer(1000, this);
 		
 		healthBar_1 = new GRect(HEALTHBAR_X + 0.5, HEALTHBAR_Y + 0.5, (HEALTHBAR_WIDTH - 0.5) / 2, HEALTHBAR_HEIGHT - 1);
@@ -51,13 +67,7 @@ public class _HealthBar extends GraphicsProgram implements ActionListener {
 		add(healthBar_2);
 		
 		timerObj.start();
-	}
-	
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		remove(healthBar_2);
-		timerObj.setDelay(3000);
-		
+		*/
 	}
 	
 	public boolean damageToShip() {
