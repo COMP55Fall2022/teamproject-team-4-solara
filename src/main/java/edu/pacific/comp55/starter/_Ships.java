@@ -70,7 +70,7 @@ public class _Ships {
 		return xLoc;
 	}
 
-	public void setSpawnX(int spawnX) {
+	public void setX(int spawnX) {
 		this.xLoc = spawnX;
 	}
 
@@ -78,7 +78,7 @@ public class _Ships {
 		return yLoc;
 	}
 
-	public void setSpawnY(int spawnY) {
+	public void setY(int spawnY) {
 		this.yLoc = spawnY;
 	}
 

@@ -18,16 +18,16 @@ public class _Powerups extends GraphicsProgram {
 	
 	private void powerUpSound(_PowerUpType p) {}
 	
-	private void setSpawn(double x, double y) {
+	private void setPoint(double x, double y) {
 		spawnX = x;
 		spawnY = y;
 	}
 	
-	public double getSpawnX(_Powerups p) {
+	public double getX(_Powerups p) {
 		return p.spawnX;
 	}
 	
-	private double getSpawnY(_Powerups p) {
+	private double getY(_Powerups p) {
 		return p.spawnY;
 	}
 	
