@@ -9,20 +9,12 @@ import acm.util.RandomGenerator;
 
 
 public class _Powerups extends GraphicsProgram {
-	
-	private static final int TIME_LIMIT = 10;
 	private static final int MAX_HEALTH = 10;
 	private RandomGenerator rgen;
 	private double spawnX, spawnY;
 	private Timer t;
 	private boolean isActive;
-	private int numTimes; 
-	private GLabel counter;
-	
-	public void init() {
-		setSize(800, 600);
-		requestFocus();
-	}
+	private GImage powerUp;
 	
 	private void powerUpSound(_PowerUpType p) {}
 	
@@ -30,13 +22,20 @@ public class _Powerups extends GraphicsProgram {
 		spawnX = x;
 		spawnY = y;
 	}
+	
+	public double getSpawnX(_Powerups p) {
+		return p.spawnX;
+	}
+	
+	private double getSpawnY(_Powerups p) {
+		return p.spawnY;
+	}
+	
 	private void updateShipSpeed(_BattleShip b) {
 		b.updateSpeed(b.getSpeed() + 5);
 	}
-	private void updateShipBullets(_Bullet bull) {
-		bull.makeBullet(); 
-		
-	}
+	
+	private void updateShipBullets(_Bullet b) {}
 	
 	private void updateShipHealth(_BattleShip b) {
 		if(b.getHealth() < MAX_HEALTH) {
@@ -46,52 +45,11 @@ public class _Powerups extends GraphicsProgram {
 			b.setHealth(MAX_HEALTH);
 		}
 	}
-	
-	
-	
-
-	
-	public void despawnPower() {
-		if ( numTimes == 10 ) {
-			// TO-DO
-		}
-	}
-	
-	public void powerUpSound() {
 		
-	}
 	
-	public void spawnTime () {
-		t = new Timer(1000, this);
-		t.setInitialDelay(TIME_LIMIT);
-		t.start();
-		
-	}
-	
-	
+	@Override
 	public void run() {
-		spawnTime();
-		counter = new GLabel("# of times called?", 0, 100);
-		add(counter);
-		
-	}
-	
-	public void actionPerformed(ActionEvent e) {
-		
-		numTimes++; 
-		counter.setLabel("Timer:" + numTimes);
-		
-		
-		if (numTimes == 10 ) {
-		// add despawn method here once implemented
-		}	
-		
-	}
-	
-	public static void main(String[] args) {
-		 
-		new _Powerups().start();
-		
+		// TODO Auto-generated method stub
 	}
 	
 }
