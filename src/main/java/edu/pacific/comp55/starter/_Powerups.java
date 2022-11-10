@@ -35,7 +35,18 @@ public class _Powerups extends GraphicsProgram {
 		}
 	}
 	
+	public void spawnTime () {
+		t = new Timer (10, this);
+		t.start();
+	}
 	
+	public void despawnPower() {
+		// use timer to remove the powerup after a certain amount of time
+	}
+	
+	public void powerUpSound() {
+		
+	}
 	
 	@Override
 	public void run() {
