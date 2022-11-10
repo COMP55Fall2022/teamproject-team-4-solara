@@ -27,6 +27,8 @@ public class _Bullet extends GraphicsProgram {
 	}
 		
 	public GRect makeBullet() {
+		t = new Timer(30,this);
+		t.start();
 		bulletArray = new ArrayList<GRect>();
 		bullet = new GRect (500,500,3, 20);
 		bullet.setColor(Color.BLACK);
@@ -43,12 +45,7 @@ public class _Bullet extends GraphicsProgram {
 		remove(bullet);
 	}
 	
-	public void moveBullet(){
-		Timer t = new Timer(30,this);
-		t.setInitialDelay(20);
-		t.start();
-	}
-
+	
 	public void pauseBullet() {
 		t.stop();
 	}
@@ -58,8 +55,9 @@ public class _Bullet extends GraphicsProgram {
 	}
 	
 	public void restartBullet() {
-		makeBullet();
-		moveBullet(); 
+		t.restart();
+		//makeBullet();
+		 
 	}
 	
 	public void bulletSound() {
@@ -71,17 +69,16 @@ public class _Bullet extends GraphicsProgram {
 		if (bullet.getY() <= 1.0){
 			removeBullet();
 			restartBullet();
+			makeBullet();
 		}
+		
 	}
 
 	public void run() {
 		ArrayList<GRect> bulletArray = new ArrayList<GRect>();
 		bulletArray.add(bullet);	
 		makeBullet();
-		moveBullet();
-		if (bullet.getY() <= 300) {
-			restartBullet();
-		}
+		//moveBullet();
 	}
 	
 	public void actionPerformed(ActionEvent e){

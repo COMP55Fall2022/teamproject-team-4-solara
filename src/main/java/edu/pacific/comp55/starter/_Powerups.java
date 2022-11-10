@@ -9,6 +9,7 @@ import acm.util.RandomGenerator;
 
 
 public class _Powerups extends GraphicsProgram {
+	
 	private static final int MAX_HEALTH = 10;
 	private RandomGenerator rgen;
 	private double spawnX, spawnY;
