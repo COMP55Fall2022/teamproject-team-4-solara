@@ -32,7 +32,7 @@ public class _BattleShip extends _Ships {
 	private void moveShip() {
 		//should this be in the graphics instead?? - Divine
 	}
-	private void updateSpeed(int update) {
+	public void updateSpeed(int update) {
 		//if powerup type = speed update or maybe on contact with a speed update object - Divine
 		this.isSpeed += update;
 	}
