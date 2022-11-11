@@ -19,12 +19,14 @@ public class _Powerups extends GraphicsProgram {
 	private int numTimes; 
 	private GLabel counter;
 	private GRect power; 
+	protected _PowerUpType type; 
 	
 	
 	public void init() {
 		setSize(800, 600);
 		requestFocus();
 	}
+	
 	
 	
 	private void powerUpSound(_PowerUpType p) {}
@@ -83,7 +85,7 @@ public class _Powerups extends GraphicsProgram {
 		spawnTime();
 		counter = new GLabel("# of times called?", 0, 100);
 		add(counter);
-		addPower(); 
+		
 		
 	}
 	
@@ -93,8 +95,10 @@ public class _Powerups extends GraphicsProgram {
 		
 		numTimes++; 
 		counter.setLabel("Timer:" + numTimes);
-		
-		if(numTimes == 10 ) {
+		if(numTimes == 30) {
+			addPower(); 
+		}
+		if(numTimes == 40 ) {
 			removePower();
 		}
 	}
