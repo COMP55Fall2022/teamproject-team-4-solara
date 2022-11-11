@@ -64,6 +64,18 @@ public class _Powerups extends GraphicsProgram {
 		t.start();
 
 	}
+	
+	public void addPower() {
+		
+		power = new GRect (200,300,100,100);
+		power.setFillColor(Color.BLACK);
+		power.setFilled(true);
+		add(power);
+	}
+	
+	public void removePower() {
+		remove(power);
+	}
 		
 	
 	@Override
@@ -71,26 +83,23 @@ public class _Powerups extends GraphicsProgram {
 		spawnTime();
 		counter = new GLabel("# of times called?", 0, 100);
 		add(counter);
+		addPower(); 
+		
 	}
 	
 	public void actionPerformed(ActionEvent e) {
 		
+		
+		
 		numTimes++; 
 		counter.setLabel("Timer:" + numTimes);
-
-
-		if (numTimes != 10 ) {
-		// add despawn method here once implemented
-			power = new GRect (200,300,100,100);
-			power.setFillColor(Color.BLACK);
-			power.setFilled(true);
-			add(power);
-		}	
-		else {
-			remove(power);
+		
+		if(numTimes == 10 ) {
+			removePower();
 		}
-
 	}
+
+		
 
 	public static void main(String[] args) {
 
