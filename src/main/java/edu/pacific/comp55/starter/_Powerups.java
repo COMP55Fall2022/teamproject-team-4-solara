@@ -17,9 +17,11 @@ public class _Powerups extends GraphicsProgram {
 	private boolean isActive;
 	private GImage powerUp;
 	private int numTimes; 
+	private int num; 
 	private GLabel counter;
 	private GRect power; 
 	protected _PowerUpType type; 
+	private int i; 
 	
 	
 	public void init() {
@@ -92,15 +94,17 @@ public class _Powerups extends GraphicsProgram {
 	public void actionPerformed(ActionEvent e) {
 		
 		
-		
+		num += -1; 
 		numTimes++; 
 		counter.setLabel("Timer:" + numTimes);
-		if(numTimes == 30) {
+		if(num % 10 == 0) {
 			addPower(); 
 		}
-		if(numTimes == 40 ) {
+		if(numTimes % 11 == 0 ) {
+			
 			removePower();
 		}
+		
 	}
 
 		
