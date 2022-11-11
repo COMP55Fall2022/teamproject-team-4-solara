@@ -94,13 +94,13 @@ public class _Powerups extends GraphicsProgram {
 	public void actionPerformed(ActionEvent e) {
 		
 		
-		num += -1; 
-		numTimes++; 
+		num += 1; 
+		numTimes += 1; 
 		counter.setLabel("Timer:" + numTimes);
 		if(num % 10 == 0) {
 			addPower(); 
 		}
-		if(numTimes % 11 == 0 ) {
+		if(numTimes % 11 ==  0) {
 			
 			removePower();
 		}
