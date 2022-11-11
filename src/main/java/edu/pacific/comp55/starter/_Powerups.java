@@ -9,12 +9,23 @@ import acm.util.RandomGenerator;
 
 
 public class _Powerups extends GraphicsProgram {
+	private static final int TIME_LIMIT = 1000;
 	private static final int MAX_HEALTH = 10;
 	private RandomGenerator rgen;
 	private double spawnX, spawnY;
 	private Timer t;
 	private boolean isActive;
 	private GImage powerUp;
+	private int numTimes; 
+	private GLabel counter;
+	private GRect power; 
+	
+	
+	public void init() {
+		setSize(800, 600);
+		requestFocus();
+	}
+	
 	
 	private void powerUpSound(_PowerUpType p) {}
 	
@@ -45,11 +56,45 @@ public class _Powerups extends GraphicsProgram {
 			b.setHealth(MAX_HEALTH);
 		}
 	}
+	
+	
+	public void spawnTime () {
+		t = new Timer(TIME_LIMIT, this);
+		t.setInitialDelay(10);
+		t.start();
+
+	}
 		
 	
 	@Override
 	public void run() {
-		// TODO Auto-generated method stub
+		spawnTime();
+		counter = new GLabel("# of times called?", 0, 100);
+		add(counter);
+	}
+	
+	public void actionPerformed(ActionEvent e) {
+		
+		numTimes++; 
+		counter.setLabel("Timer:" + numTimes);
+
+
+		if (numTimes != 10 ) {
+		// add despawn method here once implemented
+			power = new GRect (200,300,100,100);
+			power.setFillColor(Color.BLACK);
+			power.setFilled(true);
+			add(power);
+		}	
+		else {
+			remove(power);
+		}
+
+	}
+
+	public static void main(String[] args) {
+
+		new _Powerups().start();
 	}
 	
 }
