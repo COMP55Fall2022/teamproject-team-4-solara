@@ -3,7 +3,7 @@ package edu.pacific.comp55.starter;
 import java.util.*;
 
 public class _EnemyShip extends _Ships {
-
+	
 
 	public _EnemyShip(_ShipType type, int health, int damage, int isSpeed) {
 		super(type, health, damage, isSpeed);
@@ -12,7 +12,6 @@ public class _EnemyShip extends _Ships {
 
 	private Timer movementTimer;
 	private ArrayList<_EnemyShip> shipList = new ArrayList<_EnemyShip>();
-
 	
 	/*
 	 * public void addEnemyShip(_EnemyShip s) { s = new _EnemyShip(s.type,
@@ -30,7 +29,6 @@ public class _EnemyShip extends _Ships {
 	
 	public static void main(String[] args) {
 		_EnemyShip grunt1 = new _EnemyShip(_ShipType.GRUNT, 3, 3, 3);
-//		grunt1.addEnemyShip(grunt1);
 		System.out.println("There is 1 grunt with:");
 		System.out.println(grunt1);
 		System.out.println("Number of enemy ships in the array: ");

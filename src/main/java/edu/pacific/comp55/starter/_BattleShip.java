@@ -3,38 +3,30 @@ import java.util.*;
 
 import java.util.ArrayList;
 
-// PLAYER ship class inherited from Ship class
 public class _BattleShip extends _Ships {
 	private Timer t;
 	private int playerNum = 0;
 	private ArrayList<_BattleShip> playerList = new ArrayList<_BattleShip>();
+	private _BattleShip b = new _BattleShip(type, health, damage, isSpeed);
+	private _Powerups p = new _Powerups();
 	
 	public _BattleShip(_ShipType type, int health, int damage, int isSpeed) {
 		super(type, health, damage, isSpeed);
 		// TODO Auto-generated constructor stub
 	}
-	private void addPlayers(_BattleShip player) {
-		//just adds players to the ArrayList for now - Divine
-		playerList.add(player);
-		playerNum++;
-	}
-	//-------------------------------------------------------------------
-	//test helper function(s)
-	private int getPlayerNum() {
-		return playerNum;
-	}
-	// end of test helper functions
-	//--------------------------------------------------------------------
-	private void removePlayers() {
-		//if a player dies
-
-	}
-	private void moveShip() {
-		//should this be in the graphics instead?? - Divine
-	}
+	
+//	private void addPlayers(_BattleShip player) {
+//		//just adds players to the ArrayList for now - Divine
+//		playerList.add(player);
+//		playerNum++;
+//	}
+	
 	public void updateSpeed(int update) {
-		//if powerup type = speed update or maybe on contact with a speed update object - Divine
 		this.isSpeed += update;
+	}
+	
+	public void pickPowerUp() {
+		if (b.getX() == p.getX(p)) {}
 	}
 
 	@Override
@@ -53,13 +45,12 @@ public class _BattleShip extends _Ships {
 		playerList.add(speedster);
 	}
 
-
 	public static void main (String[] args) {
-		_BattleShip player1 = new _BattleShip(_ShipType.SHIP_BALANCED, 3, 3, 3);
-		player1.addPlayers(player1);
-		System.out.println("There is 1 grunt with:");
-		System.out.println(player1);
-		System.out.println("Number of enemy ships in the array: " + player1.getPlayerNum());
+//		_BattleShip player1 = new _BattleShip(_ShipType.SHIP_BALANCED, 3, 3, 3);
+//		player1.addPlayers(player1);
+//		System.out.println("There is 1 grunt with:");
+//		System.out.println(player1);
+//		System.out.println("Number of enemy ships in the array: " + player1.getPlayerNum());
 
 	}
 }

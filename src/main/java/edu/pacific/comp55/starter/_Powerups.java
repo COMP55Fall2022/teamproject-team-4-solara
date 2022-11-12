@@ -28,9 +28,7 @@ public class _Powerups extends GraphicsProgram {
 		setSize(800, 600);
 		requestFocus();
 	}
-	
-	
-	
+		
 	private void powerUpSound(_PowerUpType p) {}
 	
 	private void setPoint(double x, double y) {
