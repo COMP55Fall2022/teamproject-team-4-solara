@@ -20,6 +20,7 @@ public class _Bullet extends GraphicsProgram {
 	private Timer t; 
 	private AudioPlayer a;
 	
+	
 	public void init() {
 		setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
 		requestFocus();

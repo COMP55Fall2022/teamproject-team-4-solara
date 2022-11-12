@@ -23,8 +23,7 @@ public class _Powerups extends GraphicsProgram {
 	protected _PowerUpType type; 
 	public AudioPlayer a;
 	public static final String AUDIO_FOLDER = "sounds";
-	
-	
+		
 	
 	public void init() {
 		setSize(800, 600);
