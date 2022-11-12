@@ -1,9 +1,7 @@
 package edu.pacific.comp55.starter;
 
 import java.awt.Color;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
+import java.awt.event.*;
 import java.util.ArrayList;
 import javax.swing.Timer;
 import acm.graphics.*;
@@ -15,7 +13,7 @@ public class _HealthBar extends GraphicsProgram implements ActionListener {
 	private GRect healthBar;
 	private GLabel healthLabel;
 	private ArrayList<GRect> greenBars;
-	// windown dimensions
+	// window dimensions
 	private final int WINDOW_WIDTH = 1000;
 	private final int WINDOW_HEIGHT = 1000;
 	// Dimensions for Health bar rectangle
@@ -32,7 +30,6 @@ public class _HealthBar extends GraphicsProgram implements ActionListener {
 	
 	public void run() {
 		createHealthBar();
-		updateHealthOnScreen();
 		
 		/*
 		timerObj = new Timer(1000, this);
@@ -53,17 +50,24 @@ public class _HealthBar extends GraphicsProgram implements ActionListener {
 		*/
 	}
 	
-	public boolean damageToShip() {
-		return true;
-	}
-	
-	public void updateHealthOnScreen() {
-		if (damageToShip()) {
+	// this function should be called by a shipDamaged() function on another class - maybe a "level" type class
+	public boolean updateHealthOnScreen() {
+		if (greenBars.size() > 0 /* && its from a plane's bullet*/) {
 			remove(healthBar);
 			greenBars.remove(greenBars.size() - 1);
 			healthLabel.setLabel("Health: " + greenBars.size());
+			
+			return true;
 		}
-		
+		else if (3 > 5/* the health bar touched the plane && the health bar is not full */) {
+			add(healthBar);
+			greenBars.add(healthBar);
+			healthLabel.setLabel("Health: " + greenBars.size());
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
 	
 	public void createHealthBar() {
@@ -74,7 +78,7 @@ public class _HealthBar extends GraphicsProgram implements ActionListener {
 		greenBars = new ArrayList<GRect>();
 		// this loop adds lines to split between N health points and also adds N GRect Objects as health points
 		for (int i = 0; i < HITPOINTS; ++i) {
-			//creates and adds health bars in order for them to display on the screen
+			// creates and adds health bars in order for them to display on the screen
 			add(new GLine(HEALTHBAR_X + (i * (HEALTHBAR_WIDTH / HITPOINTS)) , HEALTHBAR_Y, HEALTHBAR_X + (i * (HEALTHBAR_WIDTH / HITPOINTS)), HEALTHBAR_Y + HEALTHBAR_HEIGHT));
 			healthBar = new GRect(HEALTHBAR_X + (i * (HEALTHBAR_WIDTH / HITPOINTS)), HEALTHBAR_Y, HEALTHBAR_WIDTH / HITPOINTS, HEALTHBAR_HEIGHT - 1);
 			healthBar.setFillColor(Color.green);
