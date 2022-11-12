@@ -19,9 +19,11 @@ public class _Powerups extends GraphicsProgram {
 	private int numTimes; 
 	private int num; 
 	private GLabel counter;
-	private GRect power; 
+	private GImage power; 
 	protected _PowerUpType type; 
-	private int i; 
+	public AudioPlayer a;
+	public static final String AUDIO_FOLDER = "sounds";
+	
 	
 	
 	public void init() {
@@ -59,19 +61,14 @@ public class _Powerups extends GraphicsProgram {
 		}
 	}
 	
-	
 	public void spawnTime () {
 		t = new Timer(TIME_LIMIT, this);
 		t.setInitialDelay(10);
 		t.start();
-
 	}
 	
 	public void addPower() {
-		
-		power = new GRect (200,300,100,100);
-		power.setFillColor(Color.BLACK);
-		power.setFilled(true);
+		power = new GImage("Untitled-removebg-preview (1).png", 100, 100);
 		add(power);
 	}
 	
@@ -79,19 +76,20 @@ public class _Powerups extends GraphicsProgram {
 		remove(power);
 	}
 		
-	
 	@Override
 	public void run() {
 		spawnTime();
 		counter = new GLabel("# of times called?", 0, 100);
-		add(counter);
-		
-		
+		add(counter);	
+		playSound("sounds", "X2Download.app - Sofia Reyes - 1, 2, 3 (feat. Jason Derulo & De La Ghetto) [Official Video] (320 kbps).mp3");
+	}
+	
+	public void playSound(String fileName, String songName) {
+		a = AudioPlayer.getInstance();
+		a.playSound(fileName, songName);
 	}
 	
 	public void actionPerformed(ActionEvent e) {
-		
-		
 		num += 1; 
 		numTimes += 1; 
 		counter.setLabel("Timer:" + numTimes);
@@ -99,16 +97,12 @@ public class _Powerups extends GraphicsProgram {
 			addPower(); 
 		}
 		if(numTimes % 11 ==  0) {
-			
 			removePower();
 		}
 		
-	}
-
-		
+	}	
 
 	public static void main(String[] args) {
-
 		new _Powerups().start();
 	}
 	

@@ -8,11 +8,9 @@ import java.awt.*;
 
 
 public class _Bullet extends GraphicsProgram {
-	
 	public static final int WINDOW_WIDTH = 800;
 	public static final int WINDOW_HEIGHT = 600;
 	public static final int RECT_SIZE = 100;
-	
 	public static final int NUM_BULLETS = 2; 
 	private ArrayList<GRect> bulletArray;
 	private GRect bullet;
@@ -20,6 +18,7 @@ public class _Bullet extends GraphicsProgram {
 	private int numTimes; 
 	private _ShipType playerT; 
 	private Timer t; 
+	private AudioPlayer a;
 	
 	public void init() {
 		setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
@@ -60,9 +59,10 @@ public class _Bullet extends GraphicsProgram {
 		makeBullet();
 		moveBullet(); 
 	}
-	
-	public void bulletSound() {
 		
+	public void playSound(String fileName, String songName) {
+		a = AudioPlayer.getInstance();
+		a.playSound(fileName, songName);
 	}
 	
 	public void boundsChecking() {
@@ -77,6 +77,7 @@ public class _Bullet extends GraphicsProgram {
 //		bulletArray = new ArrayList<GRect>();
 //		bulletArray.add(bullet);	
 		makeBullet();
+//		playSound("sound", "bullet_sound.mp3");
 		moveBullet();
 		if (bullet.getY() <= 300) {
 			restartBullet();
