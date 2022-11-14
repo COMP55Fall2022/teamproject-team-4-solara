@@ -1,5 +1,6 @@
 package edu.pacific.comp55.starter;
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import javax.swing.*;
 import acm.graphics.*;
@@ -9,11 +10,12 @@ import acm.util.RandomGenerator;
 
 
 public class _Powerups extends GraphicsProgram {
-	private static final int TIME_LIMIT = 1000;
+	private static final int TIME_LIMIT = 10000;
 	private static final int MAX_HEALTH = 10;
 	private RandomGenerator rgen;
 	private double spawnX, spawnY;
 	private Timer t;
+	private Timer activeTimer;
 	private boolean isActive;
 	private GImage powerUp;
 	private int numTimes; 
@@ -23,7 +25,13 @@ public class _Powerups extends GraphicsProgram {
 	protected _PowerUpType type; 
 	public AudioPlayer a;
 	public static final String AUDIO_FOLDER = "sounds";
+	private  MainApplication mainScreen;
 		
+	public void _Powerups(MainApplication app) {
+		mainScreen = app;
+		addPower();
+		spawnTime();
+	}
 	
 	public void init() {
 		setSize(800, 600);
@@ -60,9 +68,9 @@ public class _Powerups extends GraphicsProgram {
 		}
 	}
 	
-	public void spawnTime () {
+	public void spawnTime() {
 		t = new Timer(TIME_LIMIT, this);
-		t.setInitialDelay(10);
+		//t.setInitialDelay(10);
 		t.start();
 	}
 	
@@ -74,13 +82,24 @@ public class _Powerups extends GraphicsProgram {
 	public void removePower() {
 		remove(power);
 	}
+	
+	public void setActive() {
+		isActive = true;
+		removePower();
+		t.stop();
+		t.start();
+		
+	}
 		
 	@Override
 	public void run() {
-		spawnTime();
+		addMouseListeners();
+		//spawnTime();
 		counter = new GLabel("# of times called?", 0, 100);
 		add(counter);	
 		playSound("sounds", "X2Download.app - Sofia Reyes - 1, 2, 3 (feat. Jason Derulo & De La Ghetto) [Official Video] (320 kbps).mp3");
+		addPower();
+		spawnTime();
 	}
 	
 	public void playSound(String fileName, String songName) {
@@ -88,7 +107,14 @@ public class _Powerups extends GraphicsProgram {
 		a.playSound(fileName, songName);
 	}
 	
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		setActive();
+	}
+	
 	public void actionPerformed(ActionEvent e) {
+		/*
 		num += 1; 
 		numTimes += 1; 
 		counter.setLabel("Timer:" + numTimes);
@@ -98,7 +124,15 @@ public class _Powerups extends GraphicsProgram {
 		if(numTimes % 11 ==  0) {
 			removePower();
 		}
-		
+		*/
+		if(isActive) {
+			isActive = false;
+			counter.setLabel("not active any more");
+		} else {
+			removePower();
+			counter.setLabel("not available to grab");
+		}
+		t.stop();
 	}	
 
 	public static void main(String[] args) {
