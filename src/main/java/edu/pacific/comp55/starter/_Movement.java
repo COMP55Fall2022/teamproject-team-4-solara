@@ -1,6 +1,7 @@
 package edu.pacific.comp55.starter;
 
 import java.awt.*;    
+
 import java.awt.event.*;    
 public class _Movement extends Frame implements KeyListener {    
 Label l;    
@@ -9,6 +10,7 @@ boolean Up = false;
 boolean Down = false;
 boolean Right = false;
 boolean Left = false;
+
     _Movement() {    
         l = new Label();    
         l.setBounds (20, 50, 100, 20);    
@@ -16,7 +18,7 @@ boolean Left = false;
         area.setBounds (20, 80, 300, 300);    
         area.addKeyListener(this);  
         add(l);  
-add(area);    
+        add(area);    
         setSize (400, 400);    
         setLayout (null);    
         setVisible (true);    
@@ -54,7 +56,6 @@ add(area);
     		else if (Down == true) {
     			l.setText("HALT");
     		}
-
     		else if (Right == false && Left == false && Down == false){
     			l.setText("UP");
     		}
@@ -107,7 +108,6 @@ add(area);
     	}
     }
 
-        
     public void keyReleased (KeyEvent e) {
     	int key = e.getKeyCode();
     	if (key == KeyEvent.VK_UP || key == KeyEvent.VK_W) {
@@ -127,9 +127,7 @@ add(area);
     	}
     }    
     public void keyTyped (KeyEvent e) {    
-    	
         l.setText("keyTyped");
-
     }    
     public static void main(String[] args) {    
         new _Movement();    
