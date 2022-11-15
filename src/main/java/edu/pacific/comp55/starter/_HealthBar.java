@@ -8,7 +8,7 @@ import acm.graphics.*;
 import acm.program.GraphicsProgram;
 import acm.util.RandomGenerator;
 
-public class _HealthBar extends GraphicsProgram implements ActionListener {
+public class _HealthBar  {
 	private GRect healthBarOutline;
 	private GRect healthBar;
 	private GLabel healthLabel;
@@ -23,76 +23,52 @@ public class _HealthBar extends GraphicsProgram implements ActionListener {
 	private final double HEALTHBAR_Y = 50;
 	private final int HITPOINTS = 7;
 	
-	public void init() {
-		setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
-		requestFocus();
-	}
+	//Main screen reference
+	MainApplication mainScreen;
 	
-	public void run() {
-		createHealthBar();
-		
-		/*
-		timerObj = new Timer(1000, this);
-		
-		healthBar_1 = new GRect(HEALTHBAR_X + 0.5, HEALTHBAR_Y + 0.5, (HEALTHBAR_WIDTH - 0.5) / 2, HEALTHBAR_HEIGHT - 1);
-		healthBar_1.setColor(Color.green);
-		healthBar_1.setFillColor(Color.green);
-		healthBar_1.setFilled(true);
-		add(healthBar_1);
-		
-		healthBar_2 = new GRect(HEALTHBAR_X + (HEALTHBAR_WIDTH / 2), HEALTHBAR_Y + 0.5, (HEALTHBAR_WIDTH - 0.5) / 2, HEALTHBAR_HEIGHT - 1);
-		healthBar_2.setColor(Color.green);
-		healthBar_2.setFillColor(Color.green);
-		healthBar_2.setFilled(true);
-		add(healthBar_2);
-		
-		timerObj.start();
-		*/
-	}
-	
-	// this function should be called by a shipDamaged() function on another class - maybe a "level" type class
-	public boolean updateHealthOnScreen() {
-		if (greenBars.size() > 0 /* && its from a plane's bullet*/) {
-			remove(healthBar);
-			greenBars.remove(greenBars.size() - 1);
-			healthLabel.setLabel("Health: " + greenBars.size());
-			
-			return true;
-		}
-		else if (3 > 5/* the health bar touched the plane && the health bar is not full */) {
-			add(healthBar);
-			greenBars.add(healthBar);
-			healthLabel.setLabel("Health: " + greenBars.size());
-			return true;
-		}
-		else {
-			return false;
-		}
-	}
-	
-	public void createHealthBar() {
+	// Constructor
+	public _HealthBar(MainApplication mainScreen) {
+		this.mainScreen = mainScreen;
 		// Adds health bar outline
 		healthBarOutline = new GRect(HEALTHBAR_X, HEALTHBAR_Y, HEALTHBAR_WIDTH, HEALTHBAR_HEIGHT);
-		add(healthBarOutline);
+		mainScreen.add(healthBarOutline);
 		
 		greenBars = new ArrayList<GRect>();
 		// this loop adds lines to split between N health points and also adds N GRect Objects as health points
 		for (int i = 0; i < HITPOINTS; ++i) {
 			// creates and adds health bars in order for them to display on the screen
-			add(new GLine(HEALTHBAR_X + (i * (HEALTHBAR_WIDTH / HITPOINTS)) , HEALTHBAR_Y, HEALTHBAR_X + (i * (HEALTHBAR_WIDTH / HITPOINTS)), HEALTHBAR_Y + HEALTHBAR_HEIGHT));
+			mainScreen.add(new GLine(HEALTHBAR_X + (i * (HEALTHBAR_WIDTH / HITPOINTS)) , HEALTHBAR_Y, HEALTHBAR_X + (i * (HEALTHBAR_WIDTH / HITPOINTS)), HEALTHBAR_Y + HEALTHBAR_HEIGHT));
 			healthBar = new GRect(HEALTHBAR_X + (i * (HEALTHBAR_WIDTH / HITPOINTS)), HEALTHBAR_Y, HEALTHBAR_WIDTH / HITPOINTS, HEALTHBAR_HEIGHT - 1);
 			healthBar.setFillColor(Color.green);
 			healthBar.setFilled(true);
-			add(healthBar);
+			mainScreen.add(healthBar);
 			// adds health bars to ArrayList
 			greenBars.add(healthBar);
 			
 		}
 		
 		healthLabel = new GLabel("Health: " + greenBars.size(), HEALTHBAR_X, HEALTHBAR_Y + HEALTHBAR_HEIGHT + 20);
-		add(healthLabel);
+		mainScreen.add(healthLabel);
 		
 	}
+
+	
+	// this function should be called by a shipDamaged() function on another class - maybe a "level" type class
+	public boolean updateHealthData(boolean damage) {
+		if (greenBars.size() > 0 ) {
+			mainScreen.remove(greenBars.get(greenBars.size() - 1));
+			greenBars.remove(greenBars.size() - 1);
+			healthLabel.setLabel("Health: " + greenBars.size());
+			return true;
+		}
+		else {
+			greenBars.add(healthBar);
+			
+			healthLabel.setLabel("Health: " + greenBars.size());
+			return false;
+		}
+	}
+	
 	
 	public void healthSound() {
 		
@@ -100,10 +76,6 @@ public class _HealthBar extends GraphicsProgram implements ActionListener {
 	
 	public void healthEmpty() {
 		
-	}
-	
-	public static void main(String[] args) {
-		new _HealthBar().start();
 	}
 	
 }
