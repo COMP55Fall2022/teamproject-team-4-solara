@@ -27,8 +27,8 @@ public class _Powerups extends GraphicsProgram {
 	public static final String AUDIO_FOLDER = "sounds";
 	private  MainApplication mainScreen;
 		
-	public void _Powerups(MainApplication app) {
-		mainScreen = app;
+	public _Powerups(MainApplication mainScreen) {
+		this.mainScreen = mainScreen;
 		addPower();
 		spawnTime();
 	}
@@ -54,18 +54,19 @@ public class _Powerups extends GraphicsProgram {
 	}
 	
 	private void updateShipSpeed(_BattleShip b) {
-		b.updateSpeed(b.getSpeed() + 5);
+		//b.updateSpeed(b.getSpeed() + 5);
 	}
 	
 	private void updateShipBullets(_Bullet b) {}
 	
 	private void updateShipHealth(_BattleShip b) {
-		if(b.getHealth() < MAX_HEALTH) {
+		/*if(b.getHealth() < MAX_HEALTH) {
 			b.setHealth(b.getHealth() + 5);
 		}
 		else {
 			b.setHealth(MAX_HEALTH);
 		}
+		*/
 	}
 	
 	public void spawnTime() {
@@ -76,11 +77,11 @@ public class _Powerups extends GraphicsProgram {
 	
 	public void addPower() {
 		power = new GImage("Untitled-removebg-preview (1).png", 100, 100);
-		add(power);
+		mainScreen.add(power);
 	}
 	
 	public void removePower() {
-		remove(power);
+		mainScreen.remove(power);
 	}
 	
 	public void setActive() {
@@ -136,7 +137,7 @@ public class _Powerups extends GraphicsProgram {
 	}	
 
 	public static void main(String[] args) {
-		new _Powerups().start();
+		//new _Powerups().start();
 	}
 	
 }

@@ -4,22 +4,37 @@ import java.util.*;
 import java.util.ArrayList;
 
 public class _BattleShip extends _Ships {
+	
+	private int health; 
+	private int damage; 
+	private int speed; 
+	private _ShipType type; 
+	
+	public _BattleShip(_ShipType type, int health, int damage, int speed) {
+		super(type, health, damage, speed);
+		this.health = health; 
+		this.damage = damage; 
+		this.type = type; 
+		this.speed = speed; 
+	}
+
 	private Timer t;
 	private int playerNum = 0;
 	private ArrayList<_BattleShip> playerList = new ArrayList<_BattleShip>();
-	private _BattleShip b = new _BattleShip(type, health, damage, isSpeed);
-	private _Powerups p = new _Powerups();
 	
-	public _BattleShip(_ShipType type, int health, int damage, int isSpeed) {
-		super(type, health, damage, isSpeed);
-		// TODO Auto-generated constructor stub
-	}
+	
+	//private _BattleShip b = new _BattleShip(type, health, damage, isSpeed);
+	
+	
+	
 	
 //	private void addPlayers(_BattleShip player) {
 //		//just adds players to the ArrayList for now - Divine
 //		playerList.add(player);
 //		playerNum++;
 //	}
+	/*
+	private _Powerups p = new _Powerups();
 	
 	public void updateSpeed(int update) {
 		this.isSpeed += update;
@@ -28,7 +43,7 @@ public class _BattleShip extends _Ships {
 	public void pickPowerUp() {
 		if (b.getX() == p.getX(p)) {}
 	}
-
+*/
 	@Override
 	public String toString() {
 		return ("Vehicle info" + "\n -----------" + "\nType of ship: " + this.type + "\nhealth of vehicle: " + this.health + "\ndamage of vehicle: " + this.damage

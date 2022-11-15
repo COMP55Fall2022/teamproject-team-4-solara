@@ -14,6 +14,7 @@ public class MainApplication extends GraphicsApplication {
 	}
 
 	public void run() {
+		_Powerups speed = new _Powerups(this); 
 		System.out.println("Hello, world!");
 		somePane = new SomePane(this);
 		menu = new MenuPane(this);
