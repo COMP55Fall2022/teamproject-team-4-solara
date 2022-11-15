@@ -21,7 +21,7 @@ public class MainApplication extends GraphicsApplication {
 		setupInteractions();
 		switchToMenu();
 	}
-
+//
 	public void switchToMenu() {
 		playRandomSound();
 		count++;
