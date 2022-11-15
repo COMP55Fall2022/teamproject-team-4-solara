@@ -1,7 +1,7 @@
 package edu.pacific.comp55.starter;
 import java.awt.*;    
 import java.awt.event.*;    
-public class KeyListenerExample extends Frame implements KeyListener {    
+public class _Movement extends Frame implements KeyListener {    
 	
 	Label l;    
 	TextArea area;
@@ -9,7 +9,7 @@ public class KeyListenerExample extends Frame implements KeyListener {
 	boolean Down = false;
 	boolean Right = false;
 	boolean Left = false;
-	KeyListenerExample() {    
+	_Movement() {    
 		l = new Label();    
 		l.setBounds (20, 50, 100, 20);    
 		area = new TextArea();    
@@ -186,6 +186,6 @@ public class KeyListenerExample extends Frame implements KeyListener {
 		l.setText("keyTyped");
 	}    
 	public static void main(String[] args) {    
-		new KeyListenerExample();    
+		new _Movement();    
 	}    
 } 
