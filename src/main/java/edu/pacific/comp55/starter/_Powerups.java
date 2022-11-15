@@ -31,6 +31,8 @@ public class _Powerups extends GraphicsProgram {
 		this.mainScreen = mainScreen;
 		addPower();
 		spawnTime();
+		playSound(AUDIO_FOLDER,"X2Download.app - Sofia Reyes - 1, 2, 3 (feat. Jason Derulo & De La Ghetto) [Official Video] (320 kbps).mp3" );
+		
 	}
 	
 	public void init() {
@@ -38,7 +40,7 @@ public class _Powerups extends GraphicsProgram {
 		requestFocus();
 	}
 		
-	private void powerUpSound(_PowerUpType p) {}
+	
 	
 	private void setPoint(double x, double y) {
 		spawnX = x;
@@ -71,7 +73,7 @@ public class _Powerups extends GraphicsProgram {
 	
 	public void spawnTime() {
 		t = new Timer(TIME_LIMIT, this);
-		//t.setInitialDelay(10);
+		
 		t.start();
 	}
 	
