@@ -12,23 +12,30 @@ public class _HealthBar  {
 	private GRect healthBarOutline;
 	private GRect healthBar;
 	private GLabel healthLabel;
+	
 	private ArrayList<GRect> greenBars;
 	// window dimensions
-	private final int WINDOW_WIDTH = 1000;
-	private final int WINDOW_HEIGHT = 1000;
-	// Dimensions for Health bar rectangle
-	private final double HEALTHBAR_HEIGHT = 50;
-	private final double HEALTHBAR_WIDTH = 4 * HEALTHBAR_HEIGHT;
-	private final double HEALTHBAR_X = (WINDOW_WIDTH - HEALTHBAR_WIDTH) - (WINDOW_WIDTH * .05);
-	private final double HEALTHBAR_Y = 50;
-	private final int HITPOINTS = 7;
+	private int WINDOW_WIDTH;
+	private int WINDOW_HEIGHT;
+	
+	
 	
 	//Main screen reference
 	MainApplication mainScreen;
 	
 	// Constructor
-	public _HealthBar(MainApplication mainScreen) {
+	public _HealthBar(MainApplication mainScreen, int windowWidth, int windowHeight) {
 		this.mainScreen = mainScreen;
+		// assign window width/height
+		WINDOW_WIDTH = windowWidth;
+		WINDOW_HEIGHT = windowHeight;
+		
+		// Dimensions for Health bar rectangle
+		double HEALTHBAR_HEIGHT = 50;
+		double HEALTHBAR_WIDTH = 4 * HEALTHBAR_HEIGHT;
+		double HEALTHBAR_X = (WINDOW_WIDTH - HEALTHBAR_WIDTH) - (WINDOW_WIDTH * .05);
+		double HEALTHBAR_Y = 50;
+		int HITPOINTS = 7;
 		// Adds health bar outline
 		healthBarOutline = new GRect(HEALTHBAR_X, HEALTHBAR_Y, HEALTHBAR_WIDTH, HEALTHBAR_HEIGHT);
 		mainScreen.add(healthBarOutline);
@@ -51,7 +58,8 @@ public class _HealthBar  {
 		mainScreen.add(healthLabel);
 		
 	}
-
+	
+	
 	
 	// this function should be called by a shipDamaged() function on another class - maybe a "level" type class
 	public boolean updateHealthData(boolean damage) {
