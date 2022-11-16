@@ -3,25 +3,27 @@ public class MainApplication extends GraphicsApplication {
 	public static final int WINDOW_WIDTH = 800;
 	public static final int WINDOW_HEIGHT = 600;
 	public static final String MUSIC_FOLDER = "sounds";
-	private static final String[] SOUND_FILES = { "r2d2.mp3", "somethinlikethis.mp3" };
+//	private static final String[] SOUND_FILES = { "r2d2.mp3", "somethinlikethis.mp3" };
 
 	private SomePane somePane;
 	private MenuPane menu;
 	private int count;
+	private GButton butt = new GButton("this is a button", 250.0, 250.0, 100, 50);
 
 	public void init() {
 		setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
 	}
 
 	public void run() {
-		//_Powerups speed = new _Powerups(this); 
+		_Powerups speed = new _Powerups(this);
+		add(butt);
 		System.out.println("Hello, world!");
 		somePane = new SomePane(this);
 		menu = new MenuPane(this);
 		setupInteractions();
 		switchToMenu();
 	}
-//
+
 	public void switchToMenu() {
 		playRandomSound();
 		count++;
@@ -35,7 +37,7 @@ public class MainApplication extends GraphicsApplication {
 
 	private void playRandomSound() {
 		AudioPlayer audio = AudioPlayer.getInstance();
-		audio.playSound(MUSIC_FOLDER, SOUND_FILES[count % SOUND_FILES.length]);
+//		audio.playSound(MUSIC_FOLDER, SOUND_FILES[count % SOUND_FILES.length]);
 	}
 	
 	public static void main(String[] args) {
