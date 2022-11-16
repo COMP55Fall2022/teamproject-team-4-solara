@@ -1,6 +1,12 @@
 package edu.pacific.comp55.starter;
 import java.awt.*;    
-import java.awt.event.*;    
+import java.awt.event.*;
+import acm.graphics.*;
+import acm.program.*;
+import acm.util.*;
+import java.awt.*;
+import java.awt.event.*;
+import acm.graphics.GRect;    
 public class _Movement extends Frame implements KeyListener {    
 	
 	Label l;    
@@ -9,7 +15,12 @@ public class _Movement extends Frame implements KeyListener {
 	boolean Down = false;
 	boolean Right = false;
 	boolean Left = false;
-	_Movement() {    
+	_Movement() {
+		GOval box;
+		box = new GOval(100,100,100,100);
+		box.setColor(Color.RED);
+		box.setFilled(true);
+		//add(box);
 		l = new Label();    
 		l.setBounds (20, 50, 100, 20);    
 		area = new TextArea();    
@@ -19,7 +30,8 @@ public class _Movement extends Frame implements KeyListener {
 		add(area);    
 		setSize (400, 400);    
 		setLayout (null);    
-		setVisible (true);    
+		setVisible (true);
+		    
 	}    
 	public void keyPressed (KeyEvent e) {    
 		int key = e.getKeyCode();
