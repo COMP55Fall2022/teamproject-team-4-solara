@@ -52,13 +52,16 @@ public class MenuPane extends GraphicsPane {
 	public void mousePressed(MouseEvent e) {
 		GObject obj = program.getElementAt(e.getX(), e.getY());
 		if (obj == howToPlay) {
+			program.playButtonSound();
 			program.switchToHowToPlay(); 
 		}
 		else if (obj == PlayGame){ 
+			program.playButtonSound();
 			program.switchToLevel();
 			 
 		}
 		else if (obj == quit) {
+			program.playButtonSound();
 		// ask professor how to implement terminating the program
 		// main.MainApplication().stop();
 			
