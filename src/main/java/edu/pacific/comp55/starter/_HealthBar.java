@@ -12,78 +12,92 @@ public class _HealthBar  {
 	private GRect healthBarOutline;
 	private GRect healthBar;
 	private GLabel healthLabel;
-	
 	private ArrayList<GRect> greenBars;
+	private int originalHealth;
+	
+	private boolean isDamaged;
+	
 	// window dimensions
 	private int WINDOW_WIDTH;
 	private int WINDOW_HEIGHT;
 	
+	private int HIT_POINTS;
+	private double HEALTHBAR_X, HEALTHBAR_Y;
+	private double HEALTHBAR_HEIGHT, HEALTHBAR_WIDTH;
 	
-	
-	//Main screen reference
+	// MainApplication (main screen) reference
 	MainApplication mainScreen;
 	
-	// Constructor
-	public _HealthBar(MainApplication mainScreen, int windowWidth, int windowHeight) {
+	// Constructor: Will ONLY be called by MainApplication
+	public _HealthBar(MainApplication mainScreen, int windowWidth, int windowHeight, int hitPoints) {
 		this.mainScreen = mainScreen;
 		// assign window width/height
 		WINDOW_WIDTH = windowWidth;
 		WINDOW_HEIGHT = windowHeight;
-		
-		// Dimensions for Health bar rectangle
-		double HEALTHBAR_HEIGHT = 50;
-		double HEALTHBAR_WIDTH = 4 * HEALTHBAR_HEIGHT;
-		double HEALTHBAR_X = (WINDOW_WIDTH - HEALTHBAR_WIDTH) - (WINDOW_WIDTH * .05);
-		double HEALTHBAR_Y = 50;
-		int HITPOINTS = 7;
-		// Adds health bar outline
-		healthBarOutline = new GRect(HEALTHBAR_X, HEALTHBAR_Y, HEALTHBAR_WIDTH, HEALTHBAR_HEIGHT);
-		mainScreen.add(healthBarOutline);
-		
+		HIT_POINTS = hitPoints;
+	}
+	
+	/*
+	 * This function can be called to do everything else that needs to be 
+	 * done in order to create a health bar.
+	 */
+	
+	public void addGreenBars() {
+		// initializes an ArrayList called "greenBars"
 		greenBars = new ArrayList<GRect>();
-		// this loop adds lines to split between N health points and also adds N GRect Objects as health points
-		for (int i = 0; i < HITPOINTS; ++i) {
-			// creates and adds health bars in order for them to display on the screen
-			mainScreen.add(new GLine(HEALTHBAR_X + (i * (HEALTHBAR_WIDTH / HITPOINTS)) , HEALTHBAR_Y, HEALTHBAR_X + (i * (HEALTHBAR_WIDTH / HITPOINTS)), HEALTHBAR_Y + HEALTHBAR_HEIGHT));
-			healthBar = new GRect(HEALTHBAR_X + (i * (HEALTHBAR_WIDTH / HITPOINTS)), HEALTHBAR_Y, HEALTHBAR_WIDTH / HITPOINTS, HEALTHBAR_HEIGHT - 1);
+		
+		// this loop adds lines to help the player know how much health remains
+		for (int i = 0; i < HIT_POINTS; ++i) {
+			// creates and adds health bars (and to "greenBars") in order for them to display on the screen
+			mainScreen.add(new GLine(HEALTHBAR_X + (i * (HEALTHBAR_WIDTH / HIT_POINTS)) , HEALTHBAR_Y, HEALTHBAR_X + (i * (HEALTHBAR_WIDTH / HIT_POINTS)), HEALTHBAR_Y + HEALTHBAR_HEIGHT));
+			healthBar = new GRect(HEALTHBAR_X + (i * (HEALTHBAR_WIDTH / HIT_POINTS)), HEALTHBAR_Y, HEALTHBAR_WIDTH / HIT_POINTS, HEALTHBAR_HEIGHT - 1);
 			healthBar.setFillColor(Color.green);
 			healthBar.setFilled(true);
 			mainScreen.add(healthBar);
 			// adds health bars to ArrayList
 			greenBars.add(healthBar);
-			
 		}
+		originalHealth = greenBars.size();
 		
+	}
+	// creates and adds a health LABEL under the health bar (e.g.:  "Health: 8")
+	public void addLabel() {
 		healthLabel = new GLabel("Health: " + greenBars.size(), HEALTHBAR_X, HEALTHBAR_Y + HEALTHBAR_HEIGHT + 20);
 		mainScreen.add(healthLabel);
-		
 	}
 	
+	// adds health bar
+	public void addHealthBarOutline(double height, double y) {
+		HEALTHBAR_HEIGHT = height;
+		HEALTHBAR_WIDTH = 4 * HEALTHBAR_HEIGHT; // width is 4x the height of the health bar
+		HEALTHBAR_X = (WINDOW_WIDTH - HEALTHBAR_WIDTH) - (WINDOW_WIDTH * .05); // 0.05 means 5% away from the screen's edge
+		HEALTHBAR_Y = y;
+		
+		// Adds health bar outline
+		healthBarOutline = new GRect(HEALTHBAR_X, HEALTHBAR_Y, HEALTHBAR_WIDTH, HEALTHBAR_HEIGHT);
+		mainScreen.add(healthBarOutline);
+	}
 	
-	
-	// this function should be called by a shipDamaged() function on another class - maybe a "level" type class
-	public boolean updateHealthData(boolean damage) {
-		if (greenBars.size() > 0 ) {
+	public void updateHealthBar(boolean isNotDamaged) {
+		if (!isNotDamaged && greenBars.size() > 0) {
 			mainScreen.remove(greenBars.get(greenBars.size() - 1));
 			greenBars.remove(greenBars.size() - 1);
-			healthLabel.setLabel("Health: " + greenBars.size());
-			return true;
+			mainScreen.remove(healthLabel);
+			addLabel();
 		}
-		else {
-			greenBars.add(healthBar);
-			
-			healthLabel.setLabel("Health: " + greenBars.size());
-			return false;
+		else if (isNotDamaged && greenBars.size() < originalHealth) {
+			GRect tempBar = new GRect(HEALTHBAR_X + ((greenBars.size() - 1) * (HEALTHBAR_WIDTH / HIT_POINTS)), HEALTHBAR_Y, HEALTHBAR_WIDTH / HIT_POINTS, HEALTHBAR_HEIGHT - 1);
+			tempBar.setFillColor(Color.green);
+			tempBar.setFilled(true);
+			// adds health bars to ArrayList
+			greenBars.add(tempBar);
+			mainScreen.add(tempBar);
 		}
 	}
 	
-	
-	public void healthSound() {
-		
-	}
-	
-	public void healthEmpty() {
-		
+	@Override
+	public String toString() {
+		return "" + greenBars.size();
 	}
 	
 }
