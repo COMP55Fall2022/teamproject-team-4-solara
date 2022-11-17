@@ -1,39 +1,44 @@
 package edu.pacific.comp55.starter;
+import java.awt.Color;
 import java.awt.event.MouseEvent;
 
 import acm.graphics.GImage;
 import acm.graphics.GObject;
 
-public class SomePane extends GraphicsPane {
+public class HowToPlayScreen extends GraphicsPane {
 	private MainApplication program; // you will use program to get access to
-										// all of the GraphicsProgram calls
+				// all of the GraphicsProgram calls
+	private GButton returnButton; 
 	private GImage	howToPlay;
 	private GParagraph para;
 
-	public SomePane(MainApplication app) {
+	public HowToPlayScreen(MainApplication app) {
 		this.program = app;
 		howToPlay= new GImage("media/How to play screen.jpg", 0, 0);
+		returnButton = new GButton ("Return", 340, 425, 210, 50);
+		returnButton.setColor(Color.GREEN);
+		returnButton.setFillColor(Color.BLACK);
 		
 	}
 
 	@Override
 	public void showContents() {
 		program.add(howToPlay);
+		program.add(returnButton);
 		
 	}
 
 	@Override
 	public void hideContents() {
 		program.remove(howToPlay);
-		program.remove(para);
+		program.remove(returnButton);
 	}
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-	/*	para.setText("you need\nto click\non the eyes\nto go back");
 		GObject obj = program.getElementAt(e.getX(), e.getY());
-		if (obj == MainMenu) {
+		if (obj == returnButton) {
 			program.switchToMenu();
-		} */ // MODIFY THIS TO SWITCH SCREENS WITH BUTTONS INSTEAD 
+		}
 	}
 }

@@ -21,8 +21,14 @@ public class MenuPane extends GraphicsPane {
 		PlayGame = new GButton("Play Game", 355, 355, 210, 50);
 		howToPlay = new GButton("How To Play", 355, 420, 210, 50);
 		quit = new GButton ("QUIT", 355, 480, 210, 50);
-		howToPlay.setFillColor(Color.WHITE);
-		PlayGame.setFillColor(Color.WHITE);
+		
+		quit.setColor(Color.GREEN);
+		howToPlay.setColor(Color.GREEN);
+		PlayGame.setColor(Color.GREEN);
+		
+		quit.setFillColor(Color.BLACK);
+		howToPlay.setFillColor(Color.BLACK);
+		PlayGame.setFillColor(Color.BLACK);
 	}
 
 	@Override
@@ -35,17 +41,27 @@ public class MenuPane extends GraphicsPane {
 
 	@Override
 	public void hideContents() {
+		program.remove(MainMenu);
 		program.remove(PlayGame);
+		program.remove(howToPlay);
+		program.remove(quit);
+		
 	}
 
 	@Override
 	public void mousePressed(MouseEvent e) {
 		GObject obj = program.getElementAt(e.getX(), e.getY());
-		if (obj == PlayGame) {
-			program.switchToSome(); // change this to switch to level... 
-		}
-		else if (obj == howToPlay ) { 
+		if (obj == howToPlay) {
 			program.switchToHowToPlay(); 
+		}
+		else if (obj == PlayGame){ 
+			program.switchToLevel();
+			 
+		}
+		else if (obj == quit) {
+		// ask professor how to implement terminating the program
+		// main.MainApplication().stop();
+			
 		}
 	}
 }
