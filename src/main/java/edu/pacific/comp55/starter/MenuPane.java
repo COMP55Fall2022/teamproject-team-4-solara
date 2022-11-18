@@ -62,7 +62,7 @@ public class MenuPane extends GraphicsPane {
 		}
 		else if (obj == quit) {
 			program.playButtonSound();
-		//	program.stop();
+			System.exit(0);
 			
 		}
 	}
