@@ -7,6 +7,7 @@ public class MainApplication extends GraphicsApplication {
 	private LevelScreen level; 
 	private HowToPlayScreen howToPlay;
 	private MenuPane menu;
+	private ChoosePlaneScreen choosePlane; 
 	private int count;
 	
 
@@ -20,6 +21,7 @@ public class MainApplication extends GraphicsApplication {
 		howToPlay = new HowToPlayScreen(this);
 		menu = new MenuPane(this);
 		level = new LevelScreen(this);
+		choosePlane = new ChoosePlaneScreen(this);
 		setupInteractions();
 		switchToMenu();
 	}
@@ -36,6 +38,10 @@ public class MainApplication extends GraphicsApplication {
 	}
 	public void switchToLevel() {
 		switchToScreen(level);
+	}
+	
+	public void switchToChoosePlane() {
+		switchToScreen(choosePlane);
 	}
 	
 	private void playMenuSound() {
@@ -58,4 +64,6 @@ public class MainApplication extends GraphicsApplication {
 	public static void main(String[] args) {
 		new MainApplication().start();
 	}
+
+	
 }
