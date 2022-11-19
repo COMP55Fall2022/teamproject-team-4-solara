@@ -1,7 +1,7 @@
 package edu.pacific.comp55.starter;
 public class MainApplication extends GraphicsApplication {
-	public static final int WINDOW_WIDTH = 2000;
-	public static final int WINDOW_HEIGHT = 1000; // change pixels for images to 3000 by 1000 - 4 NATHAN 
+	public static final int WINDOW_WIDTH = 3000;
+	public static final int WINDOW_HEIGHT = 1080; // change pixels for images to 3000 by 1000 - 4 NATHAN 
 	public static final String MUSIC_FOLDER = "sounds";
 	private static final String[] SOUND_FILES = { "r2d2.mp3", "somethinlikethis.mp3", "Main menu theme.mp3", "ButtonSound.mp3" };
 	private LevelScreen level; 

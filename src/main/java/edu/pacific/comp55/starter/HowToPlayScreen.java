@@ -15,10 +15,10 @@ public class HowToPlayScreen extends GraphicsPane {
 	public HowToPlayScreen(MainApplication app) {
 		this.program = app;
 		howToPlay= new GImage("media/How to play screen.jpg", 0, 0);
+		howToPlay.setSize(1550, 850);
 		returnButton = new GButton ("Return", 340, 425, 210, 50);
 		returnButton.setColor(Color.GREEN);
 		returnButton.setFillColor(Color.BLACK);
-		
 	}
 
 	@Override

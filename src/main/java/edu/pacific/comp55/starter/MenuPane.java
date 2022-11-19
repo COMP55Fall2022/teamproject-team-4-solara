@@ -3,26 +3,26 @@ package edu.pacific.comp55.starter;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
-
 import acm.graphics.GImage;
 import acm.graphics.GObject;
 
 public class MenuPane extends GraphicsPane {
-	private MainApplication program; // you will use program to get access to
-										// all of the GraphicsProgram calls
+	private MainApplication program; // you will use program to get access to all of the GraphicsProgram calls
 	private GButton PlayGame;
 	private GButton howToPlay; 
 	private GButton quit; 
 	private GImage MainMenu;
+	private static int SCREEN_WIDTH = 1920;
+	private static int SCREEN_HEIGHT = 1080;
 
 	public MenuPane(MainApplication app) {
 		super();
 		program = app;
 		MainMenu = new GImage ("media/Space_background.jpg",0,0);
-		MainMenu.setSize(1080,1080);
-		PlayGame = new GButton("Play Game", 355, 355, 210, 50);
-		howToPlay = new GButton("How To Play", 355, 420, 210, 50);
-		quit = new GButton ("QUIT", 355, 480, 210, 50);
+		MainMenu.setSize(SCREEN_WIDTH,SCREEN_HEIGHT);
+		PlayGame = new GButton("Play Game", (SCREEN_WIDTH / 2) - 300, 355, 210, 50);
+		howToPlay = new GButton("How To Play", (SCREEN_WIDTH / 2) - 300, 420, 210, 50);
+		quit = new GButton ("QUIT", (SCREEN_WIDTH / 2) - 300, 480, 210, 50);
 		
 		quit.setColor(Color.GREEN);
 		howToPlay.setColor(Color.GREEN);
@@ -47,7 +47,6 @@ public class MenuPane extends GraphicsPane {
 		program.remove(PlayGame);
 		program.remove(howToPlay);
 		program.remove(quit);
-		
 	}
 
 	@Override
@@ -60,12 +59,10 @@ public class MenuPane extends GraphicsPane {
 		else if (obj == PlayGame){ 
 			program.playButtonSound();
 			program.switchToChoosePlane();
-			 
 		}
 		else if (obj == quit) {
 			program.playButtonSound();
 			System.exit(0);
-			
 		}
 	}
 	
@@ -76,5 +73,4 @@ public class MenuPane extends GraphicsPane {
 			System.exit(0);
 		}
 	}
-
 }
