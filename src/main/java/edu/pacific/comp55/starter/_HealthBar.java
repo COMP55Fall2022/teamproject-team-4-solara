@@ -29,7 +29,7 @@ public class _HealthBar  {
 	MainApplication mainScreen;
 	
 	// Constructor: Will ONLY be called by MainApplication
-	public _HealthBar(HowToPlayScreen howToPlay, int windowWidth, int windowHeight, int hitPoints) {
+	public _HealthBar(MainApplication mainScreen, int windowWidth, int windowHeight, int hitPoints) {
 		this.mainScreen = mainScreen;
 		// assign window width/height
 		WINDOW_WIDTH = windowWidth;
@@ -42,9 +42,6 @@ public class _HealthBar  {
 	 * done in order to create a health bar.
 	 */
 	
-	public _HealthBar(HowToPlayScreen howToPlayScreen) {
-		// TODO Auto-generated constructor stub
-	}
 
 	public void addGreenBars() {
 		// initializes an ArrayList called "greenBars"

@@ -14,13 +14,14 @@ public class LevelScreen extends GraphicsPane {
 	public LevelScreen(MainApplication app) {
 		this.program = app;
 		level = new GImage("media/Space Background.jpg", 0, 0);
-		
+	
 		
 	}
 
 	@Override
 	public void showContents() {
 		program.add(level);
+		
 		
 		
 	}
