@@ -1,4 +1,7 @@
 package edu.pacific.comp55.starter;
+
+import java.awt.event.KeyEvent;
+
 public class MainApplication extends GraphicsApplication {
 	public static final int WINDOW_WIDTH = 3000;
 	public static final int WINDOW_HEIGHT = 1080; // change pixels for images to 3000 by 1000 - 4 NATHAN 
@@ -69,6 +72,13 @@ public class MainApplication extends GraphicsApplication {
 		bSound.playSound(MUSIC_FOLDER, SOUND_FILES[3]);
 	}
 	
+	@Override
+	public void keyPressed (KeyEvent e) { 
+		int key = e.getKeyCode();
+		if(key == KeyEvent.VK_ESCAPE) {
+			System.exit(0);
+		}
+	}
 	
 	public static void main(String[] args) {
 		new MainApplication().start();

@@ -65,12 +65,4 @@ public class MenuPane extends GraphicsPane {
 			System.exit(0);
 		}
 	}
-	
-	@Override
-	public void keyPressed (KeyEvent e) { 
-		int key = e.getKeyCode();
-		if(key == KeyEvent.VK_ESCAPE) {
-			System.exit(0);
-		}
-	}
 }
