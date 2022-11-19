@@ -8,7 +8,6 @@ import acm.program.*;
 import java.awt.*;
 import acm.util.RandomGenerator;
 
-
 public class _Powerups extends GraphicsProgram {
 	private static final int TIME_LIMIT = 10000;
 	private static final int MAX_HEALTH = 10;
@@ -32,17 +31,14 @@ public class _Powerups extends GraphicsProgram {
 		addPower();
 		spawnTime();
 		playSound(AUDIO_FOLDER,"X2Download.app - Sofia Reyes - 1, 2, 3 (feat. Jason Derulo & De La Ghetto) [Official Video] (320 kbps).mp3" );
-		
 	}
 	
 	public void init() {
 		setSize(800, 600);
 		requestFocus();
-	}
-		
+	}	
 	
-	
-	private void setPoint(double x, double y) {
+	private void setSpawnPoint(double x, double y) {
 		spawnX = x;
 		spawnY = y;
 	}
@@ -73,7 +69,6 @@ public class _Powerups extends GraphicsProgram {
 	
 	public void spawnTime() {
 		t = new Timer(TIME_LIMIT, this);
-		
 		t.start();
 	}
 	
@@ -91,7 +86,6 @@ public class _Powerups extends GraphicsProgram {
 		removePower();
 		t.stop();
 		t.start();
-		
 	}
 		
 	@Override
@@ -110,7 +104,6 @@ public class _Powerups extends GraphicsProgram {
 		a.playSound(fileName, songName);
 	}
 	
-//
 	@Override
 	public void mousePressed(MouseEvent e) {
 		setActive();
@@ -141,5 +134,4 @@ public class _Powerups extends GraphicsProgram {
 	public static void main(String[] args) {
 		//new _Powerups().start();
 	}
-	
 }
