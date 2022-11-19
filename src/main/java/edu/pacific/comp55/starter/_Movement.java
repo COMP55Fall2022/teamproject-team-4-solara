@@ -38,116 +38,116 @@ public class _Movement extends Frame implements KeyListener {
 		if (key == KeyEvent.VK_UP || key == KeyEvent.VK_W) {
 			Up = true;
 		}
-		if (key == KeyEvent.VK_DOWN || key == KeyEvent.VK_W) {
+		if (key == KeyEvent.VK_DOWN || key == KeyEvent.VK_S) {
 			Down = true;
 		}
-		if (key == KeyEvent.VK_LEFT || key == KeyEvent.VK_W) {
+		if (key == KeyEvent.VK_LEFT || key == KeyEvent.VK_A) {
 			Left = true;
 		}
-		if (key == KeyEvent.VK_RIGHT || key == KeyEvent.VK_W) {
+		if (key == KeyEvent.VK_RIGHT || key == KeyEvent.VK_D) {
 			Right = true;
 		}
 		if (Up == true) {
 
 			if (Right == true) {
 				if (Down == true || Left == true) {
-					l.setText("HALT");
+					System.out.println("HALT");
 				}
 				else {
-					l.setText("Top Right");
+					System.out.println("Top Right");
 				}
 			}
 			else if (Left == true) {
 				if (Down == true) {
-					l.setText("HALT");
+					System.out.println("HALT");
 				}
 				else {
-					l.setText("Top Left");
+					System.out.println("Top Left");
 				}
 			}
 			else if (Down == true) {
-				l.setText("HALT");
+				System.out.println("HALT");
 			}
 
 			else if (Right == false && Left == false && Down == false){
-				l.setText("Up");
+				System.out.println("Up");
 			}
 		}
 		else if (Down == true) {
 			if (Up == true) {
-				l.setText("HALT");
+				System.out.println("HALT");
 			}
 			else if (Right == true) {
 				if (Up == true || Left == true) {
-					l.setText("HALT");
+					System.out.println("HALT");
 				}
 				else {
-					l.setText("Bottom Right");
+					System.out.println("Bottom Right");
 				}
 			}
 			else if (Left == true) {
 				if (Right == true) {
-					l.setText("HALT");
+					System.out.println("HALT");
 				}
 				else {
-					l.setText("Bottom Left");
+					System.out.println("Bottom Left");
 				}
 			}
 			else {
-				l.setText("Down");
+				System.out.println("Down");
 			}
 		}
 		else if (Left == true) {
 			if (Up == true) {
 				if (Down == true) {
-					l.setText("HALT");
+					System.out.println("HALT");
 				}
 				else {
-					l.setText("Top Left");
+					System.out.println("Top Left");
 				}
 			}
 			else if (Right == true) {
-				l.setText("HALT");
+				System.out.println("HALT");
 			}
 			else if (Down == true) {
 				if (Left == true) {
-					l.setText("HALT");
+					System.out.println("HALT");
 				}
 				else {
-					l.setText("Bottom Left");
+					System.out.println("Bottom Left");
 				}
 			}
 			else {
-				l.setText("Left");
+				System.out.println("Left");
 			}
 		}
 		else if (Right == true) {
 			if (Down == true) {
 				if (Left == true) {
-					l.setText("HALT");
+					System.out.println("HALT");
 				}
 				else {
-					l.setText("Bottom Right");
+					System.out.println("Bottom Right");
 				}
 			}
 			else if (Left == true) {
-				l.setText("HALT");
+				System.out.println("HALT");
 			}
 			else if (Up == true) {
 				if (Left == true || Down == true) {
-					l.setText("HALT");
+					System.out.println("HALT");
 				}
 				else {
-					l.setText("Top Right");
+					System.out.println("Top Right");
 				}
 			}
 			else {
-				l.setText("Right");
+				System.out.println("Right");
 			}
 
 		}
 		else {
-			l.setText("HALT");
+			System.out.println("HALT");
 		}
 	}
 
@@ -156,41 +156,41 @@ public class _Movement extends Frame implements KeyListener {
 		if (key == KeyEvent.VK_UP || key == KeyEvent.VK_W) {
 			Up = false;
 		}
-		if (key == KeyEvent.VK_DOWN || key == KeyEvent.VK_W) {
+		if (key == KeyEvent.VK_DOWN || key == KeyEvent.VK_S) {
 			Down = false;
 		}
-		if (key == KeyEvent.VK_LEFT || key == KeyEvent.VK_W) {
+		if (key == KeyEvent.VK_LEFT || key == KeyEvent.VK_A) {
 			Left = false;
 		}
-		if (key == KeyEvent.VK_RIGHT || key == KeyEvent.VK_W) {
+		if (key == KeyEvent.VK_RIGHT || key == KeyEvent.VK_D) {
 			Right = false;
 		}    
 		if (Up == false && Left == false && Down == false && Right == false) {
-			l.setText("Halt");
+			System.out.println("Halt");
 		}
 		if (Up == true && Left == false && Down == false && Right == false) {
-			l.setText("Up");
+			System.out.println("Up");
 		}
 		if (Up == false && Left == true && Down == false && Right == false) {
-			l.setText("Left");
+			System.out.println("Left");
 		}
 		if (Up == false && Left == false && Down == true && Right == false) {
-			l.setText("Down");
+			System.out.println("Down");
 		}
 		if (Up == false && Left == false && Down == false && Right == true) {
-			l.setText("Right");
+			System.out.println("Right");
 		}
 		if (Up == true && Left == false && Down == false && Right == true) {
-			l.setText("Top Right");
+			System.out.println("Top Right");
 		}
 		if (Up == false && Left == false && Down == true && Right == true) {
-			l.setText("Bottom Right");
+			System.out.println("Bottom Right");
 		}
 		if (Up == true && Left == true && Down == false && Right == false) {
-			l.setText("Top Left");
+			System.out.println("Top Left");
 		}
 		if (Up == false && Left == true && Down == true && Right == false) {
-			l.setText("Botton Left");
+			System.out.println("Botton Left");
 		}
 
 	}    

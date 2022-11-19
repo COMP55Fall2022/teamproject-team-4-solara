@@ -42,6 +42,7 @@ public class _HealthBar  {
 	 * done in order to create a health bar.
 	 */
 	
+
 	public void addGreenBars() {
 		// initializes an ArrayList called "greenBars"
 		greenBars = new ArrayList<GRect>();

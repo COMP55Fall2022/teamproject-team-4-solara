@@ -10,7 +10,7 @@ public class HowToPlayScreen extends GraphicsPane {
 				// all of the GraphicsProgram calls
 	private GButton returnButton; 
 	private GImage	howToPlay;
-	private GParagraph para;
+	
 
 	public HowToPlayScreen(MainApplication app) {
 		this.program = app;
