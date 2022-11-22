@@ -54,12 +54,21 @@ public class TestBullet extends GraphicsProgram implements ActionListener{
 		bullets.add(temp);
 		return temp;
 	}
-	//test to see if i can push
+
+	public void removeBullet() {
+//		bulletArray.remove(bullet);
+//		remove(bullet);
+	}
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		for(GRect bullet : bullets) {
 			bullet.move(0, SPEED);
+			if(bullet.getY() < 50) {
+				bullets.remove(bullet);
+				remove(bullet);
+				return;
+			}
 		}
 	}
 	
