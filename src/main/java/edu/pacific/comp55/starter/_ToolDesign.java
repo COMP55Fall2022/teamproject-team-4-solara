@@ -16,6 +16,7 @@ public class _ToolDesign extends GraphicsProgram{
 	private _Ships tank; 
 	private _Ships Speed;
 	private ArrayList<GRect> enemies;
+	private ArrayList<GRect> bullets; 
 	private RandomGenerator rgen; 
 	private Timer movement; 
 	private int numTimes; 
@@ -40,6 +41,7 @@ public class _ToolDesign extends GraphicsProgram{
 	private void moveAllEnemiesOnce() {
 		for(GRect rect: enemies) {
 			rect.move(rgen.nextInt(-50,50),0);
+			
 		}
 	}
 
@@ -53,6 +55,7 @@ public class _ToolDesign extends GraphicsProgram{
 	public void run() {
 		rgen = RandomGenerator.getInstance(); 
 		enemies = new ArrayList<GRect>(); 
+		bullets = new ArrayList<GRect>(); 
 		movement = new Timer(50, this); 
 		movement.start(); 
 		
@@ -62,8 +65,30 @@ public class _ToolDesign extends GraphicsProgram{
 		numTimes += -1; 
 		if(numTimes % 100 == 0) {
 			addAnEnemy(); 
+			addBullet();
 		}
 		moveAllEnemiesOnce(); 
+		moveAllBulletsOnce();
+	}
+	
+	public GRect makeBullet(double x, double y) {
+		
+		GRect bull = new GRect (500, 0, 5, 10); 
+		bull.setColor(Color.RED); 
+		bull.setFilled(true);
+		return bull; 
+		
+	}
+	
+	public void addBullet() {
+		GRect b = makeBullet(rgen.nextInt(0,575), 0); 
+		bullets.add(b); 
+		add(b); 
+	}
+	public void moveAllBulletsOnce() {
+		for (GRect bullet: bullets) {
+			bullet.move(0, 10);
+		}
 	}
 	
 	public static void main(String args[]) {
