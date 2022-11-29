@@ -48,6 +48,7 @@ public class ChoosePlaneScreen extends GraphicsPane {
 		if (obj == enterGame) {
 			program.playButtonSound();
 			program.switchToLevel();
+			
 		}
 		else if( obj == menuReturn) {
 			program.playButtonSound();

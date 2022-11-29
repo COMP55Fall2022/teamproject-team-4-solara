@@ -9,18 +9,19 @@ public class LevelScreen extends GraphicsPane {
 	private MainApplication program; // you will use program to get access to
 				// all of the GraphicsProgram calls
 	private GImage level; 
+	private _ToolDesign enemy;
 	
 
 	public LevelScreen(MainApplication app) {
 		this.program = app;
 		level = new GImage("media/Space Background.jpg", 0, 0);
-		
+		enemy = new _ToolDesign(app);
 		}
 
 	@Override
 	public void showContents() {
 		program.add(level);
-
+		enemy.run();
 	}
 
 	@Override

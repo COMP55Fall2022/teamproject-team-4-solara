@@ -1,6 +1,7 @@
 package edu.pacific.comp55.starter;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.Timer;
@@ -10,7 +11,7 @@ import acm.program.GraphicsProgram;
 import acm.util.RandomGenerator;
 
 
-public class _ToolDesign extends GraphicsProgram{
+public class _ToolDesign implements ActionListener{
 	
 	private _Ships balanced; 
 	private _Ships tank; 
@@ -19,36 +20,38 @@ public class _ToolDesign extends GraphicsProgram{
 	private ArrayList<GRect> bullets; 
 	private RandomGenerator rgen; 
 	private Timer movement; 
+	private int moveDirector;
 	private int numTimes; 
+	private MainApplication mainScreen;
 	
-	public void init() {
-		setSize(800, 600);
-		requestFocus();
-	} 
-
-	
-	/*public _ToolDesign (MainApplication app) {
-		// constructor to add on to level screen 
-	}*/
+	public _ToolDesign (MainApplication app) {
+		mainScreen = app;
+		moveDirector = 1;
+	}
 	
 	public  GRect makeEnemy(double y) { 
-		GRect temp = new GRect(500, 0, 50, 50);
+		GRect temp = new GRect(y, 0, 50, 50);
 		temp.setColor(Color.GREEN);
 		temp.setFilled(true);
 		return temp;
 	}
 	
 	private void moveAllEnemiesOnce() {
+		int dx = (moveDirector > 0) ? -2 : 2;
+		moveDirector += (moveDirector > 0) ? 1 : -1;
+		if (moveDirector > 30) moveDirector = -1;
+		if (moveDirector < -30) moveDirector = 1;
+		
 		for(GRect rect: enemies) {
-			rect.move(rgen.nextInt(-50,50),0);
+			rect.move(dx,0);
 			
 		}
 	}
 
 	private void addAnEnemy() {
-		GRect e = makeEnemy(rgen.nextInt(0, 575));
+		GRect e = makeEnemy(rgen.nextInt(0, 1000));
 		enemies.add(e); 
-		add(e); 
+		mainScreen.add(e); 
 	}
 
 	
@@ -83,25 +86,11 @@ public class _ToolDesign extends GraphicsProgram{
 	public void addBullet() {
 		GRect b = makeBullet(rgen.nextInt(0,575), 0); 
 		bullets.add(b); 
-		add(b); 
+		mainScreen.add(b); 
 	}
 	public void moveAllBulletsOnce() {
 		for (GRect bullet: bullets) {
 			bullet.move(0, 10);
 		}
 	}
-	
-	public static void main(String args[]) {
-		new _ToolDesign().start();
-	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 }
