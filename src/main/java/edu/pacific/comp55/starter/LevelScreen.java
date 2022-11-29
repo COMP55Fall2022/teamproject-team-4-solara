@@ -10,18 +10,21 @@ public class LevelScreen extends GraphicsPane {
 				// all of the GraphicsProgram calls
 	private GImage level; 
 	private _ToolDesign enemy;
+	private _HealthBar healthBar; 
 	
 
 	public LevelScreen(MainApplication app) {
 		this.program = app;
 		level = new GImage("media/Space Background.jpg", 0, 0);
 		enemy = new _ToolDesign(app);
+		healthBar = new _HealthBar(app); 
 		}
 
 	@Override
 	public void showContents() {
 		program.add(level);
 		enemy.run();
+		healthBar.run();
 	}
 
 	@Override

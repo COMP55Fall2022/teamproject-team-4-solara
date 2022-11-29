@@ -11,7 +11,7 @@ public class MainApplication extends GraphicsApplication {
 	private HowToPlayScreen howToPlay;
 	private MenuPane menu;
 	private ChoosePlaneScreen choosePlane; 
-	private _HealthBar healthBar; 
+	
 	private int count;
 	
 
@@ -21,21 +21,13 @@ public class MainApplication extends GraphicsApplication {
 
 	public void run() {
 	    //_Powerups speed = new _Powerups(this);
-		healthBar = new _HealthBar(this, WINDOW_WIDTH, WINDOW_HEIGHT, 5);
-		MainApplication.add(healthBar);
+
 		howToPlay = new HowToPlayScreen(this);
 		menu = new MenuPane(this);
 		level = new LevelScreen(this);
 		choosePlane = new ChoosePlaneScreen(this);
 		setupInteractions();
 		switchToMenu();
-	}
-	
-
-
-	private static void add(_HealthBar healthBar2) {
-		
-		
 	}
 
 	public void switchToMenu() {

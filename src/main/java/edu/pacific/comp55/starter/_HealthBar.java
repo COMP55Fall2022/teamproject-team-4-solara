@@ -1,5 +1,5 @@
 package edu.pacific.comp55.starter;
-
+import acm.graphics.*;
 import java.awt.Color;
 import java.awt.event.*;
 import java.util.ArrayList;
@@ -29,18 +29,22 @@ public class _HealthBar  {
 	MainApplication mainScreen;
 	
 	// Constructor: Will ONLY be called by MainApplication
-	public _HealthBar(MainApplication mainScreen, int windowWidth, int windowHeight, int hitPoints) {
-		this.mainScreen = mainScreen;
-		// assign window width/height
-		WINDOW_WIDTH = windowWidth;
-		WINDOW_HEIGHT = windowHeight;
-		HIT_POINTS = hitPoints;
+	public _HealthBar(MainApplication app) {
+		mainScreen= app; 
+		
 	}
 	
 	/*
 	 * This function can be called to do everything else that needs to be 
 	 * done in order to create a health bar.
 	 */
+	
+	public void createHealthBar() {
+		addGreenBars(); 
+		addHealthBarOutline(HEALTHBAR_WIDTH, HEALTHBAR_HEIGHT);
+		addLabel();
+		
+	}
 	
 
 	public void addGreenBars() {
@@ -95,6 +99,11 @@ public class _HealthBar  {
 			mainScreen.add(tempBar);
 		}
 	}
+	public void run () {
+		createHealthBar();
+		updateHealthBar(isDamaged);
+		
+		}
 	
 	@Override
 	public String toString() {
