@@ -26,12 +26,12 @@ public class _ToolDesign extends GraphicsProgram{
 	} 
 
 	
-	public _ToolDesign (MainApplication app) {
+	/*public _ToolDesign (MainApplication app) {
 		// constructor to add on to level screen 
-	}
+	}*/
 	
-	public  GRect makeEnemey(double y) { 
-		GRect temp = new GRect(800, 100, 200, 200);
+	public  GRect makeEnemy(double y) { 
+		GRect temp = new GRect(500, 0, 50, 50);
 		temp.setColor(Color.GREEN);
 		temp.setFilled(true);
 		return temp;
@@ -39,10 +39,15 @@ public class _ToolDesign extends GraphicsProgram{
 	
 	private void moveAllEnemiesOnce() {
 		for(GRect rect: enemies) {
-			rect.move(0,rgen.nextInt(-2,2));
+			rect.move(rgen.nextInt(-50,50),0);
 		}
 	}
 
+	private void addAnEnemy() {
+		GRect e = makeEnemy(rgen.nextInt(0, 575));
+		enemies.add(e); 
+		add(e); 
+	}
 
 	
 	public void run() {
@@ -54,7 +59,15 @@ public class _ToolDesign extends GraphicsProgram{
 	}
 	
 	public void actionPerformed(ActionEvent e) {
-		
+		numTimes += -1; 
+		if(numTimes % 100 == 0) {
+			addAnEnemy(); 
+		}
+		moveAllEnemiesOnce(); 
+	}
+	
+	public static void main(String args[]) {
+		new _ToolDesign().start();
 	}
 	
 	
