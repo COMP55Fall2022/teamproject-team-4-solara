@@ -15,6 +15,7 @@ public class _Movement extends Frame implements KeyListener {
 	boolean Down = false;
 	boolean Right = false;
 	boolean Left = false;
+	String player = "";
 	_Movement() {
 		GOval box;
 		box = new GOval(100,100,100,100);
@@ -35,6 +36,14 @@ public class _Movement extends Frame implements KeyListener {
 	}    
 	public void keyPressed (KeyEvent e) {    
 		int key = e.getKeyCode();
+		if (key == KeyEvent.VK_W || key == KeyEvent.VK_S || key == KeyEvent.VK_A || key == KeyEvent.VK_D) {
+			System.out.println("Player 1");
+			player = "Player 1";
+		}
+		else {
+			System.out.println("Player 2");
+			player = "Player 2";
+		}
 		if (key == KeyEvent.VK_UP || key == KeyEvent.VK_W) {
 			Up = true;
 		}
@@ -147,12 +156,23 @@ public class _Movement extends Frame implements KeyListener {
 
 		}
 		else {
+			System.out.println(player);
 			System.out.println("HALT");
 		}
 	}
 
 	public void keyReleased (KeyEvent e) {
 		int key = e.getKeyCode();
+		if (key == KeyEvent.VK_W || key == KeyEvent.VK_S || key == KeyEvent.VK_A || key == KeyEvent.VK_D) {
+			player = "Player 1";
+			System.out.println(player);
+
+		}
+		else {
+			player = "Player 2";
+			System.out.println(player);
+
+		}
 		if (key == KeyEvent.VK_UP || key == KeyEvent.VK_W) {
 			Up = false;
 		}
