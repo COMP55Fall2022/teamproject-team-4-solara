@@ -23,6 +23,7 @@ public class _ToolDesign implements ActionListener{
 	private int moveDirector;
 	private int numTimes; 
 	private MainApplication mainScreen;
+	private GObject bulletCheck;
 	
 	public _ToolDesign (MainApplication app) {
 		mainScreen = app;
@@ -69,6 +70,7 @@ public class _ToolDesign implements ActionListener{
 		if(numTimes % 100 == 0) {
 			addAnEnemy(); 
 			addBullet();
+		
 		}
 		moveAllEnemiesOnce(); 
 		moveAllBulletsOnce();
@@ -91,6 +93,9 @@ public class _ToolDesign implements ActionListener{
 	public void moveAllBulletsOnce() {
 		for (GRect bullet: bullets) {
 			bullet.move(0, 10);
+			
+			// bulletCheck = getElementAt(bullet.getX() + (bullet.getWidth() + 1), bullet.getY() + (bullet.getHeight() / 2)); // check for bullet collision 
 		}
 	}
+	// come back to this and make another enemy type to add another line of enemie below the ones already made 
 }
