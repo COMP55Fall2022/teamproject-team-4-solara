@@ -13,6 +13,8 @@ import acm.util.RandomGenerator;
 
 public class _ToolDesign implements ActionListener{
 	
+	private static final int E_HEIGHT = 50;
+	private static final int E_WIDTH = 50;
 	private _Ships balanced; 
 	private _Ships tank; 
 	private _Ships Speed;
@@ -31,7 +33,7 @@ public class _ToolDesign implements ActionListener{
 	}
 	
 	public  GRect makeEnemy(double y) { 
-		GRect temp = new GRect(y, 0, 50, 50);
+		GRect temp = new GRect(y, 0, E_WIDTH, E_HEIGHT);
 		temp.setColor(Color.GREEN);
 		temp.setFilled(true);
 		return temp;
@@ -78,7 +80,7 @@ public class _ToolDesign implements ActionListener{
 	
 	public GRect makeBullet(double x, double y) {
 		
-		GRect bull = new GRect (500, 0, 5, 10); 
+		GRect bull = new GRect (x + E_WIDTH, y + E_HEIGHT, 5, 10); 
 		bull.setColor(Color.RED); 
 		bull.setFilled(true);
 		return bull; 
