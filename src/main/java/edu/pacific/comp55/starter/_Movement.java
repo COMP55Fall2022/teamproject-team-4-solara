@@ -1,3 +1,4 @@
+package edu.pacific.comp55.starter;
 import acm.graphics.*;
 import acm.program.*;
 import acm.util.*;
