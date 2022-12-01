@@ -32,6 +32,14 @@ public class _ToolDesign implements ActionListener{
 		moveDirector = 1;
 	}
 	
+	public GRect makeEnemy2(double y ) {
+		GRect temp2 = new GRect(y, 10, E_WIDTH, E_HEIGHT);
+		temp2.setColor(Color.BLUE); 
+		temp2.setFilled(true);
+		return temp2;
+		
+		
+	}
 	public  GRect makeEnemy(double y) { 
 		GRect temp = new GRect(y, 0, E_WIDTH, E_HEIGHT);
 		temp.setColor(Color.GREEN);

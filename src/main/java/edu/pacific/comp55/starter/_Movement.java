@@ -24,8 +24,7 @@ public class _Movement extends GraphicsProgram {
 	private GObject toDrag;
 
 	private MainApplication levelScreen;
-	
-	
+
 	
 	public void run() {
 		oval.setColor(Color.blue);
@@ -257,5 +256,6 @@ public class _Movement extends GraphicsProgram {
 	public static void main(String[] args) {
 		new _Movement().start();
 	}
+
 }
 
