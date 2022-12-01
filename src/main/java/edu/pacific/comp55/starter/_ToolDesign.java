@@ -33,7 +33,7 @@ public class _ToolDesign implements ActionListener{
 	}
 	
 	public GRect makeEnemy2(double y ) {
-		GRect temp2 = new GRect(y, 100, E_WIDTH, E_HEIGHT);
+		GRect temp2 = new GRect(y+200, 100, E_WIDTH, E_HEIGHT);
 		temp2.setColor(Color.BLUE); 
 		temp2.setFilled(true);
 		return temp2;
@@ -46,6 +46,21 @@ public class _ToolDesign implements ActionListener{
 		mainScreen.add(e2);
 	}
 	
+	public GRect makeEnemy3(double y) {
+		GRect temp3 = new GRect(y, 200, E_WIDTH, E_HEIGHT);
+		temp3.setColor(Color.YELLOW);
+		temp3.setFilled(true);
+		return temp3; 
+		
+	}
+	
+	private void addAnEnemy3() {
+		GRect e3 = makeEnemy3(rgen.nextInt(0,1000)); 
+		enemies.add(e3); 
+		mainScreen.add(e3);
+		
+	}
+	
 	public  GRect makeEnemy(double y) { 
 		GRect temp = new GRect(y, 0, E_WIDTH, E_HEIGHT);
 		temp.setColor(Color.GREEN);
@@ -56,8 +71,8 @@ public class _ToolDesign implements ActionListener{
 	private void moveAllEnemiesOnce() {
 		int dx = (moveDirector > 0) ? -2 : 2;
 		moveDirector += (moveDirector > 0) ? 1 : -1;
-		if (moveDirector > 30) moveDirector = -1;
-		if (moveDirector < -30) moveDirector = 1;
+		if (moveDirector > 50) moveDirector = -1;
+		if (moveDirector < -50) moveDirector = 1;
 		
 		for(GRect rect: enemies) {
 			rect.move(dx,0);
@@ -89,6 +104,11 @@ public class _ToolDesign implements ActionListener{
 		}
 		if(numTimes % 50 == 0 ) {
 			addAnEnemy2();
+			addBullet();
+		}
+		
+		if(numTimes % 75 == 0) {
+			addAnEnemy3();
 			addBullet();
 		}
 		moveAllEnemiesOnce(); 
