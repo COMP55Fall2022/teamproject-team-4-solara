@@ -55,6 +55,7 @@ public class _HealthBar {
 	// creates and adds a health LABEL under the health bar (e.g.:  "Health: 8")
 	private void addLabel() {
 		healthLabel = new GLabel("Health: " + greenBars.size(), HEALTHBAR_X, HEALTHBAR_Y + HEALTHBAR_HEIGHT + 20);
+		healthLabel.setColor(Color.PINK);
 		mainScreen.add(healthLabel);
 	}
 	
