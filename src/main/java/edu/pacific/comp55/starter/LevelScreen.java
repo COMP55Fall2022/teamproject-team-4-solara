@@ -11,6 +11,8 @@ public class LevelScreen extends GraphicsPane {
 	private GImage level; 
 	private _ToolDesign enemy;
 	private _HealthBar healthBar; 
+	private _Movement movement; 
+	
 	
 
 	public LevelScreen(MainApplication app) {
@@ -18,6 +20,8 @@ public class LevelScreen extends GraphicsPane {
 		level = new GImage("media/Space Background.jpg", 0, 0);
 		enemy = new _ToolDesign(app);
 		healthBar = new _HealthBar(app); 
+		movement = new _Movement(app);
+		
 		}
 
 	@Override
@@ -25,6 +29,7 @@ public class LevelScreen extends GraphicsPane {
 		program.add(level);
 		enemy.run();
 		healthBar.run();
+		movement.run();
 	}
 
 	@Override
