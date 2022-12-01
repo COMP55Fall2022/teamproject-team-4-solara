@@ -20,7 +20,7 @@ public class LevelScreen extends GraphicsPane {
 		level = new GImage("media/Space Background.jpg", 0, 0);
 		enemy = new _ToolDesign(app);
 		healthBar = new _HealthBar(app); 
-		movement = new _Movement(app);
+		//movement = new _Movement(app);
 		
 		}
 

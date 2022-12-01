@@ -22,21 +22,19 @@ public class _Movement extends GraphicsProgram {
 	GRect rect = new GRect(500, 500, SHAPE_SIZE, SHAPE_SIZE);
 	
 	private GObject toDrag;
+
 	private MainApplication levelScreen;
 	
-	public _Movement (MainApplication app) {
-		levelScreen = app; 
-		
-	}
+	
 	
 	public void run() {
 		oval.setColor(Color.blue);
 		oval.setFilled(true);
-		levelScreen.add(oval);
+		add(oval);
 		
 		rect.setColor(Color.green);
 		rect.setFilled(true);
-		levelScreen.add(rect);
+		add(rect);
 		
 		addKeyListeners();
 	}
@@ -251,7 +249,13 @@ public class _Movement extends GraphicsProgram {
 			oval.move(-1*speed, speed);
 		}
 		}	
+	public void init() {
+		setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
+		requestFocus();
+	}
 	
-	
-	
+	public static void main(String[] args) {
+		new _Movement().start();
+	}
 }
+
