@@ -6,7 +6,7 @@ public class MainApplication extends GraphicsApplication {
 	public static final int WINDOW_WIDTH = 3000; // Original width and height = 3000 x 1080
 	public static final int WINDOW_HEIGHT = 1080; // change pixels for images to 3000 by 1000 - 4 NATHAN
 	public static final String MUSIC_FOLDER = "sounds";
-	private static final String[] SOUND_FILES = { "r2d2.mp3", "somethinlikethis.mp3", "Main menu theme.mp3", "ButtonSound.mp3" };
+	private static final String[] SOUND_FILES = { "r2d2.mp3", "somethinlikethis.mp3", "SOLARA game background theme (1).mp3", "ButtonSound.mp3" };
 	private LevelScreen level; 
 	private HowToPlayScreen howToPlay;
 	private MenuPane menu;
@@ -14,7 +14,6 @@ public class MainApplication extends GraphicsApplication {
 	
 	private int count;
 	
-
 	public void init() {
 		setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
 	}
@@ -50,14 +49,14 @@ public class MainApplication extends GraphicsApplication {
 	private void playMenuSound() {
 		AudioPlayer mSound = AudioPlayer.getInstance(); 
 		mSound.playSound(MUSIC_FOLDER, SOUND_FILES[2]);
+		System.out.println("Sound plays!");
 	}
 	
-
-	private void playRandomSound() {
-		AudioPlayer audio = AudioPlayer.getInstance();
-		audio.playSound(MUSIC_FOLDER, SOUND_FILES[count % SOUND_FILES.length]);
-	}
-	
+//	private void playRandomSound() {
+//		AudioPlayer audio = AudioPlayer.getInstance();
+//		audio.playSound(MUSIC_FOLDER, SOUND_FILES[count % SOUND_FILES.length]);
+//	}
+//	
 	void playButtonSound() {
 		AudioPlayer bSound = AudioPlayer.getInstance();
 		bSound.playSound(MUSIC_FOLDER, SOUND_FILES[3]);
@@ -74,6 +73,5 @@ public class MainApplication extends GraphicsApplication {
 	public static void main(String[] args) {
 		new MainApplication().start();
 	}
-
-
+		
 }
