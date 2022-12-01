@@ -19,7 +19,12 @@ public class LevelScreen extends GraphicsPane {
 		this.program = app;
 		level = new GImage("media/Space Background.jpg", 0, 0);
 		enemy = new _ToolDesign(app);
-		healthBar = new _HealthBar(app); 
+		
+		// TODO: make sure health bar can display on the "game play" screen
+		// it appears behind the main menu screen
+		healthBar = new _HealthBar(app);
+		healthBar.makeHealthBar();
+		
 		//movement = new _Movement(app);
 		
 		}

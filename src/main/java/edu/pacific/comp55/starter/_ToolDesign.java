@@ -27,14 +27,21 @@ public class _ToolDesign implements ActionListener{
 	private MainApplication mainScreen;
 	private GObject bulletCheck;
 	
+	private _HealthBar healthBar;
+	
 	public _ToolDesign (MainApplication app) {
 		mainScreen = app;
 		moveDirector = 1;
 	}
 	
+//	public void addHealthBar() {
+//		healthBar = new _HealthBar(mainScreen);
+//		healthBar.makeHealthBar();
+//	}
+	
 	public GRect makeEnemy2(double y ) {
-		GRect temp2 = new GRect(y+200, 100, E_WIDTH, E_HEIGHT);
-		temp2.setColor(Color.BLUE); 
+		GRect temp2 = new GRect(y + 200, 100, E_WIDTH, E_HEIGHT);
+		temp2.setColor(Color.BLUE);
 		temp2.setFilled(true);
 		return temp2;
 		
