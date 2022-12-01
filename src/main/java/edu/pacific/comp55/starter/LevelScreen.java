@@ -23,7 +23,7 @@ public class LevelScreen extends GraphicsPane {
 		// TODO: make sure health bar can display on the "game play" screen
 		// it appears behind the main menu screen
 		healthBar = new _HealthBar(app);
-		healthBar.makeHealthBar();
+		
 		
 		//movement = new _Movement(app);
 		
@@ -33,6 +33,7 @@ public class LevelScreen extends GraphicsPane {
 	public void showContents() {
 		program.add(level);
 		enemy.run();
+		healthBar.makeHealthBar();
 	//	movement.run();
 	}
 

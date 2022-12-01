@@ -27,7 +27,7 @@ public class _HealthBar {
 	private final int WINDOW_HEIGHT = 1000;
 	
 	// MainApplication (main screen) reference
-	MainApplication mainScreen;
+	private MainApplication mainScreen;
 	
 	// Constructor: Will ONLY be called by MainApplication
 	public _HealthBar(MainApplication app) {
