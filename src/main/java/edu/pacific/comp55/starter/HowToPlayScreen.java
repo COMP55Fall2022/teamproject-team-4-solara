@@ -8,6 +8,9 @@ public class HowToPlayScreen extends GraphicsPane {
 	private MainApplication program; // you will use program to get access to
 				// all of the GraphicsProgram calls
 	private GButton returnButton; 
+	private GButton ship1;
+	private GButton ship2;
+	private GButton ship3;
 	private GImage	howToPlay;
 	private static int SCREEN_WIDTH = 1980;
 	

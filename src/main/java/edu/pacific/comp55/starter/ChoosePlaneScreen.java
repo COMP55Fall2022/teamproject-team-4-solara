@@ -16,14 +16,13 @@ public class ChoosePlaneScreen extends GraphicsPane {
 	public ChoosePlaneScreen(MainApplication app) {
 		this.program = app;
 		choosePlane= new GImage("media/Stats for airplanes (1).jpg", 0, 0);
-		enterGame = new GButton ("Enter Game", 340,450, 150, 100);
-		menuReturn = new GButton ("Return", 800,450, 100, 100);
+		choosePlane.setSize(1550, 800);
+		enterGame = new GButton ("Enter Game", 840, 700, 210, 50);
+		menuReturn = new GButton ("Return", 350, 700, 210, 50);
 		menuReturn.setColor(Color.GREEN);
 		menuReturn.setFillColor(Color.BLACK);
 		enterGame.setColor(Color.GREEN);
 		enterGame.setFillColor(Color.BLACK);
-		
-		
 	}
 
 	@Override

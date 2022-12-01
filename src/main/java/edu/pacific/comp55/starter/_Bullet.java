@@ -69,7 +69,6 @@ public class _Bullet extends GraphicsProgram implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		Object source = e.getSource();
 		shoot();
 		removeBullet();
 	}
