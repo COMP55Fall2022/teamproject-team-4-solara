@@ -28,7 +28,6 @@ public class LevelScreen extends GraphicsPane {
 	public void showContents() {
 		program.add(level);
 		enemy.run();
-		healthBar.run();
 	//	movement.run();
 	}
 
