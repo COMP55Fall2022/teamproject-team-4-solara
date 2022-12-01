@@ -23,7 +23,7 @@ public class _HealthBar {
 	private final int HIT_POINTS = 4;
 	
 	
-	private final int WINDOW_WIDTH = 1000;
+	private final int WINDOW_WIDTH = 1600;
 	private final int WINDOW_HEIGHT = 1000;
 	
 	// MainApplication (main screen) reference
