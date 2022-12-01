@@ -33,13 +33,19 @@ public class _ToolDesign implements ActionListener{
 	}
 	
 	public GRect makeEnemy2(double y ) {
-		GRect temp2 = new GRect(y, 10, E_WIDTH, E_HEIGHT);
+		GRect temp2 = new GRect(y, 100, E_WIDTH, E_HEIGHT);
 		temp2.setColor(Color.BLUE); 
 		temp2.setFilled(true);
 		return temp2;
 		
 		
 	}
+	private void addAnEnemy2() {
+		GRect e2 = makeEnemy2(rgen.nextInt(0,1000));
+		enemies.add(e2);
+		mainScreen.add(e2);
+	}
+	
 	public  GRect makeEnemy(double y) { 
 		GRect temp = new GRect(y, 0, E_WIDTH, E_HEIGHT);
 		temp.setColor(Color.GREEN);
@@ -80,7 +86,10 @@ public class _ToolDesign implements ActionListener{
 		if(numTimes % 100 == 0) {
 			addAnEnemy(); 
 			addBullet();
-		
+		}
+		if(numTimes % 50 == 0 ) {
+			addAnEnemy2();
+			addBullet();
 		}
 		moveAllEnemiesOnce(); 
 		moveAllBulletsOnce();

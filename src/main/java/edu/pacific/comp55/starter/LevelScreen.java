@@ -29,7 +29,7 @@ public class LevelScreen extends GraphicsPane {
 		program.add(level);
 		enemy.run();
 		healthBar.run();
-		movement.run();
+	//	movement.run();
 	}
 
 	@Override
