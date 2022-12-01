@@ -3,8 +3,8 @@ package edu.pacific.comp55.starter;
 import java.awt.event.KeyEvent;
 
 public class MainApplication extends GraphicsApplication {
-	public static final int WINDOW_WIDTH = 3000;
-	public static final int WINDOW_HEIGHT = 1080; // change pixels for images to 3000 by 1000 - 4 NATHAN 
+	public static final int WINDOW_WIDTH = 3000; // Original width and height = 3000 x 1080
+	public static final int WINDOW_HEIGHT = 1080; // change pixels for images to 3000 by 1000 - 4 NATHAN
 	public static final String MUSIC_FOLDER = "sounds";
 	private static final String[] SOUND_FILES = { "r2d2.mp3", "somethinlikethis.mp3", "Main menu theme.mp3", "ButtonSound.mp3" };
 	private LevelScreen level; 
@@ -21,7 +21,6 @@ public class MainApplication extends GraphicsApplication {
 
 	public void run() {
 	    //_Powerups speed = new _Powerups(this);
-
 		howToPlay = new HowToPlayScreen(this);
 		menu = new MenuPane(this);
 		level = new LevelScreen(this);
