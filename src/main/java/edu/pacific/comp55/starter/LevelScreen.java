@@ -24,7 +24,7 @@ public class LevelScreen extends GraphicsPane {
 		// TODO: make sure health bar can display on the "game play" screen
 		// it appears behind the main menu screen
 		healthBar = new _HealthBar(app);
-		//powerups = new _Powerups(app);
+		powerups = new _Powerups(app);
 		
 		
 		//movement = new _Movement(app);
