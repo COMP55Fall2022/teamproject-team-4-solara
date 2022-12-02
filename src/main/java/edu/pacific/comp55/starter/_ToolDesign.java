@@ -18,7 +18,7 @@ public class _ToolDesign implements ActionListener{
 	private _Ships balanced; 
 	private _Ships tank; 
 	private _Ships Speed;
-	private ArrayList<GRect> enemies;
+	private ArrayList<GImage> enemies;
 	private ArrayList<GRect> bullets; 
 	private RandomGenerator rgen; 
 	private Timer movement; 
@@ -28,6 +28,9 @@ public class _ToolDesign implements ActionListener{
 	private GObject bulletCheck;
 	
 	private _HealthBar healthBar;
+	private String UFO1 = "UFO1.png";
+	private String UFO2 = "UFO2.png";
+	private String UFO3 = "UFO3.png";
 	
 	public _ToolDesign (MainApplication app) {
 		mainScreen = app;
@@ -39,39 +42,39 @@ public class _ToolDesign implements ActionListener{
 //		healthBar.makeHealthBar();
 //	}
 	
-	public GRect makeEnemy2(double y ) {
-		GRect temp2 = new GRect(y + 200, 150, E_WIDTH, E_HEIGHT);
-		temp2.setColor(Color.BLUE);
-		temp2.setFilled(true);
+	public GImage makeEnemy2(double y ) {
+		GImage temp2 = new GImage("media/" + UFO2, y + 200, 150);
+		//temp2.setColor(Color.BLUE);
+		//temp2.setFilled(true);
 		return temp2;
 		
 		
 	}
 	private void addAnEnemy2() {
-		GRect e2 = makeEnemy2(rgen.nextInt(0,1000));
+		GImage e2 = makeEnemy2(rgen.nextInt(0,1000));
 		enemies.add(e2);
 		mainScreen.add(e2);
 	}
 	
-	public GRect makeEnemy3(double y) {
-		GRect temp3 = new GRect(y + 200, 250, E_WIDTH, E_HEIGHT);
-		temp3.setColor(Color.YELLOW);
-		temp3.setFilled(true);
+	public GImage makeEnemy3(double y) {
+		GImage temp3 = new GImage("media/" + UFO3, y + 200, 275);
+		//temp3.setColor(Color.YELLOW);
+		//temp3.setFilled(true);
 		return temp3; 
 		
 	}
 	
 	private void addAnEnemy3() {
-		GRect e3 = makeEnemy3(rgen.nextInt(0,1000)); 
+		GImage e3 = makeEnemy3(rgen.nextInt(0,1000)); 
 		enemies.add(e3); 
 		mainScreen.add(e3);
 		
 	}
 	
-	public  GRect makeEnemy(double y) { 
-		GRect temp = new GRect(y + 200, 50, E_WIDTH, E_HEIGHT);
-		temp.setColor(Color.GREEN);
-		temp.setFilled(true);
+	public  GImage makeEnemy(double y) { 
+		GImage temp = new GImage("media/" + UFO1, y + 200, 50);
+		//temp.setColor(Color.GREEN);
+		//temp.setFilled(true);
 		return temp;
 	}
 	
@@ -81,14 +84,14 @@ public class _ToolDesign implements ActionListener{
 		if (moveDirector > 50) moveDirector = -1;
 		if (moveDirector < -50) moveDirector = 1;
 		
-		for(GRect rect: enemies) {
-			rect.move(dx,0);
+		for(GImage image: enemies) {
+			image.move(dx,0);
 			
 		}
 	}
 
 	private void addAnEnemy() {
-		GRect e = makeEnemy(rgen.nextInt(0, 1000));
+		GImage e = makeEnemy(rgen.nextInt(0, 1000));
 		enemies.add(e); 
 		mainScreen.add(e); 
 	}
@@ -96,7 +99,7 @@ public class _ToolDesign implements ActionListener{
 	
 	public void run() {
 		rgen = RandomGenerator.getInstance(); 
-		enemies = new ArrayList<GRect>(); 
+		enemies = new ArrayList<GImage>(); 
 		bullets = new ArrayList<GRect>(); 
 		movement = new Timer(50, this); 
 		movement.start(); 
