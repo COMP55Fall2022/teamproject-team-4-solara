@@ -20,18 +20,21 @@ public class _Powerups extends GraphicsProgram {
 	private int numTimes; 
 	private int num; 
 	private GLabel counter;
+	private int imageNum; 
 	private GImage power; 
+	 
 	protected _PowerUpType type; 
 	public AudioPlayer a;
 	public static final String AUDIO_FOLDER = "sounds";
 	private  MainApplication mainScreen;
+	private static final String [] IMAGE_FILES = {"LightningBolt.png", "HealthPower.png", "DoubleBullet.png" };
 		
-	public _Powerups(MainApplication mainScreen) {
+	/*public _Powerups(MainApplication mainScreen) {
 		this.mainScreen = mainScreen;
 		addPower();
 		spawnTime();
 		playSound(AUDIO_FOLDER,"X2Download.app - Sofia Reyes - 1, 2, 3 (feat. Jason Derulo & De La Ghetto) [Official Video] (320 kbps).mp3" );
-	}
+	}*/
 	
 	public void init() {
 		setSize(800, 600);
@@ -72,13 +75,16 @@ public class _Powerups extends GraphicsProgram {
 		t.start();
 	}
 	
+	
+	
 	public void addPower() {
-		power = new GImage("Untitled-removebg-preview (1).png", 100, 100);
-		mainScreen.add(power);
+		imageNum = (int)(Math.random() * 3);
+		power = new GImage ("media/" + IMAGE_FILES[ imageNum % IMAGE_FILES.length], 100, 100); 
+		add(power);
 	}
 	
 	public void removePower() {
-		mainScreen.remove(power);
+		remove(power);
 	}
 	
 	public void setActive() {
@@ -110,10 +116,10 @@ public class _Powerups extends GraphicsProgram {
 	}
 	
 	public void actionPerformed(ActionEvent e) {
-		/*
-		num += 1; 
+		
+		//num += 1; 
 		numTimes += 1; 
-		counter.setLabel("Timer:" + numTimes);
+		/*counter.setLabel("Timer:" + numTimes);
 		if(num % 10 == 0) {
 			addPower(); 
 		}
@@ -121,17 +127,22 @@ public class _Powerups extends GraphicsProgram {
 			removePower();
 		}
 		*/
+	
 		if(isActive) {
 			isActive = false;
 			counter.setLabel("not active any more");
 		} else {
 			removePower();
 			counter.setLabel("not available to grab");
+		
+	
 		}
 		t.stop();
+		
 	}	
+	
 
 	public static void main(String[] args) {
-		//new _Powerups().start();
+		new _Powerups().start();
 	}
 }

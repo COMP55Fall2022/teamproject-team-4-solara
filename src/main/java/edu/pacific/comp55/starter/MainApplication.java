@@ -19,7 +19,7 @@ public class MainApplication extends GraphicsApplication {
 	}
 
 	public void run() {
-	    //_Powerups speed = new _Powerups(this);
+	    
 		howToPlay = new HowToPlayScreen(this);
 		menu = new MenuPane(this);
 		level = new LevelScreen(this);
