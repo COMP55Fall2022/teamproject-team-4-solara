@@ -40,7 +40,7 @@ public class _ToolDesign implements ActionListener{
 //	}
 	
 	public GRect makeEnemy2(double y ) {
-		GRect temp2 = new GRect(y + 200, 100, E_WIDTH, E_HEIGHT);
+		GRect temp2 = new GRect(y + 200, 150, E_WIDTH, E_HEIGHT);
 		temp2.setColor(Color.BLUE);
 		temp2.setFilled(true);
 		return temp2;
@@ -54,7 +54,7 @@ public class _ToolDesign implements ActionListener{
 	}
 	
 	public GRect makeEnemy3(double y) {
-		GRect temp3 = new GRect(y, 200, E_WIDTH, E_HEIGHT);
+		GRect temp3 = new GRect(y + 200, 250, E_WIDTH, E_HEIGHT);
 		temp3.setColor(Color.YELLOW);
 		temp3.setFilled(true);
 		return temp3; 
@@ -69,7 +69,7 @@ public class _ToolDesign implements ActionListener{
 	}
 	
 	public  GRect makeEnemy(double y) { 
-		GRect temp = new GRect(y, 0, E_WIDTH, E_HEIGHT);
+		GRect temp = new GRect(y + 200, 50, E_WIDTH, E_HEIGHT);
 		temp.setColor(Color.GREEN);
 		temp.setFilled(true);
 		return temp;
