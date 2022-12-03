@@ -20,20 +20,21 @@ public class _HealthBar {
 	private double HEALTHBAR_WIDTH;
 	private double HEALTHBAR_HEIGHT;
 	private int originalHealth;
-	private final int HIT_POINTS = 4;
+	private final int HIT_POINTS = 10;
 	
 	
 	private final int WINDOW_WIDTH = 1600;
-	private final int WINDOW_HEIGHT = 1000;
+	//private final int WINDOW_HEIGHT = 1000;
 	
 	// MainApplication (main screen) reference
 	private MainApplication mainScreen;
 	
-	// Constructor: Will ONLY be called by MainApplication
+	// constructor initialized with MainApplication object
 	public _HealthBar(MainApplication app) {
 			mainScreen = app; 
 	}
 	
+	// adds green rectangles "bars" to the screen
 	private void addGreenBars() {
 		// initializes an ArrayList called "greenBars"
 		greenBars = new ArrayList<GRect>();
@@ -52,6 +53,7 @@ public class _HealthBar {
 		originalHealth = greenBars.size();
 		
 	}
+	
 	// creates and adds a health LABEL under the health bar (e.g.:  "Health: 8")
 	private void addLabel() {
 		healthLabel = new GLabel("Health: " + greenBars.size(), HEALTHBAR_X, HEALTHBAR_Y + HEALTHBAR_HEIGHT + 20);
@@ -59,7 +61,11 @@ public class _HealthBar {
 		mainScreen.add(healthLabel);
 	}
 	
-	// adds health bar
+	/**
+	 * Makes and adds health bar to "level" screen
+	 * @param height <-- standard 50.0 pixel height; width is 4 times the pixel height
+	 * @param y <-- The "y - coordinate"
+	 */
 	private void addHealthBarOutline(double height, double y) {
 		HEALTHBAR_HEIGHT = height;
 		HEALTHBAR_WIDTH = 4 * HEALTHBAR_HEIGHT; // width is 4x the height of the health bar
@@ -71,6 +77,10 @@ public class _HealthBar {
 		mainScreen.add(healthBarOutline);
 	}
 	
+	/**
+	 * Updates health: either decreases or increases it
+	 * @param isNotDamaged "true" increases health. "False" decreases it.
+	 */
 	public void updateHealthBar(boolean isNotDamaged) {
 		if (!isNotDamaged && greenBars.size() > 0) {
 			mainScreen.remove(greenBars.get(greenBars.size() - 1));
@@ -90,8 +100,7 @@ public class _HealthBar {
 		}
 	}
 	
-	// calls these functions to make health bar
-	// For this reason, these functions are private
+	// Makes the "overall" health bar
 	public void makeHealthBar() {
 		addHealthBarOutline(50.0,50.0);
 		addGreenBars();
