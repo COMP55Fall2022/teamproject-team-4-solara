@@ -78,7 +78,12 @@ public class _Movement extends GraphicsProgram {
 				}
 				else {
 					System.out.println("Top Right");
-					oval.move(speed, speed*-1);
+					if (player == "Player 1" ) {
+						oval.move(speed, speed*-1);
+					}
+					else {
+						rect.move(speed, speed*-1);
+					}
 				}
 			}
 			else if (Left == true) {
@@ -87,7 +92,12 @@ public class _Movement extends GraphicsProgram {
 				}
 				else {
 					System.out.println("Top Left");
-					oval.move(-1*speed, -1*speed);
+					if (player == "Player 1") {
+						oval.move(-1*speed, -1*speed);
+					}
+					else {
+						rect.move(-1*speed, -1*speed);
+					}
 				}
 			}
 			else if (Down == true) {
@@ -96,7 +106,12 @@ public class _Movement extends GraphicsProgram {
 
 			else if (Right == false && Left == false && Down == false){
 				System.out.println("Up");
-				oval.move(0,speed*-1);
+				if (player == "Player 1") {
+					oval.move(0,speed*-1);
+				}
+				else {
+					rect.move(0, speed*-1);
+				}
 			}
 		}
 		else if (Down == true) {
@@ -109,7 +124,12 @@ public class _Movement extends GraphicsProgram {
 				}
 				else {
 					System.out.println("Bottom Right");
-					oval.move(speed, speed);
+					if (player == "Player 1") {
+						oval.move(speed, speed);
+					}
+					else {
+						rect.move(speed, speed);
+					}
 				}
 			}
 			else if (Left == true) {
@@ -118,12 +138,22 @@ public class _Movement extends GraphicsProgram {
 				}
 				else {
 					System.out.println("Bottom Left");
-					oval.move(-1*speed, speed);
+					if (player == "Player 1") {
+						oval.move(-1*speed, speed);
+					}
+					else {
+						rect.move(-1*speed, speed);
+					}
 				}
 			}
 			else {
 				System.out.println("Down");
-				oval.move(0, speed);
+				if (player == "Player 1") {
+					oval.move(0,speed);
+				}
+				else {
+					rect.move(0, speed);
+				}
 			}
 		}
 		else if (Left == true) {
@@ -133,7 +163,12 @@ public class _Movement extends GraphicsProgram {
 				}
 				else {
 					System.out.println("Top Left");
-					oval.move(-1*speed, -1*speed);
+					if (player == "Player 1") {
+						oval.move(-1*speed, -1*speed);
+					}
+					else {
+						rect.move(-speed, -speed);
+					}
 				}
 			}
 			else if (Right == true) {
@@ -145,12 +180,22 @@ public class _Movement extends GraphicsProgram {
 				}
 				else {
 					System.out.println("Bottom Left");
-					oval.move(-1*speed, speed);
+					if (player == "Player 1") {
+						oval.move(-1*speed, speed);
+					}
+					else {
+						rect.move(-1*speed, speed);
+					}
 				}
 			}
 			else {
 				System.out.println("Left");
-				oval.move(-1*speed, 0);
+				if (player == "Player 1") {
+					oval.move(-1*speed, 0);
+				}
+				else {
+					rect.move(-1*speed, 0);
+				}
 			}
 		}
 		else if (Right == true) {
@@ -160,7 +205,12 @@ public class _Movement extends GraphicsProgram {
 				}
 				else {
 					System.out.println("Bottom Right");
-					oval.move(speed, speed);
+					if (player == "Player 1") {
+						oval.move(speed, speed);
+					}
+					else {
+						rect.move(speed, speed);
+					}
 				}
 			}
 			else if (Left == true) {
@@ -172,12 +222,22 @@ public class _Movement extends GraphicsProgram {
 				}
 				else {
 					System.out.println("Top Right");
-					oval.move(speed, -1*speed);
+					if (player == "Player 1") {
+						oval.move(speed, -1*speed);
+					}
+					else {
+						rect.move(speed, -speed);
+					}
 				}
 			}
 			else {
 				System.out.println("Right");
-				oval.move(speed, 0);
+				if (player == "Player 1") {
+					oval.move(speed, 0);
+				}
+				else {
+					rect.move(speed, 0);
+				}
 			}
 
 		}
@@ -216,7 +276,12 @@ public class _Movement extends GraphicsProgram {
 		}
 		if (Up == true && Left == false && Down == false && Right == false) {
 			System.out.println("Up");
-			oval.move(0, -1*speed);
+			if (player == "Player 1") {
+				oval.move(0, -1*speed);
+			}
+			else {
+				rect.move(0, -1*speed);
+			}
 		}
 		if (Up == false && Left == true && Down == false && Right == false) {
 			System.out.println("Left");
