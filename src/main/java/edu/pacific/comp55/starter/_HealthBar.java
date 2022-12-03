@@ -16,9 +16,9 @@ public class _HealthBar {
 	private GRect healthBarOutline;
 	private GLabel healthLabel;
 	private double HEALTHBAR_X;
-	private double HEALTHBAR_Y;
+	private double HEALTHBAR_Y = 50.0;
 	private double HEALTHBAR_WIDTH;
-	private double HEALTHBAR_HEIGHT;
+	private double HEALTHBAR_HEIGHT = 50.0;
 	private int originalHealth;
 	private final int HIT_POINTS = 10;
 	
@@ -61,16 +61,10 @@ public class _HealthBar {
 		mainScreen.add(healthLabel);
 	}
 	
-	/**
-	 * Makes and adds health bar to "level" screen
-	 * @param height <-- standard 50.0 pixel height; width is 4 times the pixel height
-	 * @param y <-- The "y - coordinate"
-	 */
-	private void addHealthBarOutline(double height, double y) {
-		HEALTHBAR_HEIGHT = height;
+	// Makes and adds health bar to "level" screen
+	private void addHealthBarOutline() {
 		HEALTHBAR_WIDTH = 4 * HEALTHBAR_HEIGHT; // width is 4x the height of the health bar
 		HEALTHBAR_X = (WINDOW_WIDTH - HEALTHBAR_WIDTH) - (WINDOW_WIDTH * .05); // 0.05 means 5% away from the screen's edge
-		HEALTHBAR_Y = y;
 		
 		// Adds health bar outline
 		healthBarOutline = new GRect(HEALTHBAR_X, HEALTHBAR_Y, HEALTHBAR_WIDTH, HEALTHBAR_HEIGHT);
@@ -102,7 +96,7 @@ public class _HealthBar {
 	
 	// Makes the "overall" health bar
 	public void makeHealthBar() {
-		addHealthBarOutline(50.0,50.0);
+		addHealthBarOutline();
 		addGreenBars();
 		addLabel();
 	}
