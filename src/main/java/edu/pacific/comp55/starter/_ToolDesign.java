@@ -13,8 +13,6 @@ import acm.util.RandomGenerator;
 
 public class _ToolDesign implements ActionListener{
 	
-	private static final String B_SOUND = "BulletSound.mp3";
-	private static final String AUDIO_FILE = "sounds";
 	private static final int E_HEIGHT = 50;
 	private static final int E_WIDTH = 50;
 	private _Ships balanced; 
@@ -22,6 +20,8 @@ public class _ToolDesign implements ActionListener{
 	private _Ships Speed;
 	private ArrayList<GImage> enemies;
 	private ArrayList<GRect> bullets; 
+	private _BattleShip battleShip1;
+	private _BattleShip battleShip2;
 	private RandomGenerator rgen; 
 	private Timer movement; 
 	private int moveDirector;
@@ -34,22 +34,19 @@ public class _ToolDesign implements ActionListener{
 	private String UFO2 = "UFO2.png";
 	private String UFO3 = "UFO3.png";
 	
-	public AudioPlayer a;
-	
-	public _ToolDesign (MainApplication app) {
+	public _ToolDesign (MainApplication app , _ShipType p1, _ShipType p2) {
 		mainScreen = app;
 		moveDirector = 1;
+		
+		battleShip1 = new _BattleShip(p1, app);
+		battleShip2 = new _BattleShip(p1, app);
+		
 	}
 	
 //	public void addHealthBar() {
 //		healthBar = new _HealthBar(mainScreen);
 //		healthBar.makeHealthBar();
 //	}
-	public void playSound() {
-		a = AudioPlayer.getInstance();
-		a.playSound(AUDIO_FILE, B_SOUND); 
-		
-	}
 	
 	public GImage makeEnemy2(double y ) {
 		GImage temp2 = new GImage("media/" + UFO2, y + 200, 150);
@@ -95,7 +92,6 @@ public class _ToolDesign implements ActionListener{
 		
 		for(GImage image: enemies) {
 			image.move(dx,0);
-			
 		}
 	}
 
@@ -110,6 +106,8 @@ public class _ToolDesign implements ActionListener{
 		rgen = RandomGenerator.getInstance(); 
 		enemies = new ArrayList<GImage>(); 
 		bullets = new ArrayList<GRect>(); 
+		battleShip1.showPlayer();
+		battleShip2.showPlayer();
 		movement = new Timer(50, this); 
 		movement.start(); 
 		
@@ -144,10 +142,13 @@ public class _ToolDesign implements ActionListener{
 	}
 	
 	public void addBullet() {
-		GRect b = makeBullet(rgen.nextInt(0,575), 0); 
+		if(enemies.size() < 1) {
+			return;
+		}
+		int enemyIndex = rgen.nextInt(0, enemies.size()-1);
+		GRect b = makeBullet(enemies.get(enemyIndex).getX(), enemies.get(enemyIndex).getY()); 
 		bullets.add(b); 
 		mainScreen.add(b); 
-		playSound(); 
 	}
 	public void moveAllBulletsOnce() {
 		for (GRect bullet: bullets) {
@@ -158,3 +159,4 @@ public class _ToolDesign implements ActionListener{
 	}
 	// come back to this and make another enemy type to add another line of enemie below the ones already made 
 }
+

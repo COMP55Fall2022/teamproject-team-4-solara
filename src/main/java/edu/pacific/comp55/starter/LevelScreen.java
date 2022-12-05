@@ -9,19 +9,20 @@ public class LevelScreen extends GraphicsPane {
 	private MainApplication program; // you will use program to get access to
 				// all of the GraphicsProgram calls
 	private GImage level; 
-	private _ToolDesign enemy;
+	private _ToolDesign engine;
 	private _HealthBar healthBar; 
 	private _Movement movement; 
 	private _Powerups powerups; 
-	private _Score score;
 	
 	
 
 	public LevelScreen(MainApplication app) {
 		this.program = app;
 		level = new GImage("media/Space Background.jpg", 0, 0);
-		enemy = new _ToolDesign(app);
-		score = new _Score(app);
+		engine = new _ToolDesign(app, _ShipType.SHIP_BALANCED, _ShipType.SHIP_TANK);
+		
+		// TODO: make sure health bar can display on the "game play" screen
+		// it appears behind the main menu screen
 		healthBar = new _HealthBar(app);
 		powerups = new _Powerups(app);
 		
@@ -32,11 +33,9 @@ public class LevelScreen extends GraphicsPane {
 	@Override
 	public void showContents() {
 		program.add(level);
-		score.addScoreLabel();
-		enemy.run();
+		engine.run();
 		healthBar.makeHealthBar();
-		powerups.run();
-		
+		powerups.run(); 
 	//	movement.run();
 	}
 
@@ -46,11 +45,13 @@ public class LevelScreen extends GraphicsPane {
 	}
 
 	
-	//@Override
-	/*public void mousePressed(MouseEvent e) {
+	@Override
+	public void mousePressed(MouseEvent e) {
 		GObject obj = program.getElementAt(e.getX(), e.getY());
-		if (obj == returnButton) {
-			program.switchToMenu();
-		} */
+		//if (obj == returnButton) {
+		//	program.switchToMenu();
+		//}
+		
+		System.out.println("OK");
 	}
-
+}
