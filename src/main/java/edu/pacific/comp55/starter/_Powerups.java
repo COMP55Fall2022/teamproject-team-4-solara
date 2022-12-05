@@ -100,7 +100,7 @@ public class _Powerups extends GraphicsProgram implements ActionListener {
 		//addMouseListeners();
 		//spawnTime();
 		counter = new GLabel("# of times called?", 0, 100);
-		add(counter);	
+		//levelScreen.add(counter);	
 		playSound("sounds", "X2Download.app - Sofia Reyes - 1, 2, 3 (feat. Jason Derulo & De La Ghetto) [Official Video] (320 kbps).mp3");
 		addPower();
 		spawnTime();
@@ -131,10 +131,10 @@ public class _Powerups extends GraphicsProgram implements ActionListener {
 	
 		if(isActive) {
 			isActive = false;
-			counter.setLabel("not active any more");
+			//counter.setLabel("not active any more");
 		} else {
 			removePower();
-			counter.setLabel("not available to grab");
+			//counter.setLabel("not available to grab");
 		
 	
 		}

@@ -13,6 +13,8 @@ import acm.util.RandomGenerator;
 
 public class _ToolDesign implements ActionListener{
 	
+	private static final String B_SOUND = "BulletSound.mp3";
+	private static final String AUDIO_FILE = "sounds";
 	private static final int E_HEIGHT = 50;
 	private static final int E_WIDTH = 50;
 	private _Ships balanced; 
@@ -32,6 +34,8 @@ public class _ToolDesign implements ActionListener{
 	private String UFO2 = "UFO2.png";
 	private String UFO3 = "UFO3.png";
 	
+	public AudioPlayer a;
+	
 	public _ToolDesign (MainApplication app) {
 		mainScreen = app;
 		moveDirector = 1;
@@ -41,6 +45,11 @@ public class _ToolDesign implements ActionListener{
 //		healthBar = new _HealthBar(mainScreen);
 //		healthBar.makeHealthBar();
 //	}
+	public void playSound() {
+		a = AudioPlayer.getInstance();
+		a.playSound(AUDIO_FILE, B_SOUND); 
+		
+	}
 	
 	public GImage makeEnemy2(double y ) {
 		GImage temp2 = new GImage("media/" + UFO2, y + 200, 150);
@@ -138,6 +147,7 @@ public class _ToolDesign implements ActionListener{
 		GRect b = makeBullet(rgen.nextInt(0,575), 0); 
 		bullets.add(b); 
 		mainScreen.add(b); 
+		playSound(); 
 	}
 	public void moveAllBulletsOnce() {
 		for (GRect bullet: bullets) {
