@@ -13,6 +13,7 @@ public class LevelScreen extends GraphicsPane {
 	private _HealthBar healthBar; 
 	private _Movement movement; 
 	private _Powerups powerups; 
+	private _Score score;
 	
 	
 
@@ -20,12 +21,9 @@ public class LevelScreen extends GraphicsPane {
 		this.program = app;
 		level = new GImage("media/Space Background.jpg", 0, 0);
 		enemy = new _ToolDesign(app);
-		
-		// TODO: make sure health bar can display on the "game play" screen
-		// it appears behind the main menu screen
+		score = new _Score(app);
 		healthBar = new _HealthBar(app);
 		powerups = new _Powerups(app);
-		
 		
 		//movement = new _Movement(app);
 		
@@ -34,9 +32,11 @@ public class LevelScreen extends GraphicsPane {
 	@Override
 	public void showContents() {
 		program.add(level);
+		score.addScoreLabel();
 		enemy.run();
 		healthBar.makeHealthBar();
-		powerups.run(); 
+		powerups.run();
+		
 	//	movement.run();
 	}
 

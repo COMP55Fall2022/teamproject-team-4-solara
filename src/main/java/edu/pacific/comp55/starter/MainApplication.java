@@ -12,8 +12,6 @@ public class MainApplication extends GraphicsApplication {
 	private MenuPane menu;
 	private ChoosePlaneScreen choosePlane; 
 	
-	private int count;
-	
 	public void init() {
 		setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
 	}
@@ -30,7 +28,6 @@ public class MainApplication extends GraphicsApplication {
 
 	public void switchToMenu() {
 		playMenuSound();
-		count++;
 		switchToScreen(menu);
 	}
 
