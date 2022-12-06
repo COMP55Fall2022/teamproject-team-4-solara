@@ -1,11 +1,13 @@
 package edu.pacific.comp55.starter;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.*;
 
 import java.util.ArrayList;
 
 import acm.graphics.GImage;
 
-public class _BattleShip extends _Ships {
+public class _BattleShip extends _Ships implements KeyListener {
 	
 	private int health; 
 	private int damage; 
@@ -13,6 +15,7 @@ public class _BattleShip extends _Ships {
 	private _ShipType type; 
 	private GImage player;
 	private MainApplication screen;
+	
 	
 	public _BattleShip(_ShipType type, MainApplication app) {
 		super(type, 0, 0, 0);
@@ -57,6 +60,14 @@ public class _BattleShip extends _Ships {
 	public void showPlayer() {
 		System.out.println("player was added");
 		screen.add(player);
+		
+	}
+	
+	public void keyPressed(KeyEvent e) {
+		if(e.getKeyCode() == KeyEvent.VK_D) {
+			System.out.println("right");
+			player.move(0,10);
+		}
 	}
 	
 	//private _BattleShip b = new _BattleShip(type, health, damage, isSpeed);
@@ -84,5 +95,18 @@ public class _BattleShip extends _Ships {
 	public String toString() {
 		return ("Vehicle info" + "\n -----------" + "\nType of ship: " + this.type + "\nhealth of vehicle: " + this.health + "\ndamage of vehicle: " + this.damage
 				+ "\nspeed level: " + this.isSpeed);
+	}
+
+	@Override
+	public void keyTyped(KeyEvent e) {
+			
+		
+		
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 }

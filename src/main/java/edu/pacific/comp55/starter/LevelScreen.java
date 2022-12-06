@@ -1,5 +1,6 @@
 package edu.pacific.comp55.starter;
 import java.awt.Color;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 
 import acm.graphics.GImage;
@@ -13,18 +14,21 @@ public class LevelScreen extends GraphicsPane {
 	private _HealthBar healthBar; 
 	private _Movement movement; 
 	private _Powerups powerups; 
+	//private _BattleShip ship; 
 	
 	
-
 	public LevelScreen(MainApplication app) {
 		this.program = app;
 		level = new GImage("media/Space Background.jpg", 0, 0);
 		engine = new _ToolDesign(app, _ShipType.SHIP_BALANCED, _ShipType.SHIP_TANK);
+	//	ship = new _BattleShip(_ShipType.SHIP_BALANCED, app);
 		
 		// TODO: make sure health bar can display on the "game play" screen
 		// it appears behind the main menu screen
 		healthBar = new _HealthBar(app);
 		powerups = new _Powerups(app);
+	
+		
 		
 		//movement = new _Movement(app);
 		
@@ -36,12 +40,20 @@ public class LevelScreen extends GraphicsPane {
 		engine.run();
 		healthBar.makeHealthBar();
 		powerups.run(); 
+
 	//	movement.run();
+		
+		
 	}
 
 	@Override
 	public void hideContents() {
 		program.remove(level);	
+	}
+	
+	public void keyPressed(KeyEvent e) {
+		
+		
 	}
 
 	
