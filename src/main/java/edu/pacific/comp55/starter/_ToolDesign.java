@@ -3,6 +3,7 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 import javax.swing.Timer;
@@ -12,13 +13,10 @@ import acm.program.GraphicsProgram;
 import acm.util.RandomGenerator;
 
 
-public class _ToolDesign implements ActionListener{
+public class _ToolDesign implements ActionListener {
 	
 	private static final int E_HEIGHT = 50;
 	private static final int E_WIDTH = 50;
-	private _Ships balanced; 
-	private _Ships tank; 
-	private _Ships Speed;
 	private ArrayList<GImage> enemies;
 	private ArrayList<GRect> bullets; 
 	private _BattleShip battleShip1;
@@ -28,9 +26,8 @@ public class _ToolDesign implements ActionListener{
 	private int moveDirector;
 	private int numTimes; 
 	private MainApplication mainScreen;
-	private GObject bulletCheck;
+	private _Bullet bulletObj;
 	
-	private _HealthBar healthBar;
 	private String UFO1 = "UFO1.png";
 	private String UFO2 = "UFO2.png";
 	private String UFO3 = "UFO3.png";
@@ -43,11 +40,6 @@ public class _ToolDesign implements ActionListener{
 		battleShip2 = new _BattleShip(p1, app);
 		
 	}
-	
-//	public void addHealthBar() {
-//		healthBar = new _HealthBar(mainScreen);
-//		healthBar.makeHealthBar();
-//	}
 	
 	public GImage makeEnemy2(double y ) {
 		GImage temp2 = new GImage("media/" + UFO2, y + 200, 150);
@@ -109,19 +101,19 @@ public class _ToolDesign implements ActionListener{
 		bullets = new ArrayList<GRect>(); 
 		battleShip1.showPlayer();
 		battleShip2.showPlayer();
-		movement = new Timer(50, this); 
+		movement = new Timer(50, this);
 		movement.start(); 
 		
 		
 	}
 	
-	
 	public void actionPerformed(ActionEvent e) {
-		numTimes += -1; 
+		numTimes += -1;
 		if(numTimes % 100 == 0) {
-			addAnEnemy(); 
+			addAnEnemy();
 			addBullet();
 		}
+		
 		if(numTimes % 50 == 0 ) {
 			addAnEnemy2();
 			addBullet();
@@ -131,16 +123,19 @@ public class _ToolDesign implements ActionListener{
 			addAnEnemy3();
 			addBullet();
 		}
-		moveAllEnemiesOnce(); 
+		
+		moveAllEnemiesOnce();
 		moveAllBulletsOnce();
+		
+		
 	}
 	
 	public GRect makeBullet(double x, double y) {
 		
-		GRect bull = new GRect (x + E_WIDTH, y + E_HEIGHT, 5, 10); 
-		bull.setColor(Color.RED); 
-		bull.setFilled(true);
-		return bull; 
+		GRect tempBullet = new GRect (x + E_WIDTH, y + E_HEIGHT, 5, 10); 
+		tempBullet.setColor(Color.RED); 
+		tempBullet.setFilled(true);
+		return tempBullet; 
 		
 	}
 	

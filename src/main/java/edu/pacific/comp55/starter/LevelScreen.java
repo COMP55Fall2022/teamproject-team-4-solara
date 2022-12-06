@@ -6,17 +6,17 @@ import java.awt.event.MouseEvent;
 
 import acm.graphics.GImage;
 import acm.graphics.GObject;
+import acm.graphics.GRect;
 
-public class LevelScreen extends GraphicsPane implements ActionListener {
-	private MainApplication program; // you will use program to get access to
-				// all of the GraphicsProgram calls
+public class LevelScreen extends GraphicsPane {
+	// "program" to get access to all of the GraphicsProgram calls
+	private MainApplication program;
 	private GImage level; 
 	private _ToolDesign engine;
 	private _HealthBar healthBar; 
 	private _Movement movement; 
 	private _Powerups powerups; 
 	private _Score score;
-	private _Bullet bullet;
 	int BULLET_SPAWN_Y = 1080 - 50; // PROGRAM_HEIGHT - 50
 	
 	public LevelScreen(MainApplication app) {
@@ -27,7 +27,6 @@ public class LevelScreen extends GraphicsPane implements ActionListener {
 		healthBar = new _HealthBar(app);
 		powerups = new _Powerups(app);
 		score = new _Score(app);
-		bullet = new _Bullet(app);
 		
 		//movement = new _Movement(app);
 		
@@ -38,7 +37,7 @@ public class LevelScreen extends GraphicsPane implements ActionListener {
 		program.add(level);
 		engine.run();
 		healthBar.makeHealthBar();
-		powerups.run(); 
+		powerups.run();
 		score.addScoreLabel();
 		
 	//	movement.run();
@@ -48,15 +47,14 @@ public class LevelScreen extends GraphicsPane implements ActionListener {
 	public void hideContents() {
 		program.remove(level);
 	}
-
+	
+	/*
 	@Override
 	public void mousePressed(MouseEvent e) {
-		bullet.newbullet(e.getX(), BULLET_SPAWN_Y);
+		GObject obj = program.getElementAt(e.getX(), e.getY());
+		if (obj == returnButton) {
+			program.switchToMenu();
+		} 
 	}
-	
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		bullet.shoot();
-		bullet.removeBullet();
+	*/
 	}
-}
