@@ -48,12 +48,7 @@ public class MainApplication extends GraphicsApplication {
 		mSound.playSound(MUSIC_FOLDER, SOUND_FILES[2]);
 		System.out.println("Sound plays!");
 	}
-	
-//	private void playRandomSound() {
-//		AudioPlayer audio = AudioPlayer.getInstance();
-//		audio.playSound(MUSIC_FOLDER, SOUND_FILES[count % SOUND_FILES.length]);
-//	}
-//	
+		
 	void playButtonSound() {
 		AudioPlayer bSound = AudioPlayer.getInstance();
 		bSound.playSound(MUSIC_FOLDER, SOUND_FILES[3]);
