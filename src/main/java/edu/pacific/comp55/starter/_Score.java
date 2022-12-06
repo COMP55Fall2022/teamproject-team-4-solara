@@ -12,7 +12,6 @@ public class _Score /* extends GraphicsProgram */{
 	private final double LABEL_Y = 50.0;
 	private int bonusPoints = 10;
 	
-	// TODO: figure out how to associate this class with the game
 	// TODO: figure out how to add it to the "level" screen
 	
 	public _Score(MainApplication mainScreen) {
