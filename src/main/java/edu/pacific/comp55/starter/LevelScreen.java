@@ -1,12 +1,13 @@
 package edu.pacific.comp55.starter;
 import java.awt.Color;
-import java.awt.event.KeyEvent;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 
 import acm.graphics.GImage;
 import acm.graphics.GObject;
 
-public class LevelScreen extends GraphicsPane {
+public class LevelScreen extends GraphicsPane implements ActionListener {
 	private MainApplication program; // you will use program to get access to
 				// all of the GraphicsProgram calls
 	private GImage level; 
@@ -14,21 +15,19 @@ public class LevelScreen extends GraphicsPane {
 	private _HealthBar healthBar; 
 	private _Movement movement; 
 	private _Powerups powerups; 
-	//private _BattleShip ship; 
-	
+	private _Score score;
+	private _Bullet bullet;
+	int BULLET_SPAWN_Y = 1080 - 50; // PROGRAM_HEIGHT - 50
 	
 	public LevelScreen(MainApplication app) {
 		this.program = app;
 		level = new GImage("media/Space Background.jpg", 0, 0);
 		engine = new _ToolDesign(app, _ShipType.SHIP_BALANCED, _ShipType.SHIP_TANK);
-	//	ship = new _BattleShip(_ShipType.SHIP_BALANCED, app);
 		
-		// TODO: make sure health bar can display on the "game play" screen
-		// it appears behind the main menu screen
 		healthBar = new _HealthBar(app);
 		powerups = new _Powerups(app);
-	
-		
+		score = new _Score(app);
+		bullet = new _Bullet(app);
 		
 		//movement = new _Movement(app);
 		
@@ -40,30 +39,24 @@ public class LevelScreen extends GraphicsPane {
 		engine.run();
 		healthBar.makeHealthBar();
 		powerups.run(); 
-
+		score.addScoreLabel();
+		
 	//	movement.run();
-		
-		
 	}
 
 	@Override
 	public void hideContents() {
-		program.remove(level);	
+		program.remove(level);
 	}
-	
-	
 
-	
 	@Override
 	public void mousePressed(MouseEvent e) {
-		GObject obj = program.getElementAt(e.getX(), e.getY());
-		//if (obj == returnButton) {
-		//	program.switchToMenu();
-		//}
-		
-		System.out.println("OK");
+		bullet.newbullet(e.getX(), BULLET_SPAWN_Y);
+	}
+	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		bullet.shoot();
+		bullet.removeBullet();
 	}
 }
-	
-	
-
