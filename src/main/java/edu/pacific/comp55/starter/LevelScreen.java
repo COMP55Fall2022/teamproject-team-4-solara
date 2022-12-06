@@ -51,10 +51,7 @@ public class LevelScreen extends GraphicsPane {
 		program.remove(level);	
 	}
 	
-	public void keyPressed(KeyEvent e) {
-		
-		
-	}
+	
 
 	
 	@Override
@@ -67,3 +64,6 @@ public class LevelScreen extends GraphicsPane {
 		System.out.println("OK");
 	}
 }
+	
+	
+
