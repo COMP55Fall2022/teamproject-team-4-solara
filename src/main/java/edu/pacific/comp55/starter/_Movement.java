@@ -1,326 +1,103 @@
 package edu.pacific.comp55.starter;
+import java.awt.Image;
+import java.awt.event.KeyEvent;
+import javax.swing.ImageIcon;
+
 import acm.graphics.*;
-import acm.program.*;
-import acm.util.*;
-import java.awt.*;
-import java.awt.event.*;
 
-public class _Movement extends GraphicsProgram {
+public class _Movement{
 
-	public static final int WINDOW_WIDTH = 800;
-	public static final int speed = 10;
-	public static final int WINDOW_HEIGHT = 600;
-	public static final int SHAPE_SIZE = 100;
-	public int lastX = 0;
-	public int lastY = 0;
-	public String player = "";
-	public boolean Up = false;
-	public boolean Down = false;
-	public boolean Right = false;
-	public boolean Left = false;
-	GOval oval = new GOval(100, 100, SHAPE_SIZE, SHAPE_SIZE);
-	GRect rect = new GRect(500, 500, SHAPE_SIZE, SHAPE_SIZE);
-	
-	private GObject toDrag;
+    private int dx;
+    private int dy;
+    private int x = 40;
+    private int y = 60;
+    private int w;
+    private int h;
+    private GImage image;
 
-	private MainApplication levelScreen;
+    public _Movement() {
 
-	
-	public void run() {
-		oval.setColor(Color.blue);
-		oval.setFilled(true);
-		add(oval);
-		
-		rect.setColor(Color.green);
-		rect.setFilled(true);
-		add(rect);
-		
-		addKeyListeners();
-	}
-	
-	@Override
-	public void mousePressed(MouseEvent e) {
-		lastX = e.getX();
-		lastY = e.getY();
+        loadImage();
+    }
 
-		toDrag = getElementAt(e.getX(), e.getY());
-		
-	}
-	
-	@Override
-	public void keyPressed (KeyEvent e) {    
-		int key = e.getKeyCode();
-		if (key == KeyEvent.VK_W || key == KeyEvent.VK_S || key == KeyEvent.VK_A || key == KeyEvent.VK_D) {
-			System.out.println("Player 1");
-			player = "Player 1";
-		}
-		else {
-			System.out.println("Player 2");
-			player = "Player 2";
-		}
-		if (key == KeyEvent.VK_UP || key == KeyEvent.VK_W) {
-			Up = true;
-		}
-		if (key == KeyEvent.VK_DOWN || key == KeyEvent.VK_S) {
-			Down = true;
-		}
-		if (key == KeyEvent.VK_LEFT || key == KeyEvent.VK_A) {
-			Left = true;
-		}
-		if (key == KeyEvent.VK_RIGHT || key == KeyEvent.VK_D) {
-			Right = true;
-		}
-		if (Up == true) {
+    private void loadImage() {
+        
+        image = new GImage("media/Tank plane.png");
+        
+        w = (int) image.getWidth();
+        h = (int) image.getHeight();
+    }
 
-			if (Right == true) {
-				if (Down == true || Left == true) {
-					System.out.println("HALT");
-				}
-				else {
-					System.out.println("Top Right");
-					if (player == "Player 1" ) {
-						oval.move(speed, speed*-1);
-					}
-					else {
-						rect.move(speed, speed*-1);
-					}
-				}
-			}
-			else if (Left == true) {
-				if (Down == true) {
-					System.out.println("HALT");
-				}
-				else {
-					System.out.println("Top Left");
-					if (player == "Player 1") {
-						oval.move(-1*speed, -1*speed);
-					}
-					else {
-						rect.move(-1*speed, -1*speed);
-					}
-				}
-			}
-			else if (Down == true) {
-				System.out.println("HALT");
-			}
+    public void move() {
+        
+        x += dx;
+        y += dy;
+    }
 
-			else if (Right == false && Left == false && Down == false){
-				System.out.println("Up");
-				if (player == "Player 1") {
-					oval.move(0,speed*-1);
-				}
-				else {
-					rect.move(0, speed*-1);
-				}
-			}
-		}
-		else if (Down == true) {
-			if (Up == true) {
-				System.out.println("HALT");
-			}
-			else if (Right == true) {
-				if (Up == true || Left == true) {
-					System.out.println("HALT");
-				}
-				else {
-					System.out.println("Bottom Right");
-					if (player == "Player 1") {
-						oval.move(speed, speed);
-					}
-					else {
-						rect.move(speed, speed);
-					}
-				}
-			}
-			else if (Left == true) {
-				if (Right == true) {
-					System.out.println("HALT");
-				}
-				else {
-					System.out.println("Bottom Left");
-					if (player == "Player 1") {
-						oval.move(-1*speed, speed);
-					}
-					else {
-						rect.move(-1*speed, speed);
-					}
-				}
-			}
-			else {
-				System.out.println("Down");
-				if (player == "Player 1") {
-					oval.move(0,speed);
-				}
-				else {
-					rect.move(0, speed);
-				}
-			}
-		}
-		else if (Left == true) {
-			if (Up == true) {
-				if (Down == true) {
-					System.out.println("HALT");
-				}
-				else {
-					System.out.println("Top Left");
-					if (player == "Player 1") {
-						oval.move(-1*speed, -1*speed);
-					}
-					else {
-						rect.move(-speed, -speed);
-					}
-				}
-			}
-			else if (Right == true) {
-				System.out.println("HALT");
-			}
-			else if (Down == true) {
-				if (Left == true) {
-					System.out.println("HALT");
-				}
-				else {
-					System.out.println("Bottom Left");
-					if (player == "Player 1") {
-						oval.move(-1*speed, speed);
-					}
-					else {
-						rect.move(-1*speed, speed);
-					}
-				}
-			}
-			else {
-				System.out.println("Left");
-				if (player == "Player 1") {
-					oval.move(-1*speed, 0);
-				}
-				else {
-					rect.move(-1*speed, 0);
-				}
-			}
-		}
-		else if (Right == true) {
-			if (Down == true) {
-				if (Left == true) {
-					System.out.println("HALT");
-				}
-				else {
-					System.out.println("Bottom Right");
-					if (player == "Player 1") {
-						oval.move(speed, speed);
-					}
-					else {
-						rect.move(speed, speed);
-					}
-				}
-			}
-			else if (Left == true) {
-				System.out.println("HALT");
-			}
-			else if (Up == true) {
-				if (Left == true || Down == true) {
-					System.out.println("HALT");
-				}
-				else {
-					System.out.println("Top Right");
-					if (player == "Player 1") {
-						oval.move(speed, -1*speed);
-					}
-					else {
-						rect.move(speed, -speed);
-					}
-				}
-			}
-			else {
-				System.out.println("Right");
-				if (player == "Player 1") {
-					oval.move(speed, 0);
-				}
-				else {
-					rect.move(speed, 0);
-				}
-			}
+    public int getX() {
+        
+        return x;
+    }
 
-		}
-		else {
-			System.out.println(player);
-			System.out.println("HALT");
-		}
-	}
+    public int getY() {
+        
+        return y;
+    }
+    
+    public int getWidth() {
+        
+        return w;
+    }
+    
+    public int getHeight() {
+        
+        return h;
+    }    
 
-	public void keyReleased (KeyEvent e) {
-		int key = e.getKeyCode();
-		if (key == KeyEvent.VK_W || key == KeyEvent.VK_S || key == KeyEvent.VK_A || key == KeyEvent.VK_D) {
-			player = "Player 1";
-			System.out.println(player);
+    public GImage getImage() {
+        
+        return image;
+    }
 
-		}
-		else {
-			player = "Player 2";
-			System.out.println(player);
+    public void keyPressed(KeyEvent e) {
 
-		}
-		if (key == KeyEvent.VK_UP || key == KeyEvent.VK_W) {
-			Up = false;
-		}
-		if (key == KeyEvent.VK_DOWN || key == KeyEvent.VK_S) {
-			Down = false;
-		}
-		if (key == KeyEvent.VK_LEFT || key == KeyEvent.VK_A) {
-			Left = false;
-		}
-		if (key == KeyEvent.VK_RIGHT || key == KeyEvent.VK_D) {
-			Right = false;
-		}    
-		if (Up == false && Left == false && Down == false && Right == false) {
-			System.out.println("Halt");
-		}
-		if (Up == true && Left == false && Down == false && Right == false) {
-			System.out.println("Up");
-			if (player == "Player 1") {
-				oval.move(0, -1*speed);
-			}
-			else {
-				rect.move(0, -1*speed);
-			}
-		}
-		if (Up == false && Left == true && Down == false && Right == false) {
-			System.out.println("Left");
-			oval.move(-1*speed, 0);
-			System.out.println("YOOOOOOO");
-		}
-		if (Up == false && Left == false && Down == true && Right == false) {
-			System.out.println("Down");
-			oval.move(0, speed);
-		}
-		if (Up == false && Left == false && Down == false && Right == true) {
-			System.out.println("Right");
-			oval.move(speed, 0);
-		}
-		if (Up == true && Left == false && Down == false && Right == true) {
-			System.out.println("Top Right");
-			oval.move(speed, -1*speed);
-		}
-		if (Up == false && Left == false && Down == true && Right == true) {
-			System.out.println("Bottom Right");
-			oval.move(speed, speed);
-		}
-		if (Up == true && Left == true && Down == false && Right == false) {
-			System.out.println("Top Left");
-			oval.move(-1*speed, -1*speed);
-		}
-		if (Up == false && Left == true && Down == true && Right == false) {
-			System.out.println("Botton Left");
-			oval.move(-1*speed, speed);
-		}
-		}	
-	public void init() {
-		setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
-		requestFocus();
-	}
-	
-	public static void main(String[] args) {
-		new _Movement().start();
-	}
+        int key = e.getKeyCode();
 
+        if (key == KeyEvent.VK_LEFT) {
+            dx = -2;
+        }
+
+        if (key == KeyEvent.VK_RIGHT) {
+            dx = 2;
+        }
+
+        if (key == KeyEvent.VK_UP) {
+            dy = -2;
+        }
+
+        if (key == KeyEvent.VK_DOWN) {
+            dy = 2;
+        }
+    }
+
+    public void keyReleased(KeyEvent e) {
+        
+        int key = e.getKeyCode();
+
+        if (key == KeyEvent.VK_LEFT) {
+            dx = 0;
+        }
+
+        if (key == KeyEvent.VK_RIGHT) {
+            dx = 0;
+        }
+
+        if (key == KeyEvent.VK_UP) {
+            dy = 0;
+        }
+
+        if (key == KeyEvent.VK_DOWN) {
+            dy = 0;
+        }
+    }
 }
-

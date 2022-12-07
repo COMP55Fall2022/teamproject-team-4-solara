@@ -2,6 +2,7 @@ package edu.pacific.comp55.starter;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 
 import acm.graphics.GImage;
@@ -27,11 +28,15 @@ public class LevelScreen extends GraphicsPane {
 		healthBar = new _HealthBar(app);
 		powerups = new _Powerups(app);
 		score = new _Score(app);
-		
 		//movement = new _Movement(app);
 		
 		}
 
+	@Override
+	public void keyPressed(KeyEvent e) {
+
+	}
+	
 	@Override
 	public void showContents() {
 		program.add(level);

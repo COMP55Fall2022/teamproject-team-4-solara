@@ -37,7 +37,7 @@ public class _ToolDesign implements ActionListener {
 		moveDirector = 1;
 		
 		battleShip1 = new _BattleShip(p1, app);
-		battleShip2 = new _BattleShip(p1, app);
+		battleShip2 = new _BattleShip(p2, app);
 		
 	}
 	
@@ -99,7 +99,7 @@ public class _ToolDesign implements ActionListener {
 		rgen = RandomGenerator.getInstance(); 
 		enemies = new ArrayList<GImage>(); 
 		bullets = new ArrayList<GRect>(); 
-		battleShip1.showPlayer();
+		//battleShip1.showPlayer();
 		battleShip2.showPlayer();
 		movement = new Timer(50, this);
 		movement.start(); 
@@ -155,6 +155,14 @@ public class _ToolDesign implements ActionListener {
 			// bulletCheck = getElementAt(bullet.getX() + (bullet.getWidth() + 1), bullet.getY() + (bullet.getHeight() / 2)); // check for bullet collision 
 		}
 	}
-	// come back to this and make another enemy type to add another line of enemie below the ones already made 
+	// come back to this and make another enemy type to add another line of enemy below the ones already made 
+
+	
+	public void keyPressed(KeyEvent e) {
+		battleShip1.keyPressed(e);
+	}
+	public void keyReleased(KeyEvent e) {
+		battleShip1.keyReleased(e);
+	}
 }
 
