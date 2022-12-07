@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import acm.graphics.GImage;
+import acm.graphics.GLabel;
 import acm.graphics.GObject;
 
 public class MenuPane extends GraphicsPane {
@@ -12,6 +13,7 @@ public class MenuPane extends GraphicsPane {
 	private GButton howToPlay; 
 	private GButton quit; 
 	private GImage MainMenu;
+	private GLabel title; 
 	private static int SCREEN_WIDTH = 1920;
 	private static int SCREEN_HEIGHT = 1080;
 
@@ -23,6 +25,10 @@ public class MenuPane extends GraphicsPane {
 		PlayGame = new GButton("Play Game", (SCREEN_WIDTH / 2) - 300, 355, 210, 50);
 		howToPlay = new GButton("How To Play", (SCREEN_WIDTH / 2) - 300, 420, 210, 50);
 		quit = new GButton ("QUIT", (SCREEN_WIDTH / 2) - 300, 480, 210, 50);
+		title = new GLabel("DOGFIGHT", 650, 150); 
+		title.setFont("Arial-bold-50");
+		
+		
 		
 		quit.setColor(Color.GREEN);
 		howToPlay.setColor(Color.GREEN);
@@ -39,6 +45,7 @@ public class MenuPane extends GraphicsPane {
 		program.add(PlayGame);
 		program.add(howToPlay);
 		program.add(quit);
+		program.add(title);
 	}
 
 	@Override
@@ -47,6 +54,7 @@ public class MenuPane extends GraphicsPane {
 		program.remove(PlayGame);
 		program.remove(howToPlay);
 		program.remove(quit);
+		program.remove(title);
 	}
 
 	@Override
