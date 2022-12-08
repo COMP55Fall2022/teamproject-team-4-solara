@@ -29,6 +29,9 @@ public class MainApplication extends GraphicsApplication {
 		playMenuSound();
 		switchToScreen(menu);
 	}
+	public void addQuitBox() {
+		menu.addQuitBox();
+	}
 
 	public void switchToHowToPlay() {
 	
@@ -55,11 +58,11 @@ public class MainApplication extends GraphicsApplication {
 	
 	@Override
 	public void keyPressed (KeyEvent e) { 
-		int key = e.getKeyCode();
-		if(key == KeyEvent.VK_ESCAPE) {
-			System.exit(0);
+		//int key = e.getKeyCode();
+		//if(key == KeyEvent.VK_ESCAPE) {
+		//	System.exit(0);
 		}
-	}
+	//}
 	
 	public static void main(String[] args) {
 		new MainApplication().start();
