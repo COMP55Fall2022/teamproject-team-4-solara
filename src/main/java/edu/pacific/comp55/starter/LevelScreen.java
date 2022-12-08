@@ -63,20 +63,21 @@ public class LevelScreen extends GraphicsPane implements ActionListener {
 	
 	public void mousePressed(MouseEvent e) {
 		bulletObj.newBullet(e.getX());
+		
+		GObject obj = program.getElementAt(e.getX(), e.getY());
+		if (obj == menu.yes) {
+			System.exit(0);
+		}
+		else if (obj == menu.no) {
+			menu.removeQuitBox();
+		}
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		bulletObj.shoot();
 		bulletObj.removeBullet();
-	}
-	@Override
-	public void keyPressed(KeyEvent e) {
-		int key = e.getKeyCode();
-		if(key == KeyEvent.VK_ESCAPE) {
-			program.addQuitBox();
 		}
-		
-	}
-	
 }
+	
+

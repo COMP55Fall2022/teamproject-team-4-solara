@@ -58,11 +58,12 @@ public class MainApplication extends GraphicsApplication {
 	
 	@Override
 	public void keyPressed (KeyEvent e) { 
-		//int key = e.getKeyCode();
-		//if(key == KeyEvent.VK_ESCAPE) {
-		//	System.exit(0);
+		int key = e.getKeyCode();
+		if(key == KeyEvent.VK_ESCAPE) {
+			menu.addQuitBox();
+			
 		}
-	//}
+	}
 	
 	public static void main(String[] args) {
 		new MainApplication().start();
