@@ -6,8 +6,10 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 
+import javax.management.monitor.GaugeMonitor;
 import javax.swing.Timer;
 
+import acm.graphics.G3DRect;
 import acm.graphics.GImage;
 import acm.graphics.GLabel;
 import acm.graphics.GObject;
@@ -31,6 +33,8 @@ public class MenuPane extends GraphicsPane implements ActionListener {
 	private boolean greenF = true;
 	private Color color; 
 	private int i; 
+	private GParagraph sure; 
+	private G3DRect rect;  
 
 	public MenuPane(MainApplication app) {
 		super();
@@ -40,11 +44,16 @@ public class MenuPane extends GraphicsPane implements ActionListener {
 		PlayGame = new GButton("Play Game", (SCREEN_WIDTH / 2) - 300, 355, 210, 50);
 		howToPlay = new GButton("How To Play", (SCREEN_WIDTH / 2) - 300, 420, 210, 50);
 		quit = new GButton ("QUIT", (SCREEN_WIDTH / 2) - 300, 480, 210, 50);
+		sure = new GParagraph ("Are you sure you'd \n like to quit?", 550, 300);
+		rect = new G3DRect(550,300,400,300);
 		
 		
-		
-		 
-		
+		rect.setColor(Color.WHITE) ;
+		rect.setFillColor(Color.GRAY);
+		rect.setFilled(true);
+		sure.setFont("Arial-bold-20");
+		sure.setColor(Color.WHITE);
+			
 		
 		
 		quit.setColor(Color.GREEN);
@@ -65,8 +74,12 @@ public class MenuPane extends GraphicsPane implements ActionListener {
 		program.add(howToPlay);
 		program.add(quit);
 		
-		title = new GLabel("DOGFIGHT", 650, 150); 
-		title.setFont("Arial-bold-50");
+		
+		
+		
+		title = new GLabel("DOGFIGHT", 525, 200); 
+		title.setFont("Impact-italic-125");
+		
 		program.add(title);
 		
 		Timer t = new Timer(25,this);
@@ -96,7 +109,9 @@ public class MenuPane extends GraphicsPane implements ActionListener {
 		}
 		else if (obj == quit) {
 			program.playButtonSound();
-			System.exit(0);
+			program.add(rect);
+			program.add(sure);
+			//System.exit(0);
 		}
 	}
 	@Override 
