@@ -31,6 +31,9 @@ public class _ToolDesign implements ActionListener {
 	private String UFO1 = "UFO1.png";
 	private String UFO2 = "UFO2.png";
 	private String UFO3 = "UFO3.png";
+	private AudioPlayer bullSound; 
+	private final String SOUND = "sounds";
+	private final String BULLETMP3 = "BulletSound.mp3";
 
 	public _ToolDesign(MainApplication app, _ShipType p1, _ShipType p2) {
 		mainScreen = app;
@@ -40,6 +43,10 @@ public class _ToolDesign implements ActionListener {
 		battleShip2 = new _BattleShip(p2, app);
 	}
 	
+	public void playSound () {
+		bullSound = AudioPlayer.getInstance();
+		bullSound.playSound(SOUND, BULLETMP3);
+	}
 
 	public void setBattleShip1(_ShipType t) {
 		battleShip1 = new _BattleShip(t, mainScreen);
@@ -126,14 +133,18 @@ public class _ToolDesign implements ActionListener {
 		if (numTimes % 100 == 0) {
 			addAnEnemy();
 			addBullet();
+			playSound();
 		}
 		if (numTimes % 50 == 0) {
 			addAnEnemy2();
 			addBullet();
+			playSound();
 		}
 		if (numTimes % 75 == 0) {
 			addAnEnemy3();
 			addBullet();
+			playSound();
+			
 		}
 
 		moveAllEnemiesOnce();
