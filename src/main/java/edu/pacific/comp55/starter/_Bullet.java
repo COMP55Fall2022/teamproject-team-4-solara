@@ -19,12 +19,14 @@ public class _Bullet /*extends GraphicsProgram implements ActionListener*/ {
 	Timer t;
 	MainApplication app;
 	
+
 	private AudioPlayer pSound; 
 	private final String SOUND = "sounds"; 
 	private final String BULLET = "BulletSound.mp3";
 	
 	
 	
+
 	public _Bullet(MainApplication app) {
 		this.app = app;
 		bullets = new ArrayList<GRect>();
@@ -87,8 +89,17 @@ public class _Bullet /*extends GraphicsProgram implements ActionListener*/ {
 	public void shoot() {
 		for (GRect bullet : bullets) {
 			bullet.move(0, SPEED);
-			
+
+			/*
+			GObject tempObj = getElementAt(bullet.getX() + bullet.getWidth() + 1, bullet.getY() + (bullet.getHeight() / 2));
+			if (tempObj instanceof GImage) {
+				app.remove();
+				bullets.remove();
+			}
+			*/
+
 		}
+		
 	}
 	
 

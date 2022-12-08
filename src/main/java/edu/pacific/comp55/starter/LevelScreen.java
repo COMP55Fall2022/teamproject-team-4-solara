@@ -10,6 +10,7 @@ import acm.graphics.GObject;
 import acm.graphics.GRect;
 import javax.swing.*;
 
+
 public class LevelScreen extends GraphicsPane implements ActionListener {
 	// "program" to get access to all of the GraphicsProgram calls
 	private MainApplication program;
@@ -19,9 +20,14 @@ public class LevelScreen extends GraphicsPane implements ActionListener {
 	private _Movement movement; 
 	private _Powerups powerups; 
 	private _Score score;
+
 	private AudioPlayer pSound; 
 	private final String SOUND = "sounds"; 
 	private final String BULLET = "BulletSound.mp3";
+
+	
+	private GObject bulletCheck;
+
 
 	private ChoosePlaneScreen p;
 	private _ShipType p1;
@@ -33,7 +39,7 @@ public class LevelScreen extends GraphicsPane implements ActionListener {
 
 	
 	public LevelScreen(MainApplication app) {
-//		p = new ChoosePlaneScreen(app);
+		//p = new ChoosePlaneScreen(app);
 		this.program = app;
 		level = new GImage("media/Space Background.jpg", 0, 0);
 		engine = new _ToolDesign(app, _ShipType.SHIP_BALANCED, _ShipType.SHIP_BALANCED);
@@ -57,7 +63,6 @@ public class LevelScreen extends GraphicsPane implements ActionListener {
 		pSound.playSound(SOUND, BULLET);
 	}
 	
-	@Override
 	public void showContents() {
 		program.add(level);
 		engine.run();
@@ -70,7 +75,6 @@ public class LevelScreen extends GraphicsPane implements ActionListener {
 	//	movement.run();
 	}
 
-	@Override
 	public void actionPerformed(ActionEvent e) {
 		bulletObj.shoot();
 		
@@ -81,7 +85,6 @@ public class LevelScreen extends GraphicsPane implements ActionListener {
 		//playSound();
 	}
 	
-	@Override
 	public void hideContents() {
 		program.remove(level);
 	}
