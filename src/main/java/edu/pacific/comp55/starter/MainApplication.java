@@ -17,7 +17,6 @@ public class MainApplication extends GraphicsApplication {
 	}
 
 	public void run() {
-	    
 		howToPlay = new HowToPlayScreen(this);
 		menu = new MenuPane(this);
 		level = new LevelScreen(this);

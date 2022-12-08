@@ -9,7 +9,7 @@ import acm.graphics.GImage;
 import acm.graphics.GObject;
 import acm.graphics.GRect;
 
-public class LevelScreen extends GraphicsPane {
+public class LevelScreen extends GraphicsPane implements ActionListener {
 	// "program" to get access to all of the GraphicsProgram calls
 	private MainApplication program;
 	private GImage level; 
@@ -18,7 +18,7 @@ public class LevelScreen extends GraphicsPane {
 	private _Movement movement; 
 	private _Powerups powerups; 
 	private _Score score;
-	int BULLET_SPAWN_Y = 1080 - 50; // PROGRAM_HEIGHT - 50
+	private _Bullet bulletObj;
 	
 	public LevelScreen(MainApplication app) {
 		this.program = app;
@@ -28,14 +28,18 @@ public class LevelScreen extends GraphicsPane {
 		healthBar = new _HealthBar(app);
 		powerups = new _Powerups(app);
 		score = new _Score(app);
+		bulletObj = new _Bullet(app);
+		
 		//movement = new _Movement(app);
 		
 		}
 
+	/*
 	@Override
 	public void keyPressed(KeyEvent e) {
 
 	}
+	*/
 	
 	@Override
 	public void showContents() {
@@ -53,13 +57,14 @@ public class LevelScreen extends GraphicsPane {
 		program.remove(level);
 	}
 	
-	/*
-	@Override
 	public void mousePressed(MouseEvent e) {
-		GObject obj = program.getElementAt(e.getX(), e.getY());
-		if (obj == returnButton) {
-			program.switchToMenu();
-		} 
+		bulletObj.newBullet(e.getX());
 	}
-	*/
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		bulletObj.shoot();
+		bulletObj.removeBullet();
 	}
+	
+}

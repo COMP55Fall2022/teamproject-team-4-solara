@@ -94,20 +94,22 @@ public class _ToolDesign implements ActionListener {
 		mainScreen.add(e); 
 	}
 
-	
 	public void run() {
+		
 		rgen = RandomGenerator.getInstance(); 
 		enemies = new ArrayList<GImage>(); 
 		bullets = new ArrayList<GRect>(); 
 		//battleShip1.showPlayer();
 		battleShip2.showPlayer();
 		movement = new Timer(50, this);
-		movement.start(); 
+		movement.start();
 		
 		
 	}
 	
+
 	public void actionPerformed(ActionEvent e) {
+		
 		numTimes += -1;
 		if(numTimes % 100 == 0) {
 			addAnEnemy();
@@ -123,6 +125,7 @@ public class _ToolDesign implements ActionListener {
 			addAnEnemy3();
 			addBullet();
 		}
+		
 		
 		moveAllEnemiesOnce();
 		moveAllBulletsOnce();
@@ -157,6 +160,9 @@ public class _ToolDesign implements ActionListener {
 	}
 	// come back to this and make another enemy type to add another line of enemy below the ones already made 
 
+	
+	
+	
 	
 	public void keyPressed(KeyEvent e) {
 		battleShip1.keyPressed(e);
