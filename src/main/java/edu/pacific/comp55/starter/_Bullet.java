@@ -16,9 +16,10 @@ public class _Bullet /*extends GraphicsProgram implements ActionListener*/ {
 	public static final int SPEED = -2;
 	public static final int BULLET_SPAWN_Y = PROGRAM_HEIGHT - 50;
 	private ArrayList<GRect> bullets;
+	private ArrayList<GImage> enemy;
 	Timer t;
 	MainApplication app;
-	
+	private _ToolDesign tool; 
 
 	private AudioPlayer pSound; 
 	private final String SOUND = "sounds"; 
@@ -30,6 +31,7 @@ public class _Bullet /*extends GraphicsProgram implements ActionListener*/ {
 	public _Bullet(MainApplication app) {
 		this.app = app;
 		bullets = new ArrayList<GRect>();
+		
 	}
 	
 	
@@ -87,9 +89,24 @@ public class _Bullet /*extends GraphicsProgram implements ActionListener*/ {
 	}
 
 	public void shoot() {
+		
+	//ArrayList<GImage> allE = tool.getEnemies();
+		
 		for (GRect bullet : bullets) {
 			bullet.move(0, SPEED);
 
+		/*	GRectangle r1 = bullet.getBounds();
+			
+			for( GImage e : allE) {
+				
+				GRectangle r2 = e.getBounds();
+				
+				if(r1.intersects(r2)) {
+					app.remove(e);
+				}*/
+				
+				
+			}
 			/*
 			GObject tempObj = getElementAt(bullet.getX() + bullet.getWidth() + 1, bullet.getY() + (bullet.getHeight() / 2));
 			if (tempObj instanceof GImage) {
@@ -115,4 +132,4 @@ public class _Bullet /*extends GraphicsProgram implements ActionListener*/ {
 	}
 	*/
 	
-}
+

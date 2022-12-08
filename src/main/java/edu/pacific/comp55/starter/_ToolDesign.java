@@ -41,6 +41,8 @@ public class _ToolDesign implements ActionListener {
 
 		battleShip1 = new _BattleShip(p1, app);
 		battleShip2 = new _BattleShip(p2, app);
+		
+		 
 	}
 	
 	public void playSound () {
@@ -189,4 +191,11 @@ public class _ToolDesign implements ActionListener {
 	public void keyReleased(KeyEvent e) {
 		battleShip1.keyReleased(e);
 	}
+
+	public ArrayList<GImage> getEnemies() {
+		
+		return enemies;
+	}
+
+	
 }
