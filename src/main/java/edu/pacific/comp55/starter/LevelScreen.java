@@ -19,6 +19,9 @@ public class LevelScreen extends GraphicsPane implements ActionListener {
 	private _Movement movement; 
 	private _Powerups powerups; 
 	private _Score score;
+	private AudioPlayer pSound; 
+	private final String SOUND = "sounds"; 
+	private final String BULLET = "BulletSound.mp3";
 
 	private ChoosePlaneScreen p;
 	private _ShipType p1;
@@ -49,6 +52,10 @@ public class LevelScreen extends GraphicsPane implements ActionListener {
 		engine.setBattleShip2(t2);
 	}
 
+	public void playSound() {
+		pSound = AudioPlayer.getInstance();
+		pSound.playSound(SOUND, BULLET);
+	}
 	
 	@Override
 	public void showContents() {
@@ -66,10 +73,12 @@ public class LevelScreen extends GraphicsPane implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		bulletObj.shoot();
+		
 		bulletObj.removeBullet();
 	}
 	public void mousePressed(MouseEvent e) {
 		bulletObj.newBullet(e.getX());
+		//playSound();
 	}
 	
 	@Override

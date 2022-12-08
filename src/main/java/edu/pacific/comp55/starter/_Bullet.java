@@ -19,6 +19,11 @@ public class _Bullet /*extends GraphicsProgram implements ActionListener*/ {
 	Timer t;
 	MainApplication app;
 	
+	private AudioPlayer pSound; 
+	private final String SOUND = "sounds"; 
+	private final String BULLET = "BulletSound.mp3";
+	
+	
 	
 	public _Bullet(MainApplication app) {
 		this.app = app;
@@ -40,8 +45,14 @@ public class _Bullet /*extends GraphicsProgram implements ActionListener*/ {
 	}
 	*/
 	
+	public void playSound() {
+		pSound = AudioPlayer.getInstance();
+		pSound.playSound(SOUND, BULLET);
+	}
 	public void mousePressed(MouseEvent e) {
+		
 		newBullet(e.getX());
+		
 	}
 	
 	
@@ -58,6 +69,7 @@ public class _Bullet /*extends GraphicsProgram implements ActionListener*/ {
 		GRect bullet = makeBullet(x, BULLET_SPAWN_Y);
 		bullets.add(bullet); // adds to ArrayList
 		app.add(bullet);	 // adds to "screen"
+		playSound();
 	}
 
 
@@ -75,6 +87,7 @@ public class _Bullet /*extends GraphicsProgram implements ActionListener*/ {
 	public void shoot() {
 		for (GRect bullet : bullets) {
 			bullet.move(0, SPEED);
+			
 		}
 	}
 	
