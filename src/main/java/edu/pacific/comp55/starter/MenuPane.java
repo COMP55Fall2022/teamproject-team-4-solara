@@ -97,9 +97,21 @@ public class MenuPane extends GraphicsPane implements ActionListener {
 		t.start();
 		
 	}
+	
 	public void addQuitBox () {
-		
+		program.add(rect);
+		program.add(sure);
+		program.add(yes);
+		program.add(no);
 	}
+	
+	public void removeQuitBox() {
+		program.remove(yes);
+		program.remove(sure);
+		program.remove(no);
+		program.remove(rect);
+	}
+	
 	@Override
 	public void hideContents() {
 		program.remove(MainMenu);
@@ -122,21 +134,16 @@ public class MenuPane extends GraphicsPane implements ActionListener {
 		}
 		else if (obj == quit) {
 			program.playButtonSound();
-			program.add(rect);
-			program.add(sure);
-			program.add(yes);
-			program.add(no);
+			addQuitBox();
 			
 		}
 		else if (obj == yes) {
+			program.playButtonSound();
 			System.exit(0);
 		}
 		 else if (obj == no) {
 			program.playButtonSound();
-			program.remove(yes);
-			program.remove(sure);
-			program.remove(no);
-			program.remove(rect);
+			removeQuitBox();
 			}
 			
 		}
