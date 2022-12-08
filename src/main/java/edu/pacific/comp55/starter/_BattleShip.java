@@ -20,7 +20,7 @@ public class _BattleShip extends _Ships implements KeyListener {
 	public _BattleShip(_ShipType type, MainApplication app) {
 		super(type, 0, 0, 0);
 		int xBorder = 300;
-		int yBorder = 300;
+		int yBorder = 400;
 		this.type = type; 
 		this.screen = app;
 		double x = 0;
