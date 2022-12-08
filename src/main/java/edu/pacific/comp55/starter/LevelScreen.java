@@ -18,20 +18,27 @@ public class LevelScreen extends GraphicsPane {
 	private _Movement movement; 
 	private _Powerups powerups; 
 	private _Score score;
+	private ChoosePlaneScreen p;
+	private _ShipType p1;
+	private _ShipType p2;
 	int BULLET_SPAWN_Y = 1080 - 50; // PROGRAM_HEIGHT - 50
 	
 	public LevelScreen(MainApplication app) {
+//		p = new ChoosePlaneScreen(app);
 		this.program = app;
 		level = new GImage("media/Space Background.jpg", 0, 0);
-		engine = new _ToolDesign(app, _ShipType.SHIP_BALANCED, _ShipType.SHIP_TANK);
-		
+		engine = new _ToolDesign(app, _ShipType.SHIP_BALANCED, _ShipType.SHIP_BALANCED);
 		healthBar = new _HealthBar(app);
 		powerups = new _Powerups(app);
 		score = new _Score(app);
 		//movement = new _Movement(app);
-		
 		}
 
+	
+	void setPLayersType(_ShipType t1, _ShipType t2) {
+		engine.setBattleShip1(t1);
+		engine.setBattleShip2(t2);
+	}
 	@Override
 	public void keyPressed(KeyEvent e) {
 

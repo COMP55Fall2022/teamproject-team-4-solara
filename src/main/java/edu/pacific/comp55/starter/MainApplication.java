@@ -25,6 +25,10 @@ public class MainApplication extends GraphicsApplication {
 		setupInteractions();
 		switchToMenu();
 	}
+	
+	public void setPlayerType(_ShipType p1, _ShipType p2) {
+		level.setPLayersType(p1, p2);
+	}
 
 	public void switchToMenu() {
 		playMenuSound();
