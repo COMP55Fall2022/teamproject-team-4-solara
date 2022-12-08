@@ -19,9 +19,12 @@ public class _Bullet /*extends GraphicsProgram implements ActionListener*/ {
 	Timer t;
 	MainApplication app;
 	
+	
 	public _Bullet(MainApplication app) {
 		this.app = app;
+		bullets = new ArrayList<GRect>();
 	}
+	
 	
 	/*
 	public void init() {
@@ -37,14 +40,12 @@ public class _Bullet /*extends GraphicsProgram implements ActionListener*/ {
 	}
 	*/
 	
-	/*
 	public void mousePressed(MouseEvent e) {
-		newbullet(e.getX());
+		newBullet(e.getX());
 	}
-	*/
 	
 	
-	private GRect makebullet(double x, double y) {
+	private GRect makeBullet(double x, double y) {
 		GRect temp = new GRect(x - BULLET_WIDTH / 2, y, BULLET_WIDTH, BULLET_LENGTH);
 		temp.setColor(Color.CYAN);
 		temp.setFillColor(Color.magenta);
@@ -53,14 +54,15 @@ public class _Bullet /*extends GraphicsProgram implements ActionListener*/ {
 		return temp;
 	}
 	
-	public void newbullet(double x) {
-		GRect bullet = makebullet(x, BULLET_SPAWN_Y);
+	public void newBullet(double x) {
+		GRect bullet = makeBullet(x, BULLET_SPAWN_Y);
 		bullets.add(bullet); // adds to ArrayList
 		app.add(bullet);	 // adds to "screen"
 	}
 
 
 	public void removeBullet() {
+		
 		for (GRect bullet : bullets) {
 			if (bullet.getY() < 0) {
 				app.remove(bullet);
@@ -75,6 +77,7 @@ public class _Bullet /*extends GraphicsProgram implements ActionListener*/ {
 			bullet.move(0, SPEED);
 		}
 	}
+	
 
 	/*
 	@Override
@@ -87,4 +90,5 @@ public class _Bullet /*extends GraphicsProgram implements ActionListener*/ {
 		new _Bullet().start();
 	}
 	*/
+	
 }

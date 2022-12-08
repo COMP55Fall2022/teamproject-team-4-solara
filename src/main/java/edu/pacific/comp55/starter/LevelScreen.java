@@ -8,8 +8,9 @@ import java.awt.event.MouseEvent;
 import acm.graphics.GImage;
 import acm.graphics.GObject;
 import acm.graphics.GRect;
+import javax.swing.*;
 
-public class LevelScreen extends GraphicsPane {
+public class LevelScreen extends GraphicsPane implements ActionListener {
 	// "program" to get access to all of the GraphicsProgram calls
 	private MainApplication program;
 	private GImage level; 
@@ -18,10 +19,15 @@ public class LevelScreen extends GraphicsPane {
 	private _Movement movement; 
 	private _Powerups powerups; 
 	private _Score score;
+
 	private ChoosePlaneScreen p;
 	private _ShipType p1;
 	private _ShipType p2;
 	int BULLET_SPAWN_Y = 1080 - 50; // PROGRAM_HEIGHT - 50
+
+	private _Bullet bulletObj;
+	private Timer t;
+
 	
 	public LevelScreen(MainApplication app) {
 //		p = new ChoosePlaneScreen(app);
@@ -31,18 +37,18 @@ public class LevelScreen extends GraphicsPane {
 		healthBar = new _HealthBar(app);
 		powerups = new _Powerups(app);
 		score = new _Score(app);
+		bulletObj = new _Bullet(app);
+		
 		//movement = new _Movement(app);
 		}
+
 
 	
 	void setPLayersType(_ShipType t1, _ShipType t2) {
 		engine.setBattleShip1(t1);
 		engine.setBattleShip2(t2);
 	}
-	@Override
-	public void keyPressed(KeyEvent e) {
 
-	}
 	
 	@Override
 	public void showContents() {
@@ -52,21 +58,25 @@ public class LevelScreen extends GraphicsPane {
 		powerups.run();
 		score.addScoreLabel();
 		
+		t = new Timer(1, this);
+		t.start();
 	//	movement.run();
 	}
 
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		bulletObj.shoot();
+		bulletObj.removeBullet();
+	}
+	public void mousePressed(MouseEvent e) {
+		bulletObj.newBullet(e.getX());
+	}
+	
 	@Override
 	public void hideContents() {
 		program.remove(level);
 	}
 	
-	/*
-	@Override
-	public void mousePressed(MouseEvent e) {
-		GObject obj = program.getElementAt(e.getX(), e.getY());
-		if (obj == returnButton) {
-			program.switchToMenu();
-		} 
-	}
-	*/
-	}
+
+	
+}

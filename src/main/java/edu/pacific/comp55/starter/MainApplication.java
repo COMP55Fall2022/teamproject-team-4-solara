@@ -17,7 +17,6 @@ public class MainApplication extends GraphicsApplication {
 	}
 
 	public void run() {
-	    
 		howToPlay = new HowToPlayScreen(this);
 		menu = new MenuPane(this);
 		level = new LevelScreen(this);
@@ -33,6 +32,9 @@ public class MainApplication extends GraphicsApplication {
 	public void switchToMenu() {
 		playMenuSound();
 		switchToScreen(menu);
+	}
+	public void addQuitBox() {
+		menu.addQuitBox();
 	}
 
 	public void switchToHowToPlay() {
@@ -62,7 +64,8 @@ public class MainApplication extends GraphicsApplication {
 	public void keyPressed (KeyEvent e) { 
 		int key = e.getKeyCode();
 		if(key == KeyEvent.VK_ESCAPE) {
-			System.exit(0);
+			menu.addQuitBox();
+			
 		}
 	}
 	
