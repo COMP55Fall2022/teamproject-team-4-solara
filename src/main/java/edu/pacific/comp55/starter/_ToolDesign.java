@@ -26,8 +26,7 @@ public class _ToolDesign implements ActionListener {
 	private int moveDirector;
 	private int numTimes;
 	private MainApplication mainScreen;
-	private _Bullet bulletObj;
-
+//	private _Bullet bulletObj;
 	private String UFO1 = "UFO1.png";
 	private String UFO2 = "UFO2.png";
 	private String UFO3 = "UFO3.png";
@@ -41,8 +40,6 @@ public class _ToolDesign implements ActionListener {
 
 		battleShip1 = new _BattleShip(p1, app);
 		battleShip2 = new _BattleShip(p2, app);
-		
-		 
 	}
 	
 	public void playSound () {
@@ -106,8 +103,8 @@ public class _ToolDesign implements ActionListener {
 		if (moveDirector < -50)
 			moveDirector = 1;
 
-		for (GImage image : enemies) {
-			image.move(dx, 0);
+		for (GImage enemy : enemies) {
+			enemy.move(dx, 0);
 		}
 	}
 
