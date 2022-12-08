@@ -19,6 +19,7 @@ public class LevelScreen extends GraphicsPane implements ActionListener {
 	private _Powerups powerups; 
 	private _Score score;
 	private _Bullet bulletObj;
+	private MenuPane menu; 
 	
 	public LevelScreen(MainApplication app) {
 		this.program = app;
@@ -29,6 +30,9 @@ public class LevelScreen extends GraphicsPane implements ActionListener {
 		powerups = new _Powerups(app);
 		score = new _Score(app);
 		bulletObj = new _Bullet(app);
+		menu = new MenuPane(app);
+		
+		
 		
 		//movement = new _Movement(app);
 		
@@ -65,6 +69,14 @@ public class LevelScreen extends GraphicsPane implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		bulletObj.shoot();
 		bulletObj.removeBullet();
+	}
+	@Override
+	public void keyPressed(KeyEvent e) {
+		int key = e.getKeyCode();
+		if(key == KeyEvent.VK_ESCAPE) {
+			program.addQuitBox();
+		}
+		
 	}
 	
 }

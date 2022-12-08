@@ -35,10 +35,10 @@ public class MenuPane extends GraphicsPane implements ActionListener {
 	private boolean greenF = true;
 	private Color color; 
 	private int i; 
-	private GParagraph sure; 
-	private G3DRect rect;  
-	private GButton yes; 
-	private GButton no; 
+	public GParagraph sure; 
+	public G3DRect rect;  
+	public GButton yes; 
+	public GButton no; 
 
 	public MenuPane(MainApplication app) {
 		super();
