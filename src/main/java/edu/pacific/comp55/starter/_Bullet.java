@@ -17,8 +17,8 @@ public class _Bullet implements Shape /*extends GraphicsProgram implements Actio
 	public static final int BULLET_LENGTH = 25;
 	public static final int BULLET_WIDTH = 3;
 	public static final int MS = 1;
-	public static final int SPEED = -2;
-	public static final int BULLET_SPAWN_Y = PROGRAM_HEIGHT - 50;
+	public static final int SPEED = -5;
+	public static final int BULLET_SPAWN_Y = PROGRAM_HEIGHT - 40;
 	private ArrayList<GRect> bullets;
 	private ArrayList<GImage> enemy;
 	Timer t;
@@ -30,12 +30,9 @@ public class _Bullet implements Shape /*extends GraphicsProgram implements Actio
 	private final String BULLET = "BulletSound.mp3";
 	
 	
-	
-
 	public _Bullet(MainApplication app) {
 		this.app = app;
 		bullets = new ArrayList<GRect>();
-		
 	}
 	
 	
@@ -58,11 +55,8 @@ public class _Bullet implements Shape /*extends GraphicsProgram implements Actio
 		pSound.playSound(SOUND, BULLET);
 	}
 	public void mousePressed(MouseEvent e) {
-		
-		newBullet(e.getX());
-		
-	}
-	
+		newBullet(e.getX(), e.getY());
+	}	
 	
 	private GRect makeBullet(double x, double y) {
 		GRect temp = new GRect(x - BULLET_WIDTH / 2, y, BULLET_WIDTH, BULLET_LENGTH);
@@ -73,8 +67,8 @@ public class _Bullet implements Shape /*extends GraphicsProgram implements Actio
 		return temp;
 	}
 	
-	public void newBullet(double x) {
-		GRect bullet = makeBullet(x, BULLET_SPAWN_Y);
+	public void newBullet(double x, double y) {
+		GRect bullet = makeBullet(x, y);
 		bullets.add(bullet); // adds to ArrayList
 		app.add(bullet);	 // adds to "screen"
 		playSound();
@@ -82,7 +76,6 @@ public class _Bullet implements Shape /*extends GraphicsProgram implements Actio
 
 
 	public void removeBullet() {
-		
 		for (GRect bullet : bullets) {
 			if (bullet.getY() < 0) {
 				app.remove(bullet);
@@ -91,14 +84,13 @@ public class _Bullet implements Shape /*extends GraphicsProgram implements Actio
 			}
 		}
 	}
-
+	
 	public void shoot() {
 		// ArrayList<GImage> allE = tool.getEnemies();
 		boolean isPresent = false;
 		
 		for (GRect bullet : bullets) {
 			bullet.move(0, SPEED);
-			
 			if (bullet.contains(bullet.getX() + bullet.getWidth() + 1, bullet.getY() + (bullet.getHeight() / 2))) {
 				tool.removeEnemy();
 			}
