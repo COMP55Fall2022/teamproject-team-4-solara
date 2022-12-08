@@ -22,6 +22,7 @@ public class _Bullet /*extends GraphicsProgram implements ActionListener*/ {
 	
 	public _Bullet(MainApplication app) {
 		this.app = app;
+		bullets = new ArrayList<GRect>();
 	}
 	
 	
@@ -33,13 +34,11 @@ public class _Bullet /*extends GraphicsProgram implements ActionListener*/ {
 
 	public void run() {
 		bullets = new ArrayList<GRect>();
-		newBullet(100.0);
 		addMouseListeners();
 		t = new Timer(MS, this);
 		t.start();
 	}
 	*/
-	
 	
 	public void mousePressed(MouseEvent e) {
 		newBullet(e.getX());
@@ -91,4 +90,5 @@ public class _Bullet /*extends GraphicsProgram implements ActionListener*/ {
 		new _Bullet().start();
 	}
 	*/
+	
 }

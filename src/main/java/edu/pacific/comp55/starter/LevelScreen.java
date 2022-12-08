@@ -8,6 +8,7 @@ import java.awt.event.MouseEvent;
 import acm.graphics.GImage;
 import acm.graphics.GObject;
 import acm.graphics.GRect;
+import javax.swing.*;
 
 public class LevelScreen extends GraphicsPane implements ActionListener {
 	// "program" to get access to all of the GraphicsProgram calls
@@ -19,6 +20,7 @@ public class LevelScreen extends GraphicsPane implements ActionListener {
 	private _Powerups powerups; 
 	private _Score score;
 	private _Bullet bulletObj;
+	private Timer t;
 	
 	public LevelScreen(MainApplication app) {
 		this.program = app;
@@ -49,16 +51,9 @@ public class LevelScreen extends GraphicsPane implements ActionListener {
 		powerups.run();
 		score.addScoreLabel();
 		
+		t = new Timer(1, this);
+		t.start();
 	//	movement.run();
-	}
-
-	@Override
-	public void hideContents() {
-		program.remove(level);
-	}
-	
-	public void mousePressed(MouseEvent e) {
-		bulletObj.newBullet(e.getX());
 	}
 
 	@Override
@@ -66,5 +61,15 @@ public class LevelScreen extends GraphicsPane implements ActionListener {
 		bulletObj.shoot();
 		bulletObj.removeBullet();
 	}
+	public void mousePressed(MouseEvent e) {
+		bulletObj.newBullet(e.getX());
+	}
+	
+	@Override
+	public void hideContents() {
+		program.remove(level);
+	}
+	
+
 	
 }
