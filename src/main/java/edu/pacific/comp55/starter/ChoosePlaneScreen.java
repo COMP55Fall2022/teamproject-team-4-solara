@@ -1,10 +1,12 @@
 package edu.pacific.comp55.starter;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 import acm.graphics.GImage;
+import acm.graphics.GLabel;
 import acm.graphics.GObject;
 
 public class ChoosePlaneScreen extends GraphicsPane {
@@ -19,6 +21,7 @@ public class ChoosePlaneScreen extends GraphicsPane {
 	private ArrayList<_ShipType> shipList = new ArrayList<_ShipType>(0);
 	private _ShipType player1;
 	private _ShipType player2;
+	private GLabel noSelect;
 
 	public ChoosePlaneScreen(MainApplication app) {
 		this.program = app;
@@ -65,6 +68,8 @@ public class ChoosePlaneScreen extends GraphicsPane {
 
 	@Override
 	public void mousePressed(MouseEvent e) {
+		player1 = null;
+		player2 = null;
 		GObject obj = program.getElementAt(e.getX(), e.getY());
 		if (obj == enterGame) {
 			program.playButtonSound();
@@ -73,40 +78,94 @@ public class ChoosePlaneScreen extends GraphicsPane {
 			program.playButtonSound();
 			program.switchToMenu();
 		}
-		if (obj == speedPlane) {
+
+		if (shipList.size() > 2) {
+			noSelect = new GLabel("You can't select more ships!!!", 500, 500);
+			noSelect.setColor(Color.white);
+			
+			return;
+		} else if (obj == speedPlane) {
 			program.playButtonSound();
-			System.out.println("player 1 is the speed ship");
-//			if(shipList.at(0) != null) {
-//				player1 = _ShipType.SHIP_SPEED;
-//				shipList.add(_ShipType.SHIP_SPEED);
-//			}
-//			else if(shipList.at(1) != null) {
-//				player2 = _ShipType.SHIP_SPEED;
-//				shipList.add(_ShipType.SHIP_SPEED);
-//				
-//			}
+			if (shipList.size() == 0) {
+				setPlayer1(_ShipType.SHIP_SPEED);
+				shipList.add(player1);
+				System.out.println("player 1 is " + player1);
+			} else if (shipList.size() == 1) {
+				setPlayer2(_ShipType.SHIP_SPEED);
+				shipList.add(player2);
+				System.out.println("player 2 is " + player2);
+			}
+
 		} else if (obj == tankPlane) {
 			program.playButtonSound();
-			shipList.add(_ShipType.SHIP_TANK);
-			System.out.println("player is the tank ship");
-			player1 = _ShipType.SHIP_TANK;
+			if (shipList.size() == 0) {
+				setPlayer1(_ShipType.SHIP_TANK);
+				shipList.add(player1);
+				System.out.println("player 1 is " + player1);
+			} else if (shipList.size() == 1) {
+				setPlayer2(_ShipType.SHIP_TANK);
+				shipList.add(player2);
+				System.out.println("player 2 is " + player2);
+			}
+
 		} else if (obj == balancedPlane) {
 			program.playButtonSound();
-			shipList.add(_ShipType.SHIP_BALANCED);
-			System.out.println("player 1 is the balanced ship");
-			player1 = _ShipType.SHIP_BALANCED;
+			if (shipList.size() == 0) {
+				setPlayer1(_ShipType.SHIP_BALANCED);
+				shipList.add(player1);
+				System.out.println("player 1 is " + player1);
+			} else if (shipList.size() == 1) {
+				setPlayer2(_ShipType.SHIP_BALANCED);
+				shipList.add(player2);
+				System.out.println("player 2 is " + player2);
+			}
 		}
-		System.out.println(shipList);
-		System.out.println(player1);
-		System.out.println(player2);
+
+		System.out.println("The array contains: " + shipList);
+	}
+
+	public void setPlayer1(_ShipType type) {
+		player1 = type;
+	}
+
+	public void setPlayer2(_ShipType type) {
+		player2 = type;
 	}
 
 	public _ShipType getPlayer1() {
+		player1 = shipList.get(0);
+		System.out.println("player 1 is " + player1);
 		return player1;
 	}
 
 	public _ShipType getPlayer2() {
+		player2 = shipList.get(1);
+		System.out.println("player 2 is " + player2);
 		return player2;
 	}
 
+//	if (obj == speedPlane) {
+//	program.playButtonSound();
+////	System.out.println("player 1 is the speed ship");
+//	if (shipList.get(0) != null) {
+//		player1 = _ShipType.SHIP_SPEED;
+//		shipList.add(_ShipType.SHIP_SPEED);
+//	} else if (shipList.get(1) != null) {
+//		player2 = _ShipType.SHIP_SPEED;
+//		shipList.add(_ShipType.SHIP_SPEED);
+//	}
+//} else if (obj == tankPlane) {
+//	program.playButtonSound();
+//	shipList.add(_ShipType.SHIP_TANK);
+////	System.out.println("player is the tank ship");
+//	player1 = _ShipType.SHIP_TANK;
+//} else if (obj == balancedPlane) {
+//	program.playButtonSound();
+//	shipList.add(_ShipType.SHIP_BALANCED);
+////	System.out.println("player 1 is the balanced ship");
+//	player1 = _ShipType.SHIP_BALANCED;
+//}
+//System.out.println(shipList);
+//getPlayer1();
+//getPlayer2();
 }
