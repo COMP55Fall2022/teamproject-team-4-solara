@@ -82,6 +82,7 @@ public class ChoosePlaneScreen extends GraphicsPane {
 		if (shipList.size() > 2) {
 			noSelect = new GLabel("You can't select more ships!!!", 500, 500);
 			noSelect.setColor(Color.white);
+			
 			return;
 		} else if (obj == speedPlane) {
 			program.playButtonSound();
