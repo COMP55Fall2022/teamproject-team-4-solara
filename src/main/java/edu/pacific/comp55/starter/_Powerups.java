@@ -36,12 +36,7 @@ public class _Powerups extends GraphicsProgram implements ActionListener {
 		spawnTime();
 		playSound(AUDIO_FOLDER,"X2Download.app - Sofia Reyes - 1, 2, 3 (feat. Jason Derulo & De La Ghetto) [Official Video] (320 kbps).mp3" );
 	}
-	
-	public void init() {
-		setSize(800, 600);
-		requestFocus();
-	}	
-	
+		
 	private void setSpawnPoint(double x, double y) {
 		spawnX = x;
 		spawnY = y;
