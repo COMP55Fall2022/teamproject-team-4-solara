@@ -49,7 +49,7 @@ public class LevelScreen extends GraphicsPane implements ActionListener {
 		bulletObj = new _Bullet(app);
 		
 		//movement = new _Movement(app);
-		}
+	}
 
 
 	
@@ -69,15 +69,15 @@ public class LevelScreen extends GraphicsPane implements ActionListener {
 		healthBar.makeHealthBar();
 		powerups.run();
 		score.addScoreLabel();
-		
+		// Timer to allow bullets to move
 		t = new Timer(1, this);
 		t.start();
 	//	movement.run();
 	}
 
+	// for when player gives input (when clicking to shoot)
 	public void actionPerformed(ActionEvent e) {
 		bulletObj.shoot();
-		
 		bulletObj.removeBullet();
 	}
 	public void mousePressed(MouseEvent e) {

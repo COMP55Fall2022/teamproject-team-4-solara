@@ -192,6 +192,9 @@ public class _ToolDesign implements ActionListener {
 		battleShip1.keyReleased(e);
 	}
 
+	public void removeEnemy() {
+		enemies.remove(0);
+	}
 	public ArrayList<GImage> getEnemies() {
 		
 		return enemies;
