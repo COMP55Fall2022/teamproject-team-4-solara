@@ -16,6 +16,8 @@ import acm.graphics.GObject;
 
 
 public class MenuPane extends GraphicsPane implements ActionListener {
+	private static final int RECT_HEIGHT = 300;
+	private static final int RECT_WIDTH = 400;
 	private MainApplication program; // you will use program to get access to all of the GraphicsProgram calls
 	private GButton PlayGame;
 	private GButton howToPlay; 
@@ -35,6 +37,8 @@ public class MenuPane extends GraphicsPane implements ActionListener {
 	private int i; 
 	private GParagraph sure; 
 	private G3DRect rect;  
+	private GButton yes; 
+	private GButton no; 
 
 	public MenuPane(MainApplication app) {
 		super();
@@ -44,18 +48,25 @@ public class MenuPane extends GraphicsPane implements ActionListener {
 		PlayGame = new GButton("Play Game", (SCREEN_WIDTH / 2) - 300, 355, 210, 50);
 		howToPlay = new GButton("How To Play", (SCREEN_WIDTH / 2) - 300, 420, 210, 50);
 		quit = new GButton ("QUIT", (SCREEN_WIDTH / 2) - 300, 480, 210, 50);
-		sure = new GParagraph ("Are you sure you'd \n like to quit?", 550, 300);
-		rect = new G3DRect(550,300,400,300);
+		sure = new GParagraph ("Are you sure you'd\n         like to quit?", 580, 380);
+		rect = new G3DRect(550,300,RECT_WIDTH,RECT_HEIGHT);
+		yes = new GButton ("YES", RECT_WIDTH * 1.50, RECT_HEIGHT * 1.60, 100,50);
+		no = new GButton ("NO", RECT_WIDTH * 2, RECT_HEIGHT * 1.60, 100,50);
+		
+		
+		yes.setColor(Color.RED);
+		yes.setFillColor(Color.GRAY);
+		no.setColor(Color.GREEN);
+		no.setFillColor(Color.GRAY);
 		
 		
 		rect.setColor(Color.WHITE) ;
 		rect.setFillColor(Color.GRAY);
 		rect.setFilled(true);
-		sure.setFont("Arial-bold-20");
-		sure.setColor(Color.WHITE);
+		
+		sure.setFont("impact-bold-40");
+		sure.setColor(Color.CYAN);
 			
-		
-		
 		quit.setColor(Color.GREEN);
 		howToPlay.setColor(Color.GREEN);
 		PlayGame.setColor(Color.GREEN);
@@ -86,7 +97,9 @@ public class MenuPane extends GraphicsPane implements ActionListener {
 		t.start();
 		
 	}
-
+	public void addQuitBox () {
+		
+	}
 	@Override
 	public void hideContents() {
 		program.remove(MainMenu);
@@ -95,7 +108,7 @@ public class MenuPane extends GraphicsPane implements ActionListener {
 		program.remove(quit);
 		program.remove(title);
 	}
-
+	
 	@Override
 	public void mousePressed(MouseEvent e) {
 		GObject obj = program.getElementAt(e.getX(), e.getY());
@@ -111,9 +124,23 @@ public class MenuPane extends GraphicsPane implements ActionListener {
 			program.playButtonSound();
 			program.add(rect);
 			program.add(sure);
-			//System.exit(0);
+			program.add(yes);
+			program.add(no);
+			
 		}
-	}
+		else if (obj == yes) {
+			System.exit(0);
+		}
+		 else if (obj == no) {
+			program.playButtonSound();
+			program.remove(yes);
+			program.remove(sure);
+			program.remove(no);
+			program.remove(rect);
+			}
+			
+		}
+	
 	@Override 
 	public void actionPerformed (ActionEvent e){ 
 		
