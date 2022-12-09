@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 
+import acm.graphics.G3DRect;
 import acm.graphics.GImage;
 import acm.graphics.GObject;
 import acm.graphics.GRect;
@@ -27,6 +28,12 @@ public class LevelScreen extends GraphicsPane implements ActionListener {
 
 	
 	private GObject bulletCheck;
+	private MenuPane menu; 
+	
+	public GParagraph sureM; 
+	public G3DRect rect;  
+	public GButton yes; 
+	public GButton no; 
 
 
 	private ChoosePlaneScreen p;
@@ -36,6 +43,9 @@ public class LevelScreen extends GraphicsPane implements ActionListener {
 
 	private _Bullet bulletObj;
 	private Timer t;
+	
+	private int w; 
+	private int h; 
 
 	
 	public LevelScreen(MainApplication app) {
@@ -48,6 +58,23 @@ public class LevelScreen extends GraphicsPane implements ActionListener {
 		score = new _Score(app);
 		bulletObj = new _Bullet(app);
 		
+		w = menu.getRectWidth();
+		h = menu.getRectHeight();
+				
+		sureM = new GParagraph ("Are you sure you'd\n    like to return to \n   the main menu?", 580, 350);
+		rect = new G3DRect(550,300, w , h);
+		yes = new GButton ("YES", w * 1.50, h * 1.60, 100,50);
+		no = new GButton ("NO", w * 2, h * 1.60, 100,50);
+		
+		yes.setColor(Color.RED);
+		yes.setFillColor(Color.GRAY);
+		no.setColor(Color.GREEN);
+		no.setFillColor(Color.GRAY);
+		sureM.setFont("impact-bold-40");
+		sureM.setColor(Color.CYAN);
+		rect.setColor(Color.WHITE) ;
+		rect.setFillColor(Color.GRAY);
+		rect.setFilled(true);
 		//movement = new _Movement(app);
 		}
 
@@ -74,6 +101,29 @@ public class LevelScreen extends GraphicsPane implements ActionListener {
 		t.start();
 	//	movement.run();
 	}
+	
+	public void addReturnBox() {
+		program.add(rect);
+		program.add(sureM);
+		program.add(yes);
+		program.add(no);
+	}
+	
+	public void removeReturnBox() {
+		program.remove(rect);
+		program.remove(sureM);
+		program.remove(yes);
+		program.remove(no);
+	}
+	
+	@Override
+	public void keyPressed(KeyEvent e) {
+		int key = e.getKeyCode(); 
+		if ( key == KeyEvent.VK_ESCAPE) {
+			addReturnBox();
+			//bulletObj.t.stop();
+		}
+	}
 
 	public void actionPerformed(ActionEvent e) {
 		bulletObj.shoot();
@@ -82,9 +132,17 @@ public class LevelScreen extends GraphicsPane implements ActionListener {
 	}
 	public void mousePressed(MouseEvent e) {
 		bulletObj.newBullet(e.getX());
-		//playSound();
+		GObject obj = program.getElementAt(e.getX(), e.getY());
+		
+		if (obj == yes ){
+			System.exit(0);
+		}
+		else if ( obj == no ) {
+			removeReturnBox();	
+			}
 	}
-	
+		
+		
 	public void hideContents() {
 		program.remove(level);
 	}

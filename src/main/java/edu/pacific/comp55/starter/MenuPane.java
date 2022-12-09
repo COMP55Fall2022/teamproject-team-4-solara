@@ -49,9 +49,9 @@ public class MenuPane extends GraphicsPane implements ActionListener {
 		howToPlay = new GButton("How To Play", (SCREEN_WIDTH / 2) - 300, 420, 210, 50);
 		quit = new GButton ("QUIT", (SCREEN_WIDTH / 2) - 300, 480, 210, 50);
 		sure = new GParagraph ("Are you sure you'd\n         like to quit?", 580, 380);
-		rect = new G3DRect(550,300,RECT_WIDTH,RECT_HEIGHT);
-		yes = new GButton ("YES", RECT_WIDTH * 1.50, RECT_HEIGHT * 1.60, 100,50);
-		no = new GButton ("NO", RECT_WIDTH * 2, RECT_HEIGHT * 1.60, 100,50);
+		rect = new G3DRect(550,300,getRectWidth(),getRectHeight());
+		yes = new GButton ("YES", getRectWidth() * 1.50, getRectHeight() * 1.60, 100,50);
+		no = new GButton ("NO", getRectWidth() * 2, getRectHeight() * 1.60, 100,50);
 		
 		
 		yes.setColor(Color.RED);
@@ -202,6 +202,18 @@ public class MenuPane extends GraphicsPane implements ActionListener {
 		else {
 			--greenC;
 		}
+	}
+
+
+
+	public static int getRectWidth() {
+		return RECT_WIDTH;
+	}
+
+
+
+	public static int getRectHeight() {
+		return RECT_HEIGHT;
 	}
 	
 	
