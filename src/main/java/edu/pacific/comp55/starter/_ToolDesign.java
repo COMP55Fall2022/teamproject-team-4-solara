@@ -177,10 +177,17 @@ public class _ToolDesign implements ActionListener {
 	public void keyReleased(KeyEvent e) {
 		battleShip1.keyReleased(e);
 	}
-
-	public void removeEnemy() {
-		getEnemies().remove(0);
+	
+	/**
+	 * Created by Miguel
+	 * Function works to remove enemy object from screen and ArrayList
+	 * @param index : retrieves an index of specific enemy to delete
+	 */
+	public void removeEnemyAtIndex(int index) {
+		enemies.remove(index);
+		mainScreen.remove(enemies.get(index));
 	}
+
 	public ArrayList<GImage> getEnemies() {
 		
 		return enemies;

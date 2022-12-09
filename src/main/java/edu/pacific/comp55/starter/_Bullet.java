@@ -20,11 +20,10 @@ public class _Bullet implements Shape /*extends GraphicsProgram implements Actio
 	public static final int SPEED = -5;
 	public static final int BULLET_SPAWN_Y = PROGRAM_HEIGHT - 40;
 	private ArrayList<GRect> bullets;
-	private ArrayList<GImage> enemy;
+	private ArrayList<GImage> enemies;
 	Timer t;
 	MainApplication app;
 	private _ToolDesign tool; 
-	private int bullCheck; 
 	private AudioPlayer pSound; 
 	private final String SOUND = "sounds"; 
 	private final String BULLET = "BulletSound.mp3";
@@ -33,6 +32,8 @@ public class _Bullet implements Shape /*extends GraphicsProgram implements Actio
 	public _Bullet(MainApplication app) {
 		this.app = app;
 		bullets = new ArrayList<GRect>();
+		// TODO: says "null" when invoking this method
+		//enemies = tool.getEnemies();
 	}
 	
 	
@@ -85,26 +86,27 @@ public class _Bullet implements Shape /*extends GraphicsProgram implements Actio
 		}
 	}
 	
+	// TODO: work on collision detection; Having difficulty using the methods below to help me detect
+	// the presence of a GImage object.
 	public void shoot() {
 		// ArrayList<GImage> allE = tool.getEnemies();
-		boolean isPresent = false;
 		//tool.temp;
+		
 		for (GRect bullet : bullets) {
 			bullet.move(0, SPEED);
-		//	bullCheck = GetElementAt(bullet.getX() + (bullet.getWidth()+ 1, bullet.getY() + (bullet.getHeight() / 2));
-		//	( bullCheck instanceof GImage) {
-		//		tool.removeEnemy();
+			/*
+			int i = 0;
+			for (GImage enemy : enemies) {
+				GOval tempObj = new GOval(bullet.getX() + bullet.getWidth() + 1, bullet.getY() + (bullet.getHeight() / 2));
+				if (tempObj.contains(enemy)) {
+					tool.removeEnemyAtIndex(i);
+				}
+				++i;
 			}
-		/*	GRectangle r1 = bullet.gtBounds();
-			
-			for( GImage e : allE) {
-				
-				GRectangle r2 = e.getBounds();
-				
-				if(r1.intersects(r2)) {
-					app.remove(e);
-				}*/
-			}
+			*/
+		}
+		
+	}
 		
 
 
