@@ -24,7 +24,7 @@ public class _Bullet implements Shape /*extends GraphicsProgram implements Actio
 	Timer t;
 	MainApplication app;
 	private _ToolDesign tool; 
-
+	private int bullCheck; 
 	private AudioPlayer pSound; 
 	private final String SOUND = "sounds"; 
 	private final String BULLET = "BulletSound.mp3";
@@ -88,13 +88,14 @@ public class _Bullet implements Shape /*extends GraphicsProgram implements Actio
 	public void shoot() {
 		// ArrayList<GImage> allE = tool.getEnemies();
 		boolean isPresent = false;
-		
+		//tool.temp;
 		for (GRect bullet : bullets) {
 			bullet.move(0, SPEED);
-			if (bullet.contains(bullet.getX() + bullet.getWidth() + 1, bullet.getY() + (bullet.getHeight() / 2))) {
-				tool.removeEnemy();
+		//	bullCheck = GetElementAt(bullet.getX() + (bullet.getWidth()+ 1, bullet.getY() + (bullet.getHeight() / 2));
+		//	( bullCheck instanceof GImage) {
+		//		tool.removeEnemy();
 			}
-		/*	GRectangle r1 = bullet.getBounds();
+		/*	GRectangle r1 = bullet.gtBounds();
 			
 			for( GImage e : allE) {
 				
@@ -104,7 +105,7 @@ public class _Bullet implements Shape /*extends GraphicsProgram implements Actio
 					app.remove(e);
 				}*/
 			}
-		}
+		
 
 
 	/*

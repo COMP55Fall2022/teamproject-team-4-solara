@@ -34,6 +34,7 @@ public class _ToolDesign implements ActionListener {
 	private AudioPlayer bullSound; 
 	private final String SOUND = "sounds";
 	private final String BULLETMP3 = "BulletSound.mp3";
+	private GImage temp; 
 
 	public _ToolDesign(MainApplication app, _ShipType p1, _ShipType p2) {
 		mainScreen = app;
@@ -68,7 +69,7 @@ public class _ToolDesign implements ActionListener {
 
 	private void addAnEnemy2() {
 		GImage e2 = makeEnemy2(rgen.nextInt(0, 1000));
-		enemies.add(e2);
+		getEnemies().add(e2);
 		mainScreen.add(e2);
 	}
 
@@ -81,16 +82,16 @@ public class _ToolDesign implements ActionListener {
 
 	private void addAnEnemy3() {
 		GImage e3 = makeEnemy3(rgen.nextInt(0, 1000));
-		enemies.add(e3);
+		getEnemies().add(e3);
 		mainScreen.add(e3);
 
 	}
 
 	public GImage makeEnemy(double y) {
-		GImage temp = new GImage("media/" + UFO1, y + 200, 50);
+		 setTemp(new GImage("media/" + UFO1, y + 200, 50));
 		// temp.setColor(Color.GREEN);
 		// temp.setFilled(true);
-		return temp;
+		return getTemp();
 	}
 
 	private void moveAllEnemiesOnce() {
@@ -100,20 +101,20 @@ public class _ToolDesign implements ActionListener {
 			moveDirector = -1;
 		if (moveDirector < -50)
 			moveDirector = 1;
-		for (GImage image : enemies) {
+		for (GImage image : getEnemies()) {
 			image.move(dx, 0);
 		}
 	}
 
 	private void addAnEnemy() {
 		GImage e = makeEnemy(rgen.nextInt(0, 1000));
-		enemies.add(e);
+		getEnemies().add(e);
 		mainScreen.add(e);
 	}
 
 	public void run() {
 		rgen = RandomGenerator.getInstance(); 
-		enemies = new ArrayList<GImage>(); 
+		setEnemies(new ArrayList<GImage>()); 
 		bullets = new ArrayList<GRect>(); 
 		battleShip1.showPlayer();
 		battleShip2.showPlayer();
@@ -150,11 +151,11 @@ public class _ToolDesign implements ActionListener {
 	}
 
 	public void addBullet() {
-		if (enemies.size() < 1) {
+		if (getEnemies().size() < 1) {
 			return;
 		}
-		int enemyIndex = rgen.nextInt(0, enemies.size() - 1);
-		GRect b = makeBullet(enemies.get(enemyIndex).getX(), enemies.get(enemyIndex).getY());
+		int enemyIndex = rgen.nextInt(0, getEnemies().size() - 1);
+		GRect b = makeBullet(getEnemies().get(enemyIndex).getX(), getEnemies().get(enemyIndex).getY());
 		bullets.add(b);
 		mainScreen.add(b);
 	}
@@ -178,11 +179,23 @@ public class _ToolDesign implements ActionListener {
 	}
 
 	public void removeEnemy() {
-		enemies.remove(0);
+		getEnemies().remove(0);
 	}
 	public ArrayList<GImage> getEnemies() {
 		
 		return enemies;
+	}
+
+	public void setEnemies(ArrayList<GImage> enemies) {
+		this.enemies = enemies;
+	}
+
+	public GImage getTemp() {
+		return temp;
+	}
+
+	public void setTemp(GImage temp) {
+		this.temp = temp;
 	}
 
 	
