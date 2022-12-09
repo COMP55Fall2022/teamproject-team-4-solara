@@ -21,13 +21,11 @@ public class LevelScreen extends GraphicsPane implements ActionListener {
 	private _Movement movement; 
 	private _Powerups powerups; 
 	private _Score score;
-
 	private AudioPlayer pSound; 
 	private final String SOUND = "sounds"; 
 	private final String BULLET = "BulletSound.mp3";
-
-	
 	private GObject bulletCheck;
+
 	private MenuPane menu; 
 	
 	public GParagraph sureM; 
@@ -40,12 +38,13 @@ public class LevelScreen extends GraphicsPane implements ActionListener {
 	private _ShipType p1;
 	private _ShipType p2;
 	int BULLET_SPAWN_Y = 1080 - 50; // PROGRAM_HEIGHT - 50
-
 	private _Bullet bulletObj;
 	private Timer t;
+
 	
 	private int w; 
 	private int h; 
+
 
 	
 	public LevelScreen(MainApplication app) {
@@ -56,6 +55,7 @@ public class LevelScreen extends GraphicsPane implements ActionListener {
 		healthBar = new _HealthBar(app);
 		powerups = new _Powerups(app);
 		score = new _Score(app);
+
 		bulletObj = new _Bullet(app);
 		
 		w = menu.getRectWidth();
@@ -75,10 +75,11 @@ public class LevelScreen extends GraphicsPane implements ActionListener {
 		rect.setColor(Color.WHITE) ;
 		rect.setFillColor(Color.GRAY);
 		rect.setFilled(true);
+
+		bulletObj = new _Bullet(app);		
+
 		//movement = new _Movement(app);
-		}
-
-
+	}
 	
 	void setPLayersType(_ShipType t1, _ShipType t2) {
 		engine.setBattleShip1(t1);
@@ -96,7 +97,7 @@ public class LevelScreen extends GraphicsPane implements ActionListener {
 		healthBar.makeHealthBar();
 		powerups.run();
 		score.addScoreLabel();
-		
+		// Timer to allow bullets to move
 		t = new Timer(1, this);
 		t.start();
 	//	movement.run();
@@ -125,13 +126,20 @@ public class LevelScreen extends GraphicsPane implements ActionListener {
 		}
 	}
 
+	public void bulletCollision() {
+		
+	}
+	// for when player gives input (when clicking to shoot)
 	public void actionPerformed(ActionEvent e) {
 		bulletObj.shoot();
-		
 		bulletObj.removeBullet();
+//		if() {
+//			
+//		}
 	}
 	public void mousePressed(MouseEvent e) {
-		bulletObj.newBullet(e.getX());
+
+		
 		GObject obj = program.getElementAt(e.getX(), e.getY());
 		
 		if (obj == yes ){
@@ -140,6 +148,10 @@ public class LevelScreen extends GraphicsPane implements ActionListener {
 		else if ( obj == no ) {
 			removeReturnBox();	
 			}
+
+	//	bulletObj.newBullet(e.getX(), e.getY());
+		//playSound();
+
 	}
 		
 		

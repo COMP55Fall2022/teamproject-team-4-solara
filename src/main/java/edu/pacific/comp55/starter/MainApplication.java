@@ -34,7 +34,7 @@ public class MainApplication extends GraphicsApplication {
 	public void switchToMenu() {
 		playMenuSound();
 		switchToScreen(menu);
-	}
+	} 
 	public void addQuitBox() {
 		menu.addQuitBox();
 	}

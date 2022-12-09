@@ -38,11 +38,8 @@ public class _ToolDesign implements ActionListener {
 	public _ToolDesign(MainApplication app, _ShipType p1, _ShipType p2) {
 		mainScreen = app;
 		moveDirector = 1;
-
 		battleShip1 = new _BattleShip(p1, app);
-		battleShip2 = new _BattleShip(p2, app);
-		
-		 
+		battleShip2 = new _BattleShip(p2, app);	 
 	}
 	
 	public void playSound () {
@@ -67,7 +64,6 @@ public class _ToolDesign implements ActionListener {
 		// temp2.setColor(Color.BLUE);
 		// temp2.setFilled(true);
 		return temp2;
-
 	}
 
 	private void addAnEnemy2() {
@@ -81,7 +77,6 @@ public class _ToolDesign implements ActionListener {
 		// temp3.setColor(Color.YELLOW);
 		// temp3.setFilled(true);
 		return temp3;
-
 	}
 
 	private void addAnEnemy3() {
@@ -105,7 +100,6 @@ public class _ToolDesign implements ActionListener {
 			moveDirector = -1;
 		if (moveDirector < -50)
 			moveDirector = 1;
-
 		for (GImage image : enemies) {
 			image.move(dx, 0);
 		}
@@ -118,7 +112,6 @@ public class _ToolDesign implements ActionListener {
 	}
 
 	public void run() {
-
 		rgen = RandomGenerator.getInstance(); 
 		enemies = new ArrayList<GImage>(); 
 		bullets = new ArrayList<GRect>(); 
@@ -128,9 +121,7 @@ public class _ToolDesign implements ActionListener {
 		movement.start();
 	}
 		
-
 	public void actionPerformed(ActionEvent e) {
-		
 		numTimes += -1;
 		if (numTimes % 100 == 0) {
 			addAnEnemy();
@@ -145,10 +136,8 @@ public class _ToolDesign implements ActionListener {
 		if (numTimes % 75 == 0) {
 			addAnEnemy3();
 			addBullet();
-			playSound();
-			
+			playSound();	
 		}
-
 		moveAllEnemiesOnce();
 		moveAllBulletsOnce();
 	}
@@ -158,7 +147,6 @@ public class _ToolDesign implements ActionListener {
 		tempBullet.setColor(Color.RED);
 		tempBullet.setFilled(true);
 		return tempBullet;
-
 	}
 
 	public void addBullet() {
@@ -174,15 +162,12 @@ public class _ToolDesign implements ActionListener {
 	public void moveAllBulletsOnce() {
 		for (GRect bullet : bullets) {
 			bullet.move(0, 10);
-
 			// bulletCheck = getElementAt(bullet.getX() + (bullet.getWidth() + 1),
 			// bullet.getY() + (bullet.getHeight() / 2)); // check for bullet collision
 		}
 	}
 	// come back to this and make another enemy type to add another line of enemy
 	// below the ones already made
-
-
 	
 	public void keyPressed(KeyEvent e) {
 		battleShip1.keyPressed(e);
@@ -192,6 +177,9 @@ public class _ToolDesign implements ActionListener {
 		battleShip1.keyReleased(e);
 	}
 
+	public void removeEnemy() {
+		enemies.remove(0);
+	}
 	public ArrayList<GImage> getEnemies() {
 		
 		return enemies;
