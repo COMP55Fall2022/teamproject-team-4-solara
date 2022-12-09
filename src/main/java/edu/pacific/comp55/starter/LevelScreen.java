@@ -61,7 +61,7 @@ public class LevelScreen extends GraphicsPane implements ActionListener {
 		w = menu.getRectWidth();
 		h = menu.getRectHeight();
 				
-		sureM = new GParagraph ("Are you sure you'd\n    like to return to \n   the main menu?", 580, 350);
+		sureM = new GParagraph ("Are you sure you'd\n         like to quit?", 580, 380);
 		rect = new G3DRect(550,300, w , h);
 		yes = new GButton ("YES", w * 1.50, h * 1.60, 100,50);
 		no = new GButton ("NO", w * 2, h * 1.60, 100,50);
@@ -144,13 +144,14 @@ public class LevelScreen extends GraphicsPane implements ActionListener {
 		
 		if (obj == yes ){
 			System.exit(0);
+			
 		}
 		else if ( obj == no ) {
-			removeReturnBox();	
+			removeReturnBox();
 			}
 
-	//	bulletObj.newBullet(e.getX(), e.getY());
-		//playSound();
+		bulletObj.newBullet(e.getX(), e.getY());
+		playSound();
 
 	}
 		
