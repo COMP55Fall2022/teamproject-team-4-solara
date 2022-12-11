@@ -8,13 +8,8 @@ package edu.pacific.comp55.starter;
  */
 
 import acm.graphics.*;
-import acm.program.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.awt.geom.AffineTransform;
-import java.awt.geom.PathIterator;
-import java.awt.geom.Point2D;
-import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
 import javax.swing.*;
 
@@ -27,7 +22,6 @@ public class _Bullet /*implements Shape*/ /*extends GraphicsProgram implements A
 	public static final int SPEED = -5;
 	public static final int BULLET_SPAWN_Y = PROGRAM_HEIGHT - 40;
 	private ArrayList<GRect> bullets;
-	private ArrayList<GImage> enemies;
 	Timer t;
 	MainApplication app;
 	private AudioPlayer pSound;

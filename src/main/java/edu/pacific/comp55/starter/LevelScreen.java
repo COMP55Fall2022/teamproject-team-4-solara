@@ -1,4 +1,8 @@
 package edu.pacific.comp55.starter;
+/**
+ * 
+ */
+
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -8,25 +12,21 @@ import java.awt.event.MouseEvent;
 import acm.graphics.G3DRect;
 import acm.graphics.GImage;
 import acm.graphics.GObject;
-import acm.graphics.GRect;
 import javax.swing.*;
 
 
 public class LevelScreen extends GraphicsPane implements ActionListener {
-	// "program" to get access to all of the GraphicsProgram calls
 	private MainApplication program;
 	private GImage level; 
 	private _ToolDesign engine;
 	private _HealthBar healthBar; 
-	private _Movement movement; 
 	private _Powerups powerups; 
 	private _Score score;
 	private AudioPlayer pSound; 
 	private final String SOUND = "sounds"; 
 	private final String BULLET = "BulletSound.mp3";
-	private GObject bulletCheck;
 
-	private MenuPane menu; 
+	int BULLET_SPAWN_Y = 1080 - 50; // PROGRAM_HEIGHT - 50
 	
 	public GParagraph sureM; 
 	public G3DRect rect;  
@@ -34,38 +34,27 @@ public class LevelScreen extends GraphicsPane implements ActionListener {
 	public GButton no; 
 
 
-	private ChoosePlaneScreen p;
-	private _ShipType p1;
-	private _ShipType p2;
-	int BULLET_SPAWN_Y = 1080 - 50; // PROGRAM_HEIGHT - 50
 	private _Bullet bulletObj;
 	private Timer t;
-
 	
 	private int w; 
 	private int h; 
 
-
-	
 	public LevelScreen(MainApplication app) {
-		//p = new ChoosePlaneScreen(app);
 		this.program = app;
 		level = new GImage("media/Space Background.jpg", 0, 0);
 		engine = new _ToolDesign(app, _ShipType.SHIP_BALANCED, _ShipType.SHIP_BALANCED);
 		healthBar = new _HealthBar(app);
 		powerups = new _Powerups(app);
 		score = new _Score(app);
-
 		bulletObj = new _Bullet(app);
 		
-		w = menu.getRectWidth();
-		h = menu.getRectHeight();
-				
 		sureM = new GParagraph ("Are you sure you'd\n         like to quit?", 580, 380);
 		rect = new G3DRect(550,300, w , h);
 		yes = new GButton ("YES", w * 1.50, h * 1.60, 100,50);
 		no = new GButton ("NO", w * 2, h * 1.60, 100,50);
 		
+		// sets colors for "YES" and "NO" buttons when trying to quit the game/level
 		yes.setColor(Color.RED);
 		yes.setFillColor(Color.GRAY);
 		no.setColor(Color.GREEN);
@@ -76,9 +65,6 @@ public class LevelScreen extends GraphicsPane implements ActionListener {
 		rect.setFillColor(Color.GRAY);
 		rect.setFilled(true);
 
-		bulletObj = new _Bullet(app);		
-
-		//movement = new _Movement(app);
 	}
 	
 	void setPLayersType(_ShipType t1, _ShipType t2) {
@@ -100,16 +86,16 @@ public class LevelScreen extends GraphicsPane implements ActionListener {
 		// Timer to allow bullets to move
 		t = new Timer(1, this);
 		t.start();
-	//	movement.run();
 	}
 	
+	// "Return to screen" box
 	public void addReturnBox() {
 		program.add(rect);
 		program.add(sureM);
 		program.add(yes);
 		program.add(no);
 	}
-	
+	// Removes "Return to screen" box
 	public void removeReturnBox() {
 		program.remove(rect);
 		program.remove(sureM);
@@ -122,39 +108,24 @@ public class LevelScreen extends GraphicsPane implements ActionListener {
 		int key = e.getKeyCode(); 
 		if ( key == KeyEvent.VK_ESCAPE) {
 			addReturnBox();
-			//bulletObj.t.stop();
 		}
 	}
 
 	public void bulletCollision() {
 		
 	}
-	// for when player gives input (when clicking to shoot)
+
+	// receives player input (after mouse is pressed to shoot a bullet/bullets)
 	public void actionPerformed(ActionEvent e) {
 		bulletObj.shoot();
-		bulletObj.removeBullet();
-//		if() {
-//			
-//		}
+		bulletObj.removeBullet(); 
 	}
+	// "mouse-pressed" coordinates to make a bullet and plays sound after
 	public void mousePressed(MouseEvent e) {
-
-		
-		GObject obj = program.getElementAt(e.getX(), e.getY());
-		
-		if (obj == yes ){
-			System.exit(0);
-			
-		}
-		else if ( obj == no ) {
-			removeReturnBox();
-			}
-
 		bulletObj.newBullet(e.getX(), e.getY());
 		playSound();
 
 	}
-		
 		
 	public void hideContents() {
 		program.remove(level);

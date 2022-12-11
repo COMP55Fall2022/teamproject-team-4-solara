@@ -8,14 +8,11 @@ package edu.pacific.comp55.starter;
  */
 
 import java.awt.Color;
-import java.awt.event.*;
 import java.util.ArrayList;
 
-import javax.swing.Timer;
 import acm.graphics.GLabel;
 import acm.graphics.GLine;
 import acm.graphics.GRect;
-import acm.program.GraphicsProgram;
 
 public class _HealthBar {
 	private ArrayList<GRect> greenBars;
