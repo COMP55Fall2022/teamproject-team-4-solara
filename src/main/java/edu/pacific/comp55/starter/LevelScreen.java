@@ -41,6 +41,7 @@ public class LevelScreen extends GraphicsPane implements ActionListener {
 	private int h; 
 
 	public LevelScreen(MainApplication app) {
+		// to add objects to MainApplication program
 		this.program = app;
 		level = new GImage("media/Space Background.jpg", 0, 0);
 		engine = new _ToolDesign(app, _ShipType.SHIP_BALANCED, _ShipType.SHIP_BALANCED);
@@ -49,6 +50,7 @@ public class LevelScreen extends GraphicsPane implements ActionListener {
 		score = new _Score(app);
 		bulletObj = new _Bullet(app);
 		
+		// Adds "return to screen" text
 		sureM = new GParagraph ("Are you sure you'd\n         like to quit?", 580, 380);
 		rect = new G3DRect(550,300, w , h);
 		yes = new GButton ("YES", w * 1.50, h * 1.60, 100,50);
@@ -67,6 +69,9 @@ public class LevelScreen extends GraphicsPane implements ActionListener {
 
 	}
 	
+	/*
+	 * 
+	 */
 	void setPLayersType(_ShipType t1, _ShipType t2) {
 		engine.setBattleShip1(t1);
 		engine.setBattleShip2(t2);
