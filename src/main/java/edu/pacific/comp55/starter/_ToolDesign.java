@@ -1,5 +1,10 @@
 package edu.pacific.comp55.starter;
 
+/**
+ * Places GImage objects (enemies) onto the screen
+ * @author Nathan, Miguel, Manohar, and Divine
+ */
+
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -26,7 +31,6 @@ public class _ToolDesign implements ActionListener {
 	private int moveDirector;
 	private int numTimes;
 	private MainApplication mainScreen;
-	private _Bullet bulletObj;
 
 	private String UFO1 = "UFO1.png";
 	private String UFO2 = "UFO2.png";
@@ -179,28 +183,34 @@ public class _ToolDesign implements ActionListener {
 	}
 	
 	/**
-	 * Created by Miguel
-	 * Function works to remove enemy object from screen and ArrayList
-	 * @param index : retrieves an index of specific enemy to delete
+	 * Removes enemy object from screen and ArrayList
+	 * @param index --> retrieves an index of specific enemy to delete
 	 */
 	public void removeEnemyAtIndex(int index) {
 		enemies.remove(index);
 		mainScreen.remove(enemies.get(index));
 	}
 
+	// returns ArrayList of enemies
 	public ArrayList<GImage> getEnemies() {
 		
 		return enemies;
 	}
 
+	// assigns list of enemies to the "enemies" ArrayList
 	public void setEnemies(ArrayList<GImage> enemies) {
 		this.enemies = enemies;
 	}
 
+	// gets the UFO GImage object
 	public GImage getTemp() {
 		return temp;
 	}
 
+	/**
+	 * Assigns a UFO GImage object
+	 * @param temp --> contains image files with x, y-coordinates
+	 */
 	public void setTemp(GImage temp) {
 		this.temp = temp;
 	}

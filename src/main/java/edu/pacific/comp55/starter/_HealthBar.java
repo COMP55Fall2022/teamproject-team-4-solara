@@ -1,5 +1,12 @@
 package edu.pacific.comp55.starter;
 
+/**
+ * This class is for creating and displaying the health bar
+ * 
+ * @author Miguel, Nathan, Divine, and Manohar
+ * Main contributor(s) Miguel
+ */
+
 import java.awt.Color;
 import java.awt.event.*;
 import java.util.ArrayList;
@@ -21,15 +28,15 @@ public class _HealthBar {
 	private double HEALTHBAR_HEIGHT = 50.0;
 	private int originalHealth;
 	private final int HIT_POINTS = 10;
-	
-	
 	private final int WINDOW_WIDTH = 1600;
-	//private final int WINDOW_HEIGHT = 1000;
 	
 	// MainApplication (main screen) reference
 	private MainApplication mainScreen;
 	
-	// constructor initialized with MainApplication object
+	/**
+	 * Initializes a MainApplcation object to add it to the main screen
+	 * @param app --> parameter from MainApplication
+	 */
 	public _HealthBar(MainApplication app) {
 			mainScreen = app; 
 	}
@@ -50,6 +57,7 @@ public class _HealthBar {
 			// adds health bars to ArrayList
 			greenBars.add(healthBar);
 		}
+		// assigns original size of health for future use
 		originalHealth = greenBars.size();
 		
 	}
