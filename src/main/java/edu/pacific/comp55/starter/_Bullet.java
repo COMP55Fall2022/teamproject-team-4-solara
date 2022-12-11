@@ -3,7 +3,7 @@ package edu.pacific.comp55.starter;
 /** 
  * This program is for creating and displaying the bullet on the MainApplication screen
  * 
- * @author(s) Divine, Miguel, Nathan, Manohar
+ * @author Nathan Osorio, Miguel Constantino-Guzman, Manohar V. Dhulipala, and Divine Atah
  * Main contributors: Divine, Veasna, and Miguel
  */
 

@@ -2,7 +2,7 @@ package edu.pacific.comp55.starter;
 
 /**
  * Places GImage objects (enemies) onto the screen
- * @author Nathan, Miguel, Manohar, and Divine
+ * @author Nathan Osorio, Miguel Constantino-Guzman, Manohar V. Dhulipala, and Divine Atah
  */
 
 import java.awt.Color;

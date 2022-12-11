@@ -1,6 +1,8 @@
 package edu.pacific.comp55.starter;
 /**
- * 
+ * This class helps in displaying menu screen buttons, images for the enemies, labels, and for
+ * help in shooting bullets
+ * @author Nathan Osorio, Miguel Constantino-Guzman, Manohar V. Dhulipala, and Divine Atah
  */
 
 import java.awt.Color;
@@ -11,7 +13,6 @@ import java.awt.event.MouseEvent;
 
 import acm.graphics.G3DRect;
 import acm.graphics.GImage;
-import acm.graphics.GObject;
 import javax.swing.*;
 
 
@@ -69,19 +70,25 @@ public class LevelScreen extends GraphicsPane implements ActionListener {
 
 	}
 	
-	/*
-	 * 
+	/**
+	 * Assigns battleships 1 and 2 to the level screen
+	 * @param t1 --> from enumerator of type ShipType
+	 * @param t2 --> from enumerator of type ShipType
 	 */
 	void setPLayersType(_ShipType t1, _ShipType t2) {
 		engine.setBattleShip1(t1);
 		engine.setBattleShip2(t2);
 	}
 
+	// assigns sound to Player bullets when shot
 	public void playSound() {
 		pSound = AudioPlayer.getInstance();
 		pSound.playSound(SOUND, BULLET);
 	}
-	
+	/*
+	 * shows contents on screen for power ups, health bar, and score labels, as well as a timer for the
+	 * bullets shot from the players
+	 */
 	public void showContents() {
 		program.add(level);
 		engine.run();
@@ -114,10 +121,6 @@ public class LevelScreen extends GraphicsPane implements ActionListener {
 		if ( key == KeyEvent.VK_ESCAPE) {
 			addReturnBox();
 		}
-	}
-
-	public void bulletCollision() {
-		
 	}
 
 	// receives player input (after mouse is pressed to shoot a bullet/bullets)

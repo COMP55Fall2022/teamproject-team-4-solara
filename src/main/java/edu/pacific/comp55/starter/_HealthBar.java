@@ -3,7 +3,7 @@ package edu.pacific.comp55.starter;
 /**
  * This class is for creating and displaying the health bar
  * 
- * @author Miguel, Nathan, Divine, and Manohar
+ * @author Nathan Osorio, Miguel Constantino-Guzman, Manohar V. Dhulipala, and Divine Atah
  * Main contributor(s) Miguel
  */
 
