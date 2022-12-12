@@ -1,16 +1,6 @@
 package edu.pacific.comp55.starter;
 
-import acm.graphics.*;
-
 public class _Ships {
-
-	// Protected because we need to use them for the child classes - Miguel
-	
-	/*
-	 * We can implement a SPAWN CLASS and declare it here!
-	 */
-	
-	//protected SimplePoint spawnLocation;
 	protected double xLoc;
 	protected double yLoc;
 	protected int healthScore;
@@ -19,21 +9,14 @@ public class _Ships {
 	protected int isSpeed;
 	protected _ShipType type;
 
-	public _Ships(_ShipType type, int health, int damage, int isSpeed/*, double x, double y*/) {
+	public _Ships(_ShipType type, int health, int damage, int isSpeed) {
 		this.health = health;
 		this.type = type;
 		this.damage = damage;
 		this.isSpeed = isSpeed;
 		
-		//spawnLocation = new SimplePoint(x, y);
 	}
 	
-	/*
-	public SimplePoint getShipCoordinates() {
-		return spawnLocation;
-	}
-	*/
-
 	public _ShipType getShipType() {
 		return type;
 	}
